@@ -15,6 +15,7 @@
             </ol>
             <div class="carousel-inner">
 
+
                 @foreach(@$sliders as $k => $slider)
                     <div class="carousel-item {{ @$k === 0 ? 'active' : ''}}">
                         <img src="{{ @$slider->image->url }}" class="d-block w-100 slider-img"

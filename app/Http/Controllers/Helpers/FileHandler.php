@@ -8,15 +8,26 @@ use Intervention\Image\Facades\Image;
 
 class FileHandler
 {
-    public static function upload($image, $path, $size = null, $prefix = null)
+    public static function upload($image, $path, $size = null, $prefix = null): string
     {
-        $prefix = isset($prefix) ? $prefix : time();
+        $prefix = $prefix ?? time();
 
-        $image_name = $prefix . '-' . $size['width'] . 'x' . $size['height'] . '-' . $image->getClientOriginalName();
+        $measurement = $size ? $size['width'] . 'x' . $size['height'] . '-' : '';
 
-        $image_path = "uploads/$path/$image_name";
+        $file_name = $prefix . '-' . $measurement . $image->getClientOriginalName();
 
-        $resized_image = Image::make($image)->resize($size['width'], $size['height'])->stream();
+        $file_name = slug($file_name);
+
+        // check is it image or file
+        if (explode('/', $image->getClientMimeType())[0] !== 'image') {
+            return self::fileUpload("uploads/$path", $image, $file_name);
+        }
+
+        $image_path = "uploads/$path/$file_name";
+
+        $resized_image = Image::make($image)
+            ->resize($size['width'] ?: '', $size['height'] ?: '')
+            ->stream();
 
         Storage::put($image_path, $resized_image);
 
@@ -28,5 +39,12 @@ class FileHandler
         if (Storage::exists($path)) {
             Storage::delete($path);
         }
+    }
+
+    private static function fileUpload($path, $image, $file_name): string
+    {
+        Storage::putFileAs($path, $image, $file_name);
+
+        return "$path/$file_name";
     }
 }

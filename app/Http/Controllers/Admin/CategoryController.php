@@ -40,24 +40,20 @@ class CategoryController extends Controller
         return view('admin.pages.categories.create', compact('main_categories'));
     }
 
-    public function store(CategoryRequest $request)
+    /**
+     * @throws \Throwable
+     */
+    public function store(CategoryRequest $request): \Illuminate\Http\RedirectResponse
     {
         $request_data = $request->validated();
         $request_data['status'] = !!$request->status;
 
-        DB::beginTransaction();
-
         try {
             Category::create($request_data);
-
-            DB::commit();
 
             return redirect()->back()->with('success', 'Category Created Successfully');
 
         } catch (\Exception $exception) {
-            report($exception);
-            DB::rollBack();
-
             return redirect()->back()->with('error', $exception->getMessage());
         }
     }

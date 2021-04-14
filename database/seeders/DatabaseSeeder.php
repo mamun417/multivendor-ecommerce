@@ -20,13 +20,8 @@ class DatabaseSeeder extends Seeder
             AdminsSeeder::class,
             CategorySeeder::class,
             BrandSeeder::class,
-//            TaxSeeder::class,
-//            ProductSeeder::class,
-            SettingSeeder::class,
             SlidersSeeder::class,
-//            ShippingMethodSeeder::class,
             UserTableSeeder::class,
-//            OfferSeeder::class
         ]);
     }
 }

@@ -19,10 +19,6 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(50)
-            ->has(ShippingAddress::factory())
-            ->has(Order::factory()->has(OrderDetail::factory()->count(random_int(1,10)), 'orderDetails')
-            ->count(random_int(1,20)), 'orders')
-            ->create();
+        User::factory(2)->create();
     }
 }

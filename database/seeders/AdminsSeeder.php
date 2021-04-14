@@ -15,17 +15,16 @@ class AdminsSeeder extends Seeder
     public function run()
     {
         $admin = Admin::create([
-            'name' => 'admin',
-            'email' => 'admin@test.com',
+            'name'     => 'admin',
+            'email'    => 'admin@test.com',
             'password' => \Hash::make('secret'),
-            'type' => null,
+            'type'     => null,
         ]);
 
         $admin->image()->create([
-            'url' => 'default.png',
+            'url'       => 'default.png',
             'base_path' => 'default.png',
-            'type' => 'default.png',
+            'type'      => 'default.png',
         ]);
-
     }
 }

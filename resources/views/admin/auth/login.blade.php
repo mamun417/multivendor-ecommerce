@@ -18,8 +18,9 @@
 
                 <div class="form-group">
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                           name="email"  required autocomplete="email" autofocus
-                           placeholder="Email">
+                           name="email" required autocomplete="email" autofocus
+                           placeholder="Email Address" value="admin@test.com">
+
                     @error('email')
                     <span class="help-block m-b-none text-danger">{{ $message }}</span>
                     @enderror
@@ -28,7 +29,8 @@
                 <div class="form-group">
                     <input id="password" type="password"
                            class="form-control @error('password') is-invalid @enderror" name="password" required
-                           autocomplete="current-password" placeholder="Password">
+                           autocomplete="current-password" placeholder="Password" value="secret">
+
                     @error('password')
                     <span class="help-block m-b-none text-danger">{{ $message }}</span>
                     @enderror
@@ -38,10 +40,10 @@
 
                 <a href="{{ route('admin.password.request') }}"><small>Forgot password?</small></a>
 
-{{--                <p class="text-center">--}}
-{{--                    <span>Do not have an account?</span>--}}
-{{--                </p>--}}
-{{--                <a class="btn btn-sm btn-white btn-block" href="{{ route('register') }}">Create an account</a>--}}
+                {{--                <p class="text-center">--}}
+                {{--                    <span>Do not have an account?</span>--}}
+                {{--                </p>--}}
+                {{--                <a class="btn btn-sm btn-white btn-block" href="{{ route('register') }}">Create an account</a>--}}
 
             </form>
         </div>

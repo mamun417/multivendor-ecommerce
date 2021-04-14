@@ -30,17 +30,23 @@ function getActiveClassByUrl($url): string
     return Request::is($url) ? 'active' : '';
 }
 
-function slug($text) {
-    return preg_replace('/\s+/u', '-', strtolower(trim($text)));
+function slug($text)
+{
+    $text = str_replace('?', ' ', $text);
+
+    return (preg_replace('/\s+/u', '-', strtolower(trim($text))));
 }
 
-function numberToWords($number) {
+function numberToWords($number)
+{
     $inWords = new NumberFormatter('en', NumberFormatter::SPELLOUT);
+
     return $inWords->format($number);
 }
 
-function discountRate($price, $discount_price) {
-    return number_format(($price - $discount_price) / $price * 100,2);
+function discountRate($price, $discount_price)
+{
+    return number_format(($price - $discount_price) / $price * 100, 2);
 }
 
 function getCurrencyIcon($currency = 'usd'): string

@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 /**
  * @method static latest()
  * @method static findOrFail(int|string|null $user_id)
+ * @method brands()
  */
 class User extends Authenticatable
 {
@@ -47,29 +48,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function image()
+    public function image(): \Illuminate\Database\Eloquent\Relations\MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
     }
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
-    }
-
-    public function orderDetails()
-    {
-        return $this->hasManyThrough(OrderDetail::class, Order::class);
-    }
-
-
-    public function shippingAddress()
-    {
-        return $this->hasOne(ShippingAddress::class);
-    }
-
-    public function offers(){
-        return $this->belongsToMany(Offer::class);
-    }
-
 }

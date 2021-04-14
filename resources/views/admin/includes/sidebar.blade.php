@@ -4,21 +4,11 @@
         color: white;
     }
 </style>
+
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
-                <div class="mb-5">
-                    <a class="d-flex" href="{{ route('home') }}" target="_blank">
-                        <img width="28" alt="image" class="rounded-circle"
-                             src="@if(empty($globalSettingInfo)) @else {{ $globalSettingInfo->image()->where('type', 'footer_logo')->first()->url }} @endif">
-                        <span class="block m-t-xs font-bold ml-3">
-                            @auth
-                                {{ config('app.name') }}
-                            @endauth
-                   </span>
-                    </a>
-                </div>
                 <div class="dropdown profile-element">
                     <img width="48" alt="image" class="rounded-circle"
                          src="{{ isset(Auth::user()->image) ? Auth::user()->image->url : asset('backend/img/profile/man.svg') }}"/>
@@ -61,27 +51,9 @@
                 </a>
             </li>
 
-{{--            <li class="{{ getActiveClassByController('ProductController') }}">--}}
-{{--                <a href="{{ route('admin.products.index') }}"><i class="fa fa-product-hunt"></i>--}}
-{{--                    <span class="nav-label">Products</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-
             <li class="{{ getActiveClassByController('BrandController') }}">
                 <a href="{{ route('admin.brands.index') }}"><i class="fa fa-bars"></i>
                     <span class="nav-label">Brands</span>
-                </a>
-            </li>
-
-{{--            <li class="{{ getActiveClassByController('OfferController') }}">--}}
-{{--                <a href="{{ route('admin.offers.index') }}"><i class="fa fa-gift"></i>--}}
-{{--                    <span class="nav-label">Offers</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-
-            <li class="{{ getActiveClassByController('CustomerController') }}">
-                <a href="{{ route('admin.customers.index') }}"><i class="fa fa-users"></i>
-                    <span class="nav-label">Customers</span>
                 </a>
             </li>
 
@@ -89,44 +61,6 @@
                 <a href="{{ route('admin.sliders.index') }}"><i class="fa fa-photo"></i>
                     <span class="nav-label">Sliders</span>
                 </a>
-            </li>
-
-{{--            <li class="{{ getActiveClassByController('OrderController') }}">--}}
-{{--                <a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>--}}
-{{--                    <span class="nav-label">Order Manage</span>--}}
-{{--                    <span class="fa arrow"></span>--}}
-{{--                </a>--}}
-{{--                <ul class="nav nav-second-level collapse">--}}
-{{--                    <li class="{{  request()->path() === 'admin/orders' && !request()->query('status')  ? 'order_manage_menu_active' : '' }}"><a href="{{ route('admin.orders.index') }}">Pending Orders</a>--}}
-{{--                    </li>--}}
-{{--                    <li class="{{ request()->query('status') === 'processing' ? 'order_manage_menu_active' : '' }}"><a href="{{ route('admin.orders.index', ['status' => 'processing']) }}">Processing--}}
-{{--                            Orders</a></li>--}}
-{{--                    <li class="{{ request()->query('status') === 'delivery' ? 'order_manage_menu_active' : '' }}"><a href="{{ route('admin.orders.index',  ['status' => 'delivery']) }}">Delivery--}}
-{{--                            Orders</a></li>--}}
-{{--                    <li class="{{ request()->query('status') === 'complete' ? 'order_manage_menu_active' : '' }}"><a href="{{ route('admin.orders.index', ['status' => 'complete']) }}">Complete--}}
-{{--                            Orders</a></li>--}}
-{{--                    <li class="{{ request()->query('status') === 'cancel' ? 'order_manage_menu_active' : '' }}"><a href="{{ route('admin.orders.index', ['status' => 'cancel']) }}">Cancel--}}
-{{--                            Orders</a></li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
-
-{{--            <li class="{{ getActiveClassByController('ShippingMethodController') }}">--}}
-{{--                <a href="{{ route('admin.shipping-methods.index') }}"><i class="fa fa-truck"></i>--}}
-{{--                    <span class="nav-label">Shipping Methods</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-
-            @php($active_class = getActiveClassByController('SettingController') || getActiveClassByController('SocialController') ||  getActiveClassByController('TaxController'))
-            <li class="{{ $active_class ? 'active' : '' }}">
-                <a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>
-                    <span class="nav-label">Manage Settings</span>
-                    <span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level collapse">
-                    <li class="{{ getActiveClassByController('SettingController') ? 'menu_active' : '' }}"><a href="{{ route('admin.settings.index') }}">Site Setting</a></li>
-                    <li class="{{ getActiveClassByController('SocialController') ? 'menu_active' : '' }}"><a href="{{ route('admin.socials.index') }}">Social</a></li>
-{{--                    <li class="{{ getActiveClassByController('TaxController') ? 'menu_active' : '' }}"><a href="{{ route('admin.taxes.index') }}">Taxes</a></li>--}}
-                </ul>
             </li>
         </ul>
     </div>

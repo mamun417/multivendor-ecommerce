@@ -15,18 +15,15 @@ class CreateCouponsTable extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->unique();
-            $table->string('slug');
-            $table->string('apply_type');
-            $table->integer('value');
-            $table->integer('usable_quantity')->nullable()->comment('how many time you can use it');
-            $table->integer('count')->nullable()->comment('how many time this coupon is used');
-            $table->date('started_at');
-            $table->date('expired_at');
-            $table->text('description')->nullable();
+            $table->foreignId('admin_id')->constrained()->cascadeOnDelete(); // admin means vendor
             $table->boolean('status')->default(false);
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->string('code');
+            $table->string('slug');
+            $table->integer('apply_type')->comment('1 = fixed, 0 = percent');
+            $table->float('amount');
+            $table->dateTime('started_at');
+            $table->dateTime('expired_at');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

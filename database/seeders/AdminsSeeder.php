@@ -14,14 +14,32 @@ class AdminsSeeder extends Seeder
      */
     public function run()
     {
-        $admin = Admin::create([
+        $admin = Admin::updateOrCreate([
+            'name'  => 'admin',
+            'email' => 'admin@test.com',
+        ], [
             'name'     => 'admin',
             'email'    => 'admin@test.com',
             'password' => \Hash::make('secret'),
-            'type'     => null,
+            'type'     => 'super-admin',
         ]);
 
         $admin->image()->create([
+            'url'       => 'default.png',
+            'base_path' => 'default.png',
+            'type'      => 'default.png',
+        ]);
+
+        $vendor = Admin::updateOrCreate([
+            'name'  => 'vendor',
+            'email' => 'vendor@test.com',
+        ], [
+            'name'     => 'vendor',
+            'email'    => 'vendor@test.com',
+            'password' => \Hash::make('secret'),
+            'type'     => 'vendor',
+        ]);
+        $vendor->image()->create([
             'url'       => 'default.png',
             'base_path' => 'default.png',
             'type'      => 'default.png',

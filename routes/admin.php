@@ -15,7 +15,6 @@ Route::get('/admin', function () {
 });
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
-
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('login', [LoginController::class, 'login']);
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -34,32 +33,41 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
 });
 
 Route::group(['middleware' => ['auth:admin'], 'as' => 'admin.', 'prefix' => 'admin'], function () {
-
     // dashboard v_2
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // categories
+    // profile
+    Route::get('profile', [AdminController::class, 'index'])->name('profile');
+    Route::patch('profile/{admin}/update', [AdminController::class, 'update'])->name('profile.update');
+
+    // password
+    Route::patch('password/change', [AdminController::class, 'changePassword'])->name('password.change');
+});
+
+// this controller group only for super-admin who is owner this applications
+Route::group(['middleware' => ['auth:admin', 'isSuperAdmin'], 'as' => 'admin.', 'prefix' => 'admin'], function () {
+// categories
     Route::resource('categories', CategoryController::class);
     Route::get('categories/change-status/{category}', [CategoryController::class, 'changeStatus'])
         ->name('categories.status.change');
 
+    // sliders
+    Route::resource('sliders', SlidersController::class)->except('show');
+    Route::get('sliders/change-status/{slider}', [SlidersController::class, 'changeStatus'])
+        ->name('sliders.status.change');
+});
+
+// this controller group only for vendor
+Route::group(['middleware' => ['auth:admin', 'isVendor'], 'as' => 'admin.', 'prefix' => 'admin'], function () {
     // brands
     Route::resource('brands', BrandController::class);
     Route::get('brands/change-status/{brand}', [BrandController::class, 'changeStatus'])
         ->name('brands.status.change');
-
-   // sliders
-    Route::resource('sliders', SlidersController::class)->except( 'show');
-    Route::get('sliders/change-status/{slider}', [SlidersController::class, 'changeStatus'])
-        ->name('sliders.status.change');
-
-    // profile
-    Route::get('profile', [AdminController::class, 'index'])->name('profile');
-    Route::PATCH('profile/{admin}/update', [AdminController::class, 'update'])->name('profile.update');
-
-    // password
-    Route::PATCH('password/change', [AdminController::class, 'changePassword'])->name('password.change');
 });
+
+
+
+
 
 
 

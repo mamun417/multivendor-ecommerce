@@ -40,7 +40,8 @@
 
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <a href="{{ route('admin.sliders.index') }}" class="btn btn-danger" type="submit">Cancel</a>
+                                        <a href="{{ route('admin.sliders.index') }}" class="btn btn-danger"
+                                           type="submit">Cancel</a>
                                         <button class="btn btn-primary" type="submit">Save Change</button>
                                     </div>
                                 </div>

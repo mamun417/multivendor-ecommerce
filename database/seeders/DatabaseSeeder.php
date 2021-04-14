@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\ShippingMethod;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
+/**
+ * @method call(string[] $array)
+ */
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,7 +14,7 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->call([
             AdminsSeeder::class,

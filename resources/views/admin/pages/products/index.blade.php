@@ -92,7 +92,6 @@
                                     <th>Name</th>
                                     <th>Brand</th>
                                     <th>Category</th>
-                                    <th>Tax</th>
                                     <th>Price</th>
                                     <th>Code</th>
                                     <th>Status</th>
@@ -111,28 +110,7 @@
                                             <td>{{ @$product->name }}</td>
                                             <td>{{ @$product->brand->name }}</td>
                                             <td>{{ @$product->category->name }}</td>
-                                            <td>
-                                                @if(isset($product->tax) && @$product->tax->type == 1)
-                                                    {{  @$product->tax->tax }} %
-                                                @else
-                                                    @if(@$product->price)
-                                                        {{ number_format(App\Http\Controllers\Helpers\ProductHelper::taxInPercentage(@$product->price, @$product->tax->tax),2) }}
-                                                        %
-                                                    @else
-                                                        ....
-                                                    @endif
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if(@$product->price)
-                                                    {{ getCurrencyIcon('usd') . @$product->price }}
-                                                @else
-                                                    @foreach(@$product->productPricesWithSize as $productSize)
-                                                        <span
-                                                            class="badge-success badge">{{ @$productSize->size }} => {{ @$productSize->price }}</span>
-                                                    @endforeach
-                                                @endif
-                                            </td>
+                                            <td>{{ @$product->price }} {{ getCurrencyIcon() }}</td>
                                             <td>{{ @$product->code }}</td>
 
                                             <td>
@@ -152,20 +130,6 @@
                                                 <a href="{{ route('admin.products.show', @$product->id) }}"
                                                    class="btn btn-info btn-sm cus_btn">
                                                     <i class="fa fa-info-circle"></i>
-                                                </a>
-
-                                                @php($offer_link = route('admin.offers.create')."?product_id=$product->id")
-                                                @php($offer = $product->offers->first())
-                                                @php($offer_link = $offer ? route('admin.offers.index')."?offer_id=$offer->id" : $offer_link)
-
-                                                <a href="{{ $offer_link }}"
-                                                   class="btn btn-success btn-sm cus_btn count-info position-relative">
-                                                    <i class="fa fa-gift"></i>
-                                                    @if ($offer)
-                                                        <span class="label label-warning p-0" style="top: 0; right: 0">
-                                                            <i class="fa fa-star"></i>
-                                                        </span>
-                                                    @endif
                                                 </a>
 
                                                 <a href="{{ route('admin.products.edit', @$product->id)  }}"

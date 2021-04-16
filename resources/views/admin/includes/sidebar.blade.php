@@ -66,6 +66,11 @@
                         <span class="nav-label">Brands</span>
                     </a>
                 </li>
+            <li class="{{ getActiveClassByController('ProductController') }}">
+                    <a href="{{ route('admin.products.index') }}"><i class="fa fa-bars"></i>
+                        <span class="nav-label">Products</span>
+                    </a>
+                </li>
             @endvendor
         </ul>
     </div>

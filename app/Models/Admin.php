@@ -13,10 +13,9 @@ use Illuminate\Notifications\Notifiable;
  */
 class Admin extends Authenticatable
 {
-
     protected $guard = 'admin';
-
     use HasFactory, Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -28,7 +27,6 @@ class Admin extends Authenticatable
         'password',
         'type',
     ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -52,10 +50,11 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -63,8 +62,13 @@ class Admin extends Authenticatable
         $this->notify(new AdminResetPasswordNotification($token));
     }
 
-    public function brands()
+    public function brands(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Brand::class, 'admin_id');
+    }
+
+    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Product::class, 'admin_id');
     }
 }

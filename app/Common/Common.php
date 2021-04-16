@@ -49,7 +49,7 @@ function discountRate($price, $discount_price)
     return number_format(($price - $discount_price) / $price * 100, 2);
 }
 
-function getCurrencyIcon($currency = 'usd'): string
+function getCurrencyIcon($currency = 'TK'): string
 {
     return $currency == 'usd' ? '$' : 'TK ';
 }

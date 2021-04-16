@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SlidersController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +64,15 @@ Route::group(['middleware' => ['auth:admin', 'isVendor'], 'as' => 'admin.', 'pre
     Route::resource('brands', BrandController::class);
     Route::get('brands/change-status/{brand}', [BrandController::class, 'changeStatus'])
         ->name('brands.status.change');
+
+
+    /*************product sections*************/
+    Route::resource('products', ProductController::class);
+    Route::get('products/change-status/{product}', [ProductController::class, 'changeStatus'])
+        ->name('products.status.change');
+    Route::get('products/size/remove', [ProductController::class, 'sizeRemove'])->name('products.remove.size');
+    Route::get('products/remove/image', [ProductController::class, 'removeProductImage'])->name('products.remove.image');
+
 });
 
 

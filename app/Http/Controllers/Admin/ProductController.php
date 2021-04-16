@@ -83,6 +83,7 @@ class ProductController extends Controller
                 'category_id'    => $request->input('category'),
                 'brand_id'       => $request->input('brand'),
                 'name'           => $request->input('product_name'),
+                'weight'         => $request->input('product_weight'),
                 'price'          => $request->input('product_price'),
                 'discount_price' => $request->input('product_price') ? $request->input('product_discount_price') : null,
                 'stock'          => $request->input('product_stock'),
@@ -102,6 +103,14 @@ class ProductController extends Controller
                         'type'      => 'lg',
                     ]);
                 }
+            }
+
+            if ($request->input('meta_title')) {
+                $product->seo()->create([
+                    'meta_title'       => $request->input('meta_title'),
+                    'meta_keywords'    => $request->input('meta_keywords'),
+                    'meta_description' => $request->input('meta_description')
+                ]);
             }
 
             DB::commit();
@@ -133,55 +142,35 @@ class ProductController extends Controller
         $categories = Category::active()->latest()->get();
         $brands     = Auth::user()->brands()->active()->latest()->get();
 
-        return view('admin.pages.products.edit', compact('categories', 'brands', 'product', 'taxes'));
+        return view('admin.pages.products.edit', compact('categories', 'brands', 'product'));
     }
 
-    public function update(ProductRequest $request, Product $product)
+    /**
+     * @throws \Throwable
+     */
+    public function update(ProductRequest $request, Product $product): RedirectResponse
     {
-//        dd($request->all());
         DB::beginTransaction();
 
         try {
-            $product_color_arr = array_filter($request->product_color_arr, function ($color) {
+            $product_color_arr = array_filter($request->input('product_colors'), function ($color) {
                 return $color !== null;
             });
-            if ($product_color_arr) {
-                $product_color_arr = json_encode($product_color_arr);
-            } else {
-                $product_color_arr = null;
-            }
+            $product           = Auth::user()->products()->where('id', $product->id)->firstOrFail();
 
             $product->update([
-                'category_id'    => $request->category,
-                'brand_id'       => $request->brand,
-                'tax_id'         => $request->tax,
-                'name'           => $request->product_name,
-                'price'          => $request->product_price,
-                'discount_price' => $request->product_price ? $request->product_discount_price : null,
-                'stock'          => $request->product_price ? $request->product_quantity : null,
-                'code'           => $request->product_code,
-                'color'          => $product_color_arr,
-                'details'        => $request->product_details,
+                'category_id'    => $request->input('category'),
+                'brand_id'       => $request->input('brand'),
+                'name'           => $request->input('product_name'),
+                'weight'         => $request->input('product_weight'),
+                'price'          => $request->input('product_price'),
+                'discount_price' => $request->input('product_price') ? $request->input('product_discount_price') : null,
+                'stock'          => $request->input('product_stock'),
+                'code'           => $request->input('product_code'),
+                'color'          => json_encode($product_color_arr),
+                'details'        => $request->input('product_details'),
                 'status'         => $request->status ? true : false,
-                'feature'        => $request->feature ? true : false,
-                'on_sale'        => $request->on_sale ? true : false,
             ]);
-
-            if (!$request->product_price) { // if not present product price
-                // first need to delete old  product size and create a new one
-                $product->productPricesWithSize()->delete();
-                // create a new
-                foreach ($request->product_size_arr as $key => $size) {
-                    $product->productPricesWithSize()->create([
-                        'size'           => $size,
-                        'price'          => $request->product_price_arr[$key],
-                        'discount_price' => $request->discount_price_arr[$key],
-                        'stock'          => $request->product_stock_arr[$key],
-                    ]);
-                }
-            } else { // if present delete old all
-                $product->productPricesWithSize()->delete();
-            }
 
             if ($request->file('product_img')) {
                 // need to upload product photo
@@ -195,9 +184,17 @@ class ProductController extends Controller
                 }
             }
 
+            if ($request->input('meta_title')) {
+                $product->seo()->update([
+                    'meta_title'       => $request->input('meta_title'),
+                    'meta_keywords'    => $request->input('meta_keywords'),
+                    'meta_description' => $request->input('meta_description')
+                ]);
+            }
+
             DB::commit();
 
-            return redirect()->back()->with('success', 'Product Created Successfully');
+            return redirect()->back()->with('success', 'Product Updated Successfully');
         } catch (\Exception $exception) {
             report($exception);
             DB::rollBack();
@@ -213,6 +210,7 @@ class ProductController extends Controller
             FileHandler::delete($image->base_path);
         }
         $product->images()->delete();
+        $product->seo()->delete();
 
         $product->delete();
 

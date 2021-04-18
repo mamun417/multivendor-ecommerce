@@ -10,7 +10,8 @@ class CouponController extends Controller
 {
     public function index()
     {
-        //
+        $coupons = Coupon::latest()->paginate();
+        return view('admin.pages.coupon.index', compact('coupons'));
     }
 
     public function create()
@@ -41,5 +42,12 @@ class CouponController extends Controller
     public function destroy(Coupon $coupon)
     {
         //
+    }
+
+    public function changeStatus(Coupon $coupon): \Illuminate\Http\JsonResponse
+    {
+        $coupon->update(['status' => !$coupon->status]);
+
+        return response()->json(['status' => true]);
     }
 }

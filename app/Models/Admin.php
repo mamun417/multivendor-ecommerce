@@ -71,4 +71,9 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(Product::class, 'admin_id');
     }
+
+    public function coupons(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Coupon::class, 'admin_id');
+    }
 }

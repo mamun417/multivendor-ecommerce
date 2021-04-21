@@ -46,31 +46,36 @@
             </li>
 
             @superadmin('super-admin')
-                <li class="{{ getActiveClassByController('CategoryController') }}">
-                    <a href="{{ route('admin.categories.index') }}">
-                        <i class="fa fa-list-ul"></i> <span class="nav-label">Categories</span>
-                    </a>
-                </li>
+            <li class="{{ getActiveClassByController('CategoryController') }}">
+                <a href="{{ route('admin.categories.index') }}">
+                    <i class="fa fa-list-ul"></i> <span class="nav-label">Categories</span>
+                </a>
+            </li>
 
-                <li class="{{ getActiveClassByController('SlidersController') }}">
-                    <a href="{{ route('admin.sliders.index') }}"><i class="fa fa-photo"></i>
-                        <span class="nav-label">Sliders</span>
-                    </a>
-                </li>
+            <li class="{{ getActiveClassByController('SlidersController') }}">
+                <a href="{{ route('admin.sliders.index') }}"><i class="fa fa-photo"></i>
+                    <span class="nav-label">Sliders</span>
+                </a>
+            </li>
             @endsuperadmin
 
 
             @vendor('vendor')
-                <li class="{{ getActiveClassByController('BrandController') }}">
-                    <a href="{{ route('admin.brands.index') }}"><i class="fa fa-bars"></i>
-                        <span class="nav-label">Brands</span>
-                    </a>
-                </li>
+            <li class="{{ getActiveClassByController('BrandController') }}">
+                <a href="{{ route('admin.brands.index') }}"><i class="fa fa-bars"></i>
+                    <span class="nav-label">Brands</span>
+                </a>
+            </li>
             <li class="{{ getActiveClassByController('ProductController') }}">
-                    <a href="{{ route('admin.products.index') }}"><i class="fa fa-bars"></i>
-                        <span class="nav-label">Products</span>
-                    </a>
-                </li>
+                <a href="{{ route('admin.products.index') }}"><i class="fa fa-bars"></i>
+                    <span class="nav-label">Products</span>
+                </a>
+            </li>
+            <li class="{{ getActiveClassByController('CouponController') }}">
+                <a href="{{ route('admin.coupons.index') }}"><i class="fa fa-gift"></i>
+                    <span class="nav-label">Coupons</span>
+                </a>
+            </li>
             @endvendor
         </ul>
     </div>

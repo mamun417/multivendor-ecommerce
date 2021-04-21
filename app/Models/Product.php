@@ -49,6 +49,11 @@ class Product extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
+    public function seo(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Seo::class, 'seoable');
+    }
+
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Category::class);

@@ -2,11 +2,11 @@
     <div class="col-lg-12">
         <div class="ibox ">
             <div class="ibox-title">
-                <h5>Create a new products</h5>
+                <h5> {{ isset($product) ? 'Edit ' : 'Create ' }} a new products</h5>
             </div>
             <div class="ibox-content">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Category<span
                                     class="required-star"> *</span></label>
@@ -24,7 +24,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">Brand<span
                                     class="required-star"> *</span></label>
@@ -41,8 +41,7 @@
                             @enderror
                         </div>
                     </div>
-
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label id="product_name" class="control-label">Name<span
                                     class="required-star"> *</span></label>
@@ -57,7 +56,21 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label id="product_price" class="control-label">Weight<span
+                                    class="required-star"> *</span></label>
+                            <input id="product_weight" type="text"
+                                   value="{{ isset($product) ? @$product->weight : old('product_weight')}}"
+                                   name="product_weight" class="form-control productPriceInput">
+                            @error('product_weight')
+                            <span class="help-block m-b-none text-danger">
+                                 {{ @$message }}
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label id="product_price" class="control-label">Price<span
                                     class="required-star"> *</span></label>
@@ -71,7 +84,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label id="product_discount_price" class="control-label">Discount Price <sup></sup></label>
                             <input id="product_discount_price"
@@ -90,7 +103,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label id="product_stock" class="control-label">Stock <sup></sup></label>
                             <input id="product_stock"
@@ -106,7 +119,8 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label id="product_code" class="control-label">Code</label>
                             <input id="product_code" type="text"
@@ -119,7 +133,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label>Images <span class="required-star"> *</span></label>
                         <div class="input-group">
                             <div class="custom-file">
@@ -132,7 +146,6 @@
                             class="help-block m-b-none text-danger">{{ @$message }}</span>
                         @enderror
                     </div>
-
                     <div class="col-md-12">
                         <div class="form-group">
                             <label id="product_details" class="control-label">Details</label>
@@ -289,13 +302,13 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label id="meta_keyword" class="control-label">Meta Keywords<sup></sup></label>
-                            <input id="meta_keyword"
+                            <label id="meta_keywords" class="control-label">Meta Keywords<sup></sup></label>
+                            <input id="meta_keywords"
                                    type="text"
-                                   value="{{ isset($product->meta_keyword) ? @$product->seo->meta_keyword : old('meta_keyword')}}"
-                                   name="meta_keyword"
+                                   value="{{ isset($product->seo) ? @$product->seo->meta_keywords : old('meta_keywords')}}"
+                                   name="meta_keywords"
                                    class="form-control">
-                            @error('meta_keyword')
+                            @error('meta_keywords')
                             <span class="help-block m-b-none text-danger">
                                 {{ @$message }}
                             </span>

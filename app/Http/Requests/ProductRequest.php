@@ -28,6 +28,7 @@ class ProductRequest extends FormRequest
         $rules = [
             'category' => 'required|numeric',
             'brand' => 'required|numeric',
+            'product_weight' => 'required',
             'product_name' => 'required|string|max:255|unique:products,name,' . $id,
             'product_code' => 'nullable|string|max:255',
             'product_colors' => 'nullable|array|max:255',

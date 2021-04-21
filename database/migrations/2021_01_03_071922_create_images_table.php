@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->string('url');
             $table->string('base_path')->nullable()->comment('you can save location of image');
             $table->string('type')->nullable();
+            $table->string('size')->nullable();
             $table->integer('imageable_id');
             $table->string('imageable_type');
             $table->timestamps();

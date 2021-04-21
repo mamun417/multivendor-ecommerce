@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\Coupon;
 use Illuminate\Database\Seeder;
 
 class AdminsSeeder extends Seeder
@@ -39,6 +40,9 @@ class AdminsSeeder extends Seeder
             'password' => \Hash::make('secret'),
             'type'     => 'vendor',
         ]);
+
+        $vendor->coupons()->createMany(Coupon::factory()->count(10)->make()->toArray());
+
         $vendor->image()->create([
             'url'       => 'default.png',
             'base_path' => 'default.png',

@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static latest()
  * @method static findOrFail(int|string|null $user_id)
  * @method brands()
+ * @method static where(string $string, int|string|null $id)
  */
 class User extends Authenticatable
 {

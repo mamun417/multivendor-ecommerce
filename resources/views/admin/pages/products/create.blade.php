@@ -39,4 +39,3 @@
 @push('script')
     @include('admin.pages.products.admin-product-script')
 @endpush
-

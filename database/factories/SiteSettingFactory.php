@@ -22,7 +22,9 @@ class SiteSettingFactory extends Factory
     public function definition(): array
     {
         return [
-            'phone' => $this->faker->phoneNumber
+            'phone'   => $this->faker->phoneNumber,
+            'email'   => $this->faker->email,
+            'address' => $this->faker->address,
         ];
     }
 }

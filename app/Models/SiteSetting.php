@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
+/**
+ * @method where(string $string, mixed $id)
+ * @method firstOrFail()
+ * @property mixed id
+ */
 class SiteSetting extends Model
 {
     use HasFactory;

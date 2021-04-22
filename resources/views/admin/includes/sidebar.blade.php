@@ -57,6 +57,12 @@
                     <span class="nav-label">Sliders</span>
                 </a>
             </li>
+
+            <li class="{{ getActiveClassByController('SiteSettingController') }}">
+                <a href="{{ route('admin.setting.edit') }}"><i class="fa fa-photo"></i>
+                    <span class="nav-label">SiteSetting</span>
+                </a>
+            </li>
             @endsuperadmin
 
 

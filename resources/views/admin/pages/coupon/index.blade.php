@@ -21,7 +21,7 @@
             <div class="col-lg-12">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <h5>All Coupon</h5>
+                        <h5>All Coupons</h5>
                         <a href="{{ route('admin.coupons.create') }}" class="btn btn-sm btn-primary pull-right">
                             <i class="fa fa-plus"></i> <strong>Create</strong>
                         </a>
@@ -81,7 +81,7 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th class="text-left">Coupon</th>
+                                    <th class="text-left">Coupon Code</th>
                                     <th>Amount</th>
                                     <th>Amount Type</th>
                                     <th>Status</th>
@@ -98,9 +98,8 @@
                                         <td class="text-left">{{ $coupon->code }}</td>
                                         <td>{{ $coupon->amount }}</td>
                                         <td>
-                                            {{ $coupon->apply_type }}
+                                            {{ ucfirst(\App\Http\Controllers\Helpers\CouponHelper::getTypeDisplayName($coupon->apply_type)) }}
                                         </td>
-                                        <td>{{ $coupon->user_ids }}</td>
 
                                         <td>
                                             <a onclick="changeStatus(this)" id="{{ $coupon->id }}"
@@ -117,10 +116,14 @@
                                         </td>
 
                                         <td>
-                                            {{ $coupon->expire ? cus_date($coupon->expire) : ''}}
+                                            {{ $coupon->started_at->diffForHumans() }}
                                         </td>
 
-                                        <td>{{ cus_date($coupon->created_at) }}</td>
+                                        <td>
+                                            {{ $coupon->expired_at->diffForHumans() }}
+                                        </td>
+
+                                        <td>{{ $coupon->created_at->diffForHumans() }}</td>
 
                                         <td>
                                             <a href="{{ route('admin.coupons.edit', $coupon->id)  }}" title="Edit"

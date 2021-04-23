@@ -7,13 +7,10 @@ use App\Http\Controllers\Helpers\FileHandler;
 use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Admin;
-use App\Models\User;
 use DB;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use function React\Promise\all;
 
 class AdminController extends Controller
 {
@@ -55,13 +52,15 @@ class AdminController extends Controller
         }
     }
 
-    public function changePassword(PasswordRequest $request)
+    public function changePassword(PasswordRequest $request): \Illuminate\Http\RedirectResponse
     {
         $hasPassword    = Auth::user()->password;
-        $check_password = Hash::check($request->old_password, $hasPassword);
+        $check_password = Hash::check($request->current_password, $hasPassword);
+
         if ($check_password) {
-            $new_password = Hash::make($request->new_password);
-            Admin::where('id', Auth::id())->update(['password' => $new_password]);
+            $new_password = Hash::make($request->password);
+
+            Auth::user()->update(['password' => $new_password]);
 
             return redirect()->back()->with('success', 'Password changed successfully');
         } else {

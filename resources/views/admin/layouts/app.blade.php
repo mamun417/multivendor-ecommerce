@@ -42,7 +42,6 @@
 
         @include('admin.includes.footer')
     </div>
-    @include('admin.includes.right-sidebar')
 </div>
 
 <!-- Mainly scripts -->

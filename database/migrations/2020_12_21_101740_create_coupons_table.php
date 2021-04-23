@@ -23,7 +23,7 @@ class CreateCouponsTable extends Migration
             $table->float('amount');
             $table->dateTime('started_at');
             $table->dateTime('expired_at');
-            $table->text('description')->nullable();
+            $table->text('title')->nullable();
             $table->timestamps();
         });
     }

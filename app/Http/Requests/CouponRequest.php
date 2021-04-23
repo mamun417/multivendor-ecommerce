@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Coupon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CouponRequest extends FormRequest
@@ -23,12 +24,16 @@ class CouponRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->coupon->id ?? null;
+
         return [
-            'code'     => 'required|max:255|unique:coupons',
+            'title'      => 'nullable',
+            'code'       => 'required|max:255|unique:coupons,code,' . $id,
             'amount'     => 'required|numeric',
-            'apply_type' => 'required',
-            'started_at' => 'date',
-            'expired_at' => 'date'
+            'apply_type' => 'required|in:' . implode(',', array_keys(Coupon::APPLY_TYPE)),
+            'started_at' => 'required|date',
+            'expired_at' => 'required|date',
+            'status'     => 'nullable'
         ];
     }
 }

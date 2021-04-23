@@ -58,17 +58,19 @@
                                                 <input name="keyword" type="text" value="{{ request('keyword') }}"
                                                        class="input-sm form-control" placeholder="Search Here">
                                                 <span class="input-group-btn">
-                                                        <button type="submit"
-                                                                class="btn btn-sm btn-primary custom_field_height"> Go!</button>
-                                                    </span>
+                                                    <button type="submit"
+                                                            class="btn btn-sm btn-primary custom_field_height">
+                                                        Go!
+                                                    </button>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="col-md-1 p-0 responsive_p_l_15">
-                                                <span>
-                                                    <a href="{{ route('admin.coupons.index') }}"
-                                                       class="btn btn-default btn-sm custom_field_height">Reset
-                                                    </a>
-                                                </span>
+                                            <span>
+                                                <a href="{{ route('admin.coupons.index') }}"
+                                                   class="btn btn-default btn-sm custom_field_height">Reset
+                                                </a>
+                                            </span>
                                         </div>
                                     </div>
 

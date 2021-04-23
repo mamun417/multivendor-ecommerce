@@ -30,7 +30,7 @@ class Coupon extends Model
         'amount',
         'started_at',
         'expired_at',
-        'description',
+        'title',
         'status'
     ];
 

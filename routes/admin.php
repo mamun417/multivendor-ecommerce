@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth:admin'], 'as' => 'admin.', 'prefix' => 'adm
 Route::group(['middleware' => ['auth:admin', 'isSuperAdmin'], 'as' => 'admin.', 'prefix' => 'admin'], function () {
 //Site Setting
     Route::get('setting', [SiteSettingController::class, 'edit'])->name('setting.edit');
+    Route::put('setting/update', [SiteSettingController::class, 'update'])->name('setting.update');
 
 // categories
     Route::resource('categories', CategoryController::class);

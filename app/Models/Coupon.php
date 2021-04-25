@@ -2,16 +2,26 @@
 
 namespace App\Models;
 
+use Eloquent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Class Coupon
+ * @mixin Eloquent
+ */
 
 class Coupon extends Model
 {
     use HasFactory;
 
     const APPLY_TYPE = [
-        'percent' => 0,
-        'fix'     => 1,
+        0 => 'percent (%)',
+        1 => 'fix',
+    ];
+    protected $casts = [
+        'started_at' => 'datetime',
+        'expired_at' => 'datetime',
     ];
     protected $fillable = [
         'code',
@@ -20,7 +30,7 @@ class Coupon extends Model
         'amount',
         'started_at',
         'expired_at',
-        'description',
+        'title',
         'status'
     ];
 

@@ -24,7 +24,6 @@ class CreateProductsTable extends Migration
             $table->string('discount_price')->nullable();
             $table->integer('stock')->nullable();
             $table->string('code')->nullable();
-            $table->mediumText('color')->nullable();
             $table->longText('details')->nullable();
             $table->string('weight')->nullable();
             $table->boolean('status')->default(false);

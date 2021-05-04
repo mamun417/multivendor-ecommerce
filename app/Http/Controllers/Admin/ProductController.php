@@ -75,10 +75,6 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            $product_color_arr = array_filter($request->input('product_colors'), function ($color) {
-                return $color !== null;
-            });
-
             $product = Auth::user()->products()->create([
                 'category_id'    => $request->input('category'),
                 'brand_id'       => $request->input('brand'),
@@ -88,7 +84,6 @@ class ProductController extends Controller
                 'discount_price' => $request->input('product_price') ? $request->input('product_discount_price') : null,
                 'stock'          => $request->input('product_stock'),
                 'code'           => $request->input('product_code'),
-                'color'          => json_encode($product_color_arr),
                 'details'        => $request->input('product_details'),
                 'status'         => $request->status ? true : false,
             ]);
@@ -129,16 +124,8 @@ class ProductController extends Controller
         return view('admin.pages.products.details', compact('product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Product $product
-     * @return Application|Factory|View|Response
-     */
     public function edit(Product $product)
     {
-//        dd($product->toArray());
-
         $categories = Category::active()->latest()->get();
         $brands     = Auth::user()->brands()->active()->latest()->get();
 
@@ -153,10 +140,7 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            $product_color_arr = array_filter($request->input('product_colors'), function ($color) {
-                return $color !== null;
-            });
-            $product           = Auth::user()->products()->where('id', $product->id)->firstOrFail();
+            $product = Auth::user()->products()->where('id', $product->id)->firstOrFail();
 
             $product->update([
                 'category_id'    => $request->input('category'),
@@ -167,7 +151,6 @@ class ProductController extends Controller
                 'discount_price' => $request->input('product_price') ? $request->input('product_discount_price') : null,
                 'stock'          => $request->input('product_stock'),
                 'code'           => $request->input('product_code'),
-                'color'          => json_encode($product_color_arr),
                 'details'        => $request->input('product_details'),
                 'status'         => $request->status ? true : false,
             ]);

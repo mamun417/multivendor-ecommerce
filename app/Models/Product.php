@@ -25,7 +25,6 @@ class Product extends Model
         'discount_price',
         'stock',
         'code',
-        'color',
         'details',
         'weight',
         'status'

@@ -16,15 +16,12 @@
                     <a href="{{ route('admin.dashboard') }}">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('admin.products.index') }}">Product</a>
+                    <a href="{{ route('admin.products.index') }}">Products</a>
                 </li>
                 <li class="breadcrumb-item active">
                     <strong>Update</strong>
                 </li>
             </ol>
-            <a class="btn btn-sm btn-primary pull-right m-t-n-md boardCreateModalShow"
-               href="{{ route('admin.products.index') }}"><i
-                    class="fa fa-list"></i> <strong>ALL PRODUCT</strong></a>
         </div>
     </div>
     <div class="wrapper wrapper-content animated fadeInRight">

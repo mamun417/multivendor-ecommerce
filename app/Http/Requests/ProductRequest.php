@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class ProductRequest extends FormRequest
 {
@@ -21,8 +22,9 @@ class ProductRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
+
         $id = $this->product->id ?? null;
 
         $rules = [
@@ -31,7 +33,6 @@ class ProductRequest extends FormRequest
             'product_weight' => 'required',
             'product_name' => 'required|string|max:255|unique:products,name,' . $id,
             'product_code' => 'nullable|string|max:255',
-            'product_colors' => 'nullable|array|max:255',
             'product_price' => 'required|numeric',
             'product_stock' => 'nullable|numeric',
             'product_details' => 'nullable|string',

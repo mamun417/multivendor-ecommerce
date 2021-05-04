@@ -12,9 +12,7 @@
                     <strong>Products</strong>
                 </li>
             </ol>
-            <a class="btn btn-sm btn-primary pull-right m-t-n-md boardCreateModalShow"
-               href="{{ route('admin.products.create') }}"><i
-                    class="fa fa-plus"></i> <strong>CREATE NEW</strong></a>
+
         </div>
     </div>
 
@@ -23,7 +21,10 @@
             <div class="col-lg-12">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5><strong>Products</strong></h5>
+                        <h5>All Products</h5>
+                        <a class="btn btn-sm btn-primary pull-right"
+                           href="{{ route('admin.products.create') }}"><i
+                                class="fa fa-plus"></i> <strong>Create</strong></a>
                     </div>
                     <div class="ibox-content">
                         <div class="row" style="margin-bottom: 10px">
@@ -127,10 +128,10 @@
                                             </td>
 
                                             <td>
-                                                <a href="{{ route('admin.products.show', @$product->id) }}"
-                                                   class="btn btn-info btn-sm cus_btn">
-                                                    <i class="fa fa-info-circle"></i>
-                                                </a>
+{{--                                                <a href="{{ route('admin.products.show', @$product->id) }}"--}}
+{{--                                                   class="btn btn-info btn-sm cus_btn">--}}
+{{--                                                    <i class="fa fa-info-circle"></i>--}}
+{{--                                                </a>--}}
 
                                                 <a href="{{ route('admin.products.edit', @$product->id)  }}"
                                                    title="Edit"

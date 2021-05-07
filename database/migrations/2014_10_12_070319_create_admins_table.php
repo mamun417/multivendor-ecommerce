@@ -15,10 +15,15 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->string('vendor_name')->nullable();
             $table->string('name');
+            $table->string('nid')->nullable();
+            $table->string('trade_licence')->nullable();
+            $table->string('mobile')->nullable();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('address')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('type')->nullable()->comment('if you need in future add to role');
             $table->rememberToken();
             $table->timestamps();

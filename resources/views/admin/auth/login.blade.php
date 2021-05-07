@@ -40,10 +40,10 @@
 
                 <a href="{{ route('admin.password.request') }}"><small>Forgot password?</small></a>
 
-                {{--                <p class="text-center">--}}
-                {{--                    <span>Do not have an account?</span>--}}
-                {{--                </p>--}}
-                {{--                <a class="btn btn-sm btn-white btn-block" href="{{ route('register') }}">Create an account</a>--}}
+                <p class="text-center">
+                    <span>Do not have an account?</span>
+                </p>
+                <a class="btn btn-sm btn-white btn-block" href="{{ route('admin.register') }}">Create an account</a>
 
             </form>
         </div>

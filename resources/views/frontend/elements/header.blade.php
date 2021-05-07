@@ -70,6 +70,15 @@
                                 </a>
                                 <!-- End Account Sidebar Toggle Button -->
                             </li>
+
+                            <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                <!-- Account Sidebar Toggle Button -->
+                                <a  href="{{ route('admin.login') }}" class="u-header-topbar__nav-link">
+                                    <i class="ec ec-user mr-1"></i>Vendor Sign in
+                                </a>
+                                <!-- End Account Sidebar Toggle Button -->
+                            </li>
+
                         </ul>
                     </div>
                 </div>

@@ -88,6 +88,13 @@
                                     </button>
                                 </div>
 
+                                <div class="mb-2">
+                                    <a href="{{ route('admin.login') }}"
+                                       class="btn btn-block btn-sm btn-secondary transition-3d-hover">
+                                        As a Vendor
+                                    </a>
+                                </div>
+
                                 <div class="text-center mb-4">
                                     <span class="small text-muted">Do not have an account?</span>
                                     <a class="js-animation-link small text-dark" href="javascript:;"

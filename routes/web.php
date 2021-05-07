@@ -2,14 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PhpArtisanController;
-use App\Http\Controllers\ProductCommentController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProductRatingController;
-use App\Http\Controllers\UserOfferController;
-use App\Http\Controllers\UserOrderController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['register' => false]);
+Auth::routes();
 
-Route::post('registration', [RegisterController::class, 'register'])->name('register');
+//Route::post('registration', [RegisterController::class, 'register'])->name('register');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

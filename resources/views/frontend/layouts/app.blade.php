@@ -22,11 +22,13 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/assets/vendor/animate.css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/vendor/hs-megamenu/src/hs.megamenu.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('frontend/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/vendor/fancybox/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/vendor/slick-carousel/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}">
-<!-- CSS Electro Template -->
+    <link rel="stylesheet"
+          href="{{ asset('frontend/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}">
+    <!-- CSS Electro Template -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/theme.css') }}">
 
     @stack('styles')
@@ -48,7 +50,7 @@
 
 <!-- ========== SECONDARY CONTENTS ========== -->
 <!-- Account Sidebar Navigation -->
-@include('frontend.elements.sidebar')
+@include('frontend.elements.login-register-right-sidebar')
 <!-- End Account Sidebar Navigation -->
 <!-- ========== END SECONDARY CONTENTS ========== -->
 
@@ -75,7 +77,8 @@
 <script src="{{ asset('frontend/assets/vendor/jquery.countdown.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/vendor/hs-megamenu/src/hs.megamenu.js') }}"></script>
 <script src="{{ asset('frontend/assets/vendor/svg-injector/dist/svg-injector.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script
+    src="{{ asset('frontend/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/vendor/fancybox/jquery.fancybox.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/vendor/typed.js/lib/typed.min.js') }}"></script>

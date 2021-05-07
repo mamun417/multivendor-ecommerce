@@ -29,36 +29,101 @@ Auth::routes(['register' => false]);
 
 Route::post('registration', [RegisterController::class, 'register'])->name('register');
 
-Route::get('/checkout', function () {
-    return view('pages.checkout.checkout');
-});
-Route::get('/payment', function () {
-    return view('pages.payment.payment');
-});
-
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Start Frontend Controller Sections
-Route::get('products/details/{product:slug}', [ProductController::class, 'productDetails'])->name('products.details');
-Route::get('products/categories/{category:slug}', [ProductController::class, 'byCategory'])->name('categories.products');
-Route::get('products/brands/{brand:slug}', [ProductController::class, 'byBrand'])->name('brands.products');
-Route::post('product/size/price', [ProductController::class, 'sizeWisePrice'])->name('product.get.size-wise-price');
-Route::get('product/offers/{product}', [OfferController::class, 'getOfferProduct'])->name('products.get.offers');
+Route::get('/single-product-full-width', function () {
+    return view('frontend.pages.single-product-full-width');
+});
 
-// Start => product comment controller section
-Route::post('product/comments/{product}', [ProductCommentController::class, 'store'])->name('product.comments.store');
-Route::get('product/comments/like/unlike', [ProductCommentController::class, 'likeUnlike'])->name('product.comments.like-unlike');
-// End => product comment controller section
+Route::get('/shop', function () {
+    return view('frontend.pages.shop');
+});
+
+Route::get('/product-categories-7-column-full-width', function () {
+    return view('frontend.pages.product-categories-7-column-full-width');
+});
+
+Route::get('/single-blog', function () {
+    return view('frontend.pages.single-blog-post');
+});
+
+Route::get('/compare', function () {
+    return view('frontend.pages.compare');
+});
+
+Route::get('/wishlist', function () {
+    return view('frontend.pages.wishlist');
+});
+
+Route::get('/blog-v2', function () {
+    return view('frontend.pages.blog-v2');
+});
+
+Route::get('/faq', function () {
+    return view('frontend.pages.faq');
+});
+Route::get('/store-directory', function () {
+    return view('frontend.pages.store-directory');
+});
+Route::get('/terms-and-conditions', function () {
+    return view('frontend.pages.terms-and-conditions');
+});
+
+Route::get('/404', function () {
+    return view('frontend.pages.404');
+});
+
+Route::get('/shop-grid', function () {
+    return view('frontend.pages.shop-grid');
+});
+Route::get('/shop-grid-extended', function () {
+    return view('frontend.pages.shop-grid-extended');
+});
+
+Route::get('/shop-list-view', function () {
+    return view('frontend.pages.shop-list-view');
+});
+
+Route::get('/shop-list-view-small', function () {
+    return view('frontend.pages.shop-list-view-small');
+});
+
+Route::get('/shop-left-sidebar', function () {
+    return view('frontend.pages.shop-left-sidebar');
+});
+
+Route::get('/shop-full-width', function () {
+    return view('frontend.pages.shop-full-width');
+});
+
+Route::get('/shop-right-sidebar', function () {
+    return view('frontend.pages.shop-right-sidebar');
+});
 
 
-// Cart Routes
-Route::get('cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('cart/{slug}', [CartController::class, 'store'])->name('cart.store');
-Route::get('cart/remove/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
-Route::post('cart/update/{rowId}', [CartController::class, 'updateQty'])->name('cart.update.qty');
-Route::get('cart-empty', [CartController::class, 'empty'])->name('cart.empty');
-Route::get('cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('cartExist');
-Route::post('cart/checkout/shipping/store', [CartController::class, 'shippingStore'])->name('cart.shipping.store');
+Route::get('/cart', function () {
+    return view('frontend.pages.cart');
+});
+Route::get('/checkout', function () {
+    return view('frontend.pages.checkout');
+});
+Route::get('/my-account', function () {
+    return view('frontend.pages.my-account');
+});
+
+Route::get('/track-your-order', function () {
+    return view('frontend.pages.track-your-order');
+});
+
+Route::get('/about', function () {
+    return view('frontend.pages.about');
+});
+
+Route::get('/contact-v2', function () {
+    return view('frontend.pages.contact-v2');
+});
+
+
 
 Route::group(['middleware' => ['auth', 'cartExist']], function () {
     Route::get('cart/order', [CartController::class, 'gotToOrderPage'])->name('cart.order.page');
@@ -73,23 +138,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('payment/{order}', [OrderController::class, 'paymentPage'])->name('payment.page');
     Route::post('order/cancel/{order}', [OrderController::class, 'orderCancel'])->name('order.cancel');
 
-
     // User Dashboard Route
     Route::get('user/profile', [UserProfileController::class, 'edit'])->name('user.profile');
     Route::put('user/profile/update', [UserProfileController::class, 'update'])->name('user.update.profile');
     Route::put('user/profile/update/password', [UserProfileController::class, 'changePassword'])->name('user.update.profile.password');
-    Route::get('user/orders', [UserOrderController::class, 'index'])->name('user.orders.index');
-    Route::get('user/offers', [UserOfferController::class, 'index'])->name('user.offers.index');
-    Route::get('user/decline/offers/{product}', [UserOfferController::class, 'offerDecline'])->name('user.offers-decline');
-    Route::delete('user/delete/offers/{offer}', [UserOfferController::class, 'offerDelete'])->name('user.offers.delete');
-    Route::Post('product/rating/store', [ProductRatingController::class, 'store'])->name('product.rating.store');
-});
-Route::post('offers/save-for-later', [UserOfferController::class, 'store'])->name('offers.save-for-later');
 
+});
 
 // For Admin
 require __DIR__ . '/admin.php';
-
-Route::get('php-artisan-cache-clear', [PhpArtisanController::class, 'cacheClear']);
-Route::get('php-artisan-config-clear', [PhpArtisanController::class, 'configClear']);
-Route::get('php-artisan-optimize-clear', [PhpArtisanController::class, 'optimizeClear']);

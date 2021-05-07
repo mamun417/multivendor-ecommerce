@@ -1,9 +1,10 @@
-body{
+body {
     color: black;
 }
-.ibox-content{
+
+.ibox-content {
     border-style: none;
-    box-shadow: 1px 0 20px rgba(0,0,0,.08);
+    box-shadow: 1px 0 20px rgba(0, 0, 0, .08);
 }
 
 html, body {
@@ -261,7 +262,7 @@ th.trash-table.sorting_desc::after {
 }
 
 body.fixed-sidebar .navbar-static-side, body.canvas-menu .navbar-static-side {
-    z-index: 999!important;
+    z-index: 999 !important;
 }
 
 .sweet-alert button.cancel:hover {
@@ -340,32 +341,54 @@ body.fixed-sidebar .navbar-static-side, body.canvas-menu .navbar-static-side {
 .inmodal .modal-title {
     font-size: 20px;
 }
+
 #productViewModal img {
-    max-width: 100%!important;
+    max-width: 100% !important;
 }
-.required-star{
+
+.required-star {
     color: red;
 }
 
 .custom-file-label::after {
-    background-color: #19A689!important;
-    color: #FFFFFF!important;
+    background-color: #19A689 !important;
+    color: #FFFFFF !important;
 }
-  /*table data search and resat height*/
-.custom_field_height{
-    height: 31px!important;
+
+/*table data search and resat height*/
+.custom_field_height {
+    height: 31px !important;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
- /*responsive design problem sole here*/
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    .responsive_p_t_f_5{
-        padding:5px 15px!important;
+/*responsive design problem sole here*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .responsive_p_t_f_5 {
+        padding: 5px 15px !important;
     }
-    .responsive_p_r_15{
-        padding-right:15px!important;
+
+    .responsive_p_r_15 {
+        padding-right: 15px !important;
     }
-    .responsive_p_l_15{
-        padding-left: 15px!important;
+
+    .responsive_p_l_15 {
+        padding-left: 15px !important;
     }
+}
+
+.select2-container .select2-selection--single {
+    height: 38px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 35px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 7px !important;
+}
+.bootstrap-tagsinput{
+    width: 100%;
+    border-radius: 3px;
+    line-height: 25px;
 }

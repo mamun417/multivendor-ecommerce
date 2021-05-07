@@ -1,13 +1,4 @@
-@extends('admin.layouts.app')<label id="product_details" class="control-label">Details</label>
-                            {{--                            <textarea class="form-control productsTextEditor" name="product_details"--}}
-                            <textarea class="form-control" name="product_details"
-                                      placeholder="Enter product details"
-                                      id="product_details">{!! isset($product->details) ? @$product->details : old('product_details') !!}</textarea>
-                            @error('product_details')
-                            <span class="help-block m-b-none text-danger">
-                                    {{ @$message }}
-                                </span>
-                            @enderror
+@extends('admin.layouts.app')
 @section('title', 'Products')
 
 @section('content')

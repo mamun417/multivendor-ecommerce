@@ -1,13 +1,6 @@
 @extends('admin.layouts.app')
 @section('title', 'Products Edit')
 
-@push('style')
-    <link href="{{ asset('backend/css/plugins/colorpicker/bootstrap-colorpicker.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/css/plugins/select2/select2.min.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('backend/css/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet">
-@endpush
-
 @section('content')
     <div class="row wrapper border-bottom white-bg py-3">
         <div class="col-lg-12">

@@ -24,22 +24,21 @@ class ProductRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-
         $id = $this->product->id ?? null;
 
         $rules = [
-            'category' => 'required|numeric',
-            'brand' => 'required|numeric',
-            'product_weight' => 'required',
-            'product_name' => 'required|string|max:255|unique:products,name,' . $id,
-            'product_code' => 'nullable|string|max:255',
-            'product_price' => 'required|numeric',
-            'product_stock' => 'nullable|numeric',
-            'product_details' => 'nullable|string',
+            'category_id' => 'required|numeric',
+            'brand_id'    => 'required|numeric',
+            'weight'      => 'required',
+            'name'        => 'required|string|max:255|unique:products,name,' . $id,
+            'code'        => 'nullable|string|max:255',
+            'price'       => 'required|numeric',
+            'stock'       => 'nullable|numeric',
+            'details'     => 'nullable|string',
         ];
 
         if (request('product_price')) {
-            $rules['product_discount_price'] = 'nullable|numeric|lt:product_price';
+            $rules['discount_price'] = 'nullable|numeric|lt:product_price';
         }
 
         if (request()->isMethod('post')) {
@@ -51,15 +50,5 @@ class ProductRequest extends FormRequest
         }
 
         return $rules;
-    }
-
-    public function attributes()
-    {
-        return [
-            'product_size_arr.*' => 'product size',
-            'product_price_arr.*' => 'product price',
-            'product_stock_arr.*' => 'product stock',
-            'discount_price_arr.*' => 'product discount price',
-        ];
     }
 }

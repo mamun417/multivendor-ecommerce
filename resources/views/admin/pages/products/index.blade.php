@@ -104,7 +104,7 @@
                                     @foreach(@$products as $key => $product)
                                         <tr>
                                             <td>
-                                                <img width="100" height="50"
+                                                <img class="message-avatar"
                                                      src="{{ @$product->images()->first()->url ?? '' }}"
                                                      alt="">
                                             </td>

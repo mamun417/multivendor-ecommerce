@@ -1,6 +1,5 @@
 @push('style')
     <link href="{{ asset('backend/css/plugins/select2/select2.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/css/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet">
 @endpush
 
@@ -313,6 +312,12 @@
     <script>
         $('.tagsinput').tagsinput({
             tagClass: 'label label-primary',
+        });
+
+        $('.bootstrap-tagsinput input').keypress(function (e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+            }
         });
     </script>
 @endpush

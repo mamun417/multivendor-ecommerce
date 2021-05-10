@@ -7,12 +7,14 @@
 
 @section('content')
     <div class="col-12">
+        @include('admin.components.messages')
         <div class="ibox-content">
             <div style="text-align: center">
                 <img alt="image" src="{{ asset('panel/assets/images/logo.png') }}" width="166"/>
             </div>
             <h3 class="font-bold">Registration</h3>
-            <form class="m-t" role="form" method="POST" action="{{ route('admin.register') }}" enctype="multipart/form-data">
+            <form class="m-t" role="form" method="POST" action="{{ route('admin.register') }}"
+                  enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">

@@ -31,6 +31,7 @@ class Admin extends Authenticatable
         'password',
         'address',
         'type',
+        'status'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -80,5 +81,10 @@ class Admin extends Authenticatable
     public function coupons(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Coupon::class, 'admin_id');
+    }
+
+    public function scopeVendor($query)
+    {
+        return $query->where('type', 'vendor');
     }
 }

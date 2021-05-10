@@ -23,6 +23,7 @@ class AdminsSeeder extends Seeder
             'email'    => 'admin@test.com',
             'password' => \Hash::make('secret'),
             'type'     => 'super-admin',
+            'status'   => 1,
         ]);
 
         $admin->image()->create([
@@ -36,9 +37,15 @@ class AdminsSeeder extends Seeder
             'email' => 'vendor@test.com',
         ], [
             'name'     => 'vendor',
+            'vendor_name'    => '',
+            'nid'    => '12345678901',
+            'trade_licence'    => '12345678901',
+            'mobile'    => '000000000',
+            'address'    => 'dhaka bangladesh',
             'email'    => 'vendor@test.com',
             'password' => \Hash::make('secret'),
             'type'     => 'vendor',
+            'status'   => 1,
         ]);
 
         $vendor->coupons()->createMany(Coupon::factory()->count(10)->make()->toArray());

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helpers\FileHandler;
 use App\Models\Admin;
+use App\Notifications\SuccessfullyVendorRegistrationNotification;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -13,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
@@ -100,6 +102,13 @@ class RegisterController extends Controller
             ]);
         }
 
+        $message = [
+            'subject' => 'Registration successful',
+            'message' => 'Your request has been successfully submitted to admin. Please wait for admin approved',
+        ];
+
+        Notification::send($user, new SuccessfullyVendorRegistrationNotification($message));
+
         return $user;
     }
 
@@ -124,7 +133,7 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        $this->guard()->login($user);
+//        $this->guard()->login($user);
 
         if ($response = $this->registered($request, $user)) {
             return $response;
@@ -144,6 +153,6 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        return redirect()->route('admin.dashboard')->with('success', 'Registration successfully complete as a vendor. Welcome to your dashboard');
+        return redirect()->back()->with('success', 'Registration successfully complete. please check you email.');
     }
 }

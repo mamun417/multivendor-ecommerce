@@ -25,6 +25,7 @@ class CreateAdminsTable extends Migration
             $table->string('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('type')->nullable()->comment('if you need in future add to role');
+            $table->boolean('status')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

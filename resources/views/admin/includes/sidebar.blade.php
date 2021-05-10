@@ -46,6 +46,12 @@
             </li>
 
             @superadmin('super-admin')
+            <li class="{{ getActiveClassByController('VendorController') }}">
+                <a href="{{ route('admin.vendors.index') }}">
+                    <i class="fa fa-list-ul"></i> <span class="nav-label">Vendors</span>
+                </a>
+            </li>
+
             <li class="{{ getActiveClassByController('CategoryController') }}">
                 <a href="{{ route('admin.categories.index') }}">
                     <i class="fa fa-list-ul"></i> <span class="nav-label">Categories</span>

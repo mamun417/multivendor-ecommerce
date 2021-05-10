@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SlidersController;
+use App\Http\Controllers\Admin\VendorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin', function () {
@@ -22,7 +23,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('register', [RegisterController::class, 'register'])->name('register');
-
 
     Route::post('login', [LoginController::class, 'login']);
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -63,6 +63,10 @@ Route::group(['middleware' => ['auth:admin', 'isSuperAdmin'], 'as' => 'admin.', 
     Route::get('categories/change-status/{category}', [CategoryController::class, 'changeStatus'])
         ->name('categories.status.change');
 
+// categories
+    Route::resource('vendors', VendorController::class);
+    Route::get('vendors/change-status/{admin}', [VendorController::class, 'changeStatus'])
+        ->name('vendors.status.change');
     // sliders
     Route::resource('sliders', SlidersController::class)->except('show');
     Route::get('sliders/change-status/{slider}', [SlidersController::class, 'changeStatus'])

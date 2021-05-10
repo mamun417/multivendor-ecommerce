@@ -3,37 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
 use App\Http\Controllers\Helpers\FileHandler;
 use App\Http\Requests\ProductRequest;
-use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use Auth;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Application|Factory|View
-     */
     public function index(Request $request)
     {
         $perPage = $request->perPage ?: 10;
         $keyword = $request->keyword;
 
-        //get all latest products
         $products = Auth::user()->products()->with('category', 'brand')->latest();
 
         if ($keyword) {
@@ -54,11 +41,6 @@ class ProductController extends Controller
         return view('admin.pages.products.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|View
-     */
     public function create()
     {
         $categories = Category::active()->latest()->get();
@@ -75,20 +57,12 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            $product = Auth::user()->products()->create([
-                'category_id'    => $request->input('category'),
-                'brand_id'       => $request->input('brand'),
-                'name'           => $request->input('product_name'),
-                'weight'         => $request->input('product_weight'),
-                'price'          => $request->input('product_price'),
-                'discount_price' => $request->input('product_price') ? $request->input('product_discount_price') : null,
-                'stock'          => $request->input('product_stock'),
-                'code'           => $request->input('product_code'),
-                'details'        => $request->input('product_details'),
-                'status'         => $request->status ? true : false,
-            ]);
+            $form_data           = $request->validated();
+            $form_data['status'] = (bool)$request->status;
 
-            // need to upload product photo
+            $product = Auth::user()->products()->create($form_data);
+
+            // image upload
             foreach ($request->file('product_img') as $image) {
                 if ($image) {
                     $image_path = FileHandler::upload($image, 'products', ['width' => Product::PRODUCT_WIDTH, 'height' => Product::PRODUCT_HEIGHT]);
@@ -100,13 +74,15 @@ class ProductController extends Controller
                 }
             }
 
-            if ($request->input('meta_title')) {
-                $product->seo()->create([
-                    'meta_title'       => $request->input('meta_title'),
-                    'meta_keywords'    => $request->input('meta_keywords'),
-                    'meta_description' => $request->input('meta_description')
-                ]);
-            }
+            // save attributes
+            $this->saveAttributes($product, $request);
+
+            // seo field insert
+            $product->seo()->create([
+                'meta_title'       => $request->input('meta_title'),
+                'meta_keywords'    => $request->input('meta_keywords'),
+                'meta_description' => $request->input('meta_description')
+            ]);
 
             DB::commit();
 
@@ -116,6 +92,25 @@ class ProductController extends Controller
             DB::rollBack();
 
             return redirect()->back()->with('error', $exception->getMessage());
+        }
+    }
+
+    public function saveAttributes($product, Request $request)
+    {
+        $attrs = [
+            'color' => $request->input('color'),
+            'size'  => $request->input('size')
+        ];
+
+        $has_any_attr = collect($attrs)->some(function ($value, $key) {
+            return $value;
+        });
+
+        if ($has_any_attr) {
+            $product->attributes()->updateOrCreate(
+                ['color' => @$product->attributes->color, 'size' => @$product->attributes->size],
+                $attrs
+            );
         }
     }
 
@@ -142,18 +137,10 @@ class ProductController extends Controller
         try {
             $product = Auth::user()->products()->where('id', $product->id)->firstOrFail();
 
-            $product->update([
-                'category_id'    => $request->input('category'),
-                'brand_id'       => $request->input('brand'),
-                'name'           => $request->input('product_name'),
-                'weight'         => $request->input('product_weight'),
-                'price'          => $request->input('product_price'),
-                'discount_price' => $request->input('product_price') ? $request->input('product_discount_price') : null,
-                'stock'          => $request->input('product_stock'),
-                'code'           => $request->input('product_code'),
-                'details'        => $request->input('product_details'),
-                'status'         => $request->status ? true : false,
-            ]);
+            $form_data           = $request->validated();
+            $form_data['status'] = (bool)$request->status;
+
+            $product->update($form_data);
 
             if ($request->file('product_img')) {
                 // need to upload product photo
@@ -166,6 +153,9 @@ class ProductController extends Controller
                     ]);
                 }
             }
+
+            // save attributes
+            $this->saveAttributes($product, $request);
 
             if ($request->input('meta_title')) {
                 $product->seo()->update([
@@ -186,7 +176,7 @@ class ProductController extends Controller
         }
     }
 
-    public function destroy(Product $product)
+    public function destroy(Product $product): RedirectResponse
     {
         // delete all image
         foreach ($product->images as $key => $image) {
@@ -200,27 +190,11 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product Deleted Successfully');
     }
 
-    public function changeStatus(Product $product)
+    public function changeStatus(Product $product): \Illuminate\Http\JsonResponse
     {
         $product->update(['status' => !$product->status]);
 
         return response()->json(['status' => true]);
-    }
-
-    public function sizeRemove(Request $request)
-    {
-        if ($request->ajax()) {
-            $product_size_id = $request->product_size_id;
-            $size            = ProductPrice::findOrFail($product_size_id);
-            $size->delete();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Product size with price Successfully deleted'
-            ]);
-        } else {
-            abort(404);
-        }
     }
 
     public function removeProductImage(Request $request)
@@ -241,5 +215,7 @@ class ProductController extends Controller
         } else {
             abort(404);
         }
+
+        return false;
     }
 }

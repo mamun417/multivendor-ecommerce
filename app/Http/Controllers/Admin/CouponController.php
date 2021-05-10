@@ -26,9 +26,8 @@ class CouponController extends Controller
     public function store(CouponRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
-            $extra_field = ['status' => (bool)$request->status];
-
-            $form_data = array_merge($request->validated(), $extra_field);
+            $form_data           = $request->validated();
+            $form_data['status'] = (bool)$request->status;
 
             auth()->user()->coupons()->create($form_data);
 
@@ -48,9 +47,8 @@ class CouponController extends Controller
     public function update(CouponRequest $request, Coupon $coupon): \Illuminate\Http\RedirectResponse
     {
         try {
-            $extra_field = ['status' => (bool)$request->status];
-
-            $form_data = array_merge($request->validated(), $extra_field);
+            $form_data           = $request->validated();
+            $form_data['status'] = (bool)$request->status;
 
             $coupon->update($form_data);
 

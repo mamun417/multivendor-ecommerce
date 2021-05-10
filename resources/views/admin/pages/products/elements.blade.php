@@ -1,3 +1,8 @@
+@push('style')
+    <link href="{{ asset('backend/css/plugins/select2/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet">
+@endpush
+
 <div class="row">
     <div class="col-lg-12">
         <div class="ibox ">
@@ -8,30 +13,30 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label id="product_name" class="control-label">Name<span
+                            <label id="name" class="control-label">Name<span
                                     class="required-star"> *</span></label>
-                            <input id="product_name" type="text"
+                            <input id="name" type="text"
                                    placeholder="Enter product name"
-                                   value="{{ isset($product->name) ? @$product->name : old('product_name')}}"
-                                   name="product_name" class="form-control">
-                            @error('product_name')
+                                   value="{{ isset($product->name) ? @$product->name : old('name')}}"
+                                   name="name" class="form-control">
+                            @error('name')
                             <span class="help-block m-b-none text-danger">
-                                                {{ @$message }}
-                                            </span>
+                                {{ @$message }}
+                            </span>
                             @enderror
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label id="product_stock" class="control-label">Quantity <sup></sup></label>
-                            <input id="product_stock"
+                            <label id="stock" class="control-label">Quantity <sup></sup></label>
+                            <input id="stock"
                                    placeholder="Enter product quantity"
                                    type="number"
                                    min="1"
-                                   value="{{ isset($product->stock) ? @$product->stock : old('product_stock')}}"
-                                   name="product_stock"
+                                   value="{{ isset($product->stock) ? @$product->stock : old('stock')}}"
+                                   name="stock"
                                    class="form-control">
-                            @error('product_stock')
+                            @error('stock')
                             <span class="help-block m-b-none text-danger">
                                 {{ @$message }}
                             </span>
@@ -40,13 +45,13 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label id="product_price" class="control-label">Weight<span
+                            <label id="price" class="control-label">Weight<span
                                     class="required-star"> *</span></label>
-                            <input id="product_weight" type="text"
+                            <input id="weight" type="text"
                                    placeholder="Enter product weight"
-                                   value="{{ isset($product) ? @$product->weight : old('product_weight')}}"
-                                   name="product_weight" class="form-control productPriceInput">
-                            @error('product_weight')
+                                   value="{{ isset($product) ? @$product->weight : old('weight')}}"
+                                   name="weight" class="form-control productPriceInput">
+                            @error('weight')
                             <span class="help-block m-b-none text-danger">
                                  {{ @$message }}
                             </span>
@@ -55,12 +60,12 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label id="product_code" class="control-label">Code</label>
-                            <input id="product_code" type="text"
+                            <label id="code" class="control-label">Code</label>
+                            <input id="code" type="text"
                                    placeholder="Enter product code"
-                                   value="{{ isset($product->code) ? @$product->code : old('product_code')}}"
-                                   name="product_code" class="form-control">
-                            @error('product_code')
+                                   value="{{ isset($product->code) ? @$product->code : old('code')}}"
+                                   name="code" class="form-control">
+                            @error('code')
                             <span class="help-block m-b-none text-danger">
                                 {{ @$message }}
                             </span>
@@ -70,13 +75,13 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label id="product_price" class="control-label">Price<span
+                            <label id="price" class="control-label">Price<span
                                     class="required-star"> *</span></label>
-                            <input id="product_price" type="text"
+                            <input id="price" type="text"
                                    placeholder="Enter product price"
-                                   value="{{ isset($product->price) ? @$product->price : old('product_price')}}"
-                                   name="product_price" class="form-control productPriceInput">
-                            @error('product_price')
+                                   value="{{ isset($product->price) ? @$product->price : old('price')}}"
+                                   name="price" class="form-control productPriceInput">
+                            @error('price')
                             <span class="help-block m-b-none text-danger">
                                  {{ @$message }}
                             </span>
@@ -86,14 +91,14 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label id="product_discount_price" class="control-label">Discount Price <sup></sup></label>
-                            <input id="product_discount_price"
+                            <label id="discount_price" class="control-label">Discount Price <sup></sup></label>
+                            <input id="discount_price"
                                    placeholder="Enter product discount price"
                                    type="text"
-                                   value="{{ isset($product->discount_price) ? @$product->discount_price : old('product_discount_price')}}"
-                                   name="product_discount_price"
+                                   value="{{ isset($product->discount_price) ? @$product->discount_price : old('discount_price')}}"
+                                   name="discount_price"
                                    class="form-control">
-                            @error('product_discount_price')
+                            @error('discount_price')
                             <span class="help-block m-b-none text-danger">
                                 {{ @$message }}
                             </span>
@@ -105,15 +110,16 @@
                             <label class="control-label">Category<span
                                     class="required-star"> *</span></label>
                             <select class="form-control productCategorySelect2 chosen-select"
-                                    name="category">
+                                    name="category_id">
                                 <option>Select Category</option>
-                                @php(@$check_selected_id = isset($product) ? @$product->category_id : old('category'))
+                                @php(@$check_selected_id = isset($product) ? @$product->category_id : old('category_id'))
                                 @foreach(@$categories as $category)
                                     <option {{ @$check_selected_id == @$category->id ? 'selected' : '' }}
-                                            value="{{ @$category->id }}">{{ @$category->name }}</option>
+                                            value="{{ @$category->id }}">{{ @$category->name }}
+                                    </option>
                                 @endforeach
                             </select>
-                            @error('category')
+                            @error('category_id')
                             <span class="help-block m-b-none text-danger">{{ @$message }}</span>
                             @enderror
                         </div>
@@ -122,15 +128,15 @@
                         <div class="form-group">
                             <label class="control-label">Brand<span
                                     class="required-star"> *</span></label>
-                            <select class="form-control productBrandSelect2" name="brand">
+                            <select class="form-control productBrandSelect2" name="brand_id">
                                 <option>Select Brand</option>
-                                @php(@$check_selected_id = isset($product) ? @$product->brand_id : old('brand'))
+                                @php(@$check_selected_id = isset($product) ? @$product->brand_id : old('brand_id'))
                                 @foreach(@$brands as $brand)
                                     <option {{ @$check_selected_id == @$brand->id ? 'selected' : '' }}
                                             value="{{ @$brand->id }}">{{ @$brand->name }}</option>
                                 @endforeach
                             </select>
-                            @error('brand')
+                            @error('brand_id')
                             <span class="help-block m-b-none text-danger">{{ @$message }}</span>
                             @enderror
                         </div>
@@ -149,17 +155,36 @@
                             class="help-block m-b-none text-danger">{{ @$message }}</span>
                         @enderror
                     </div>
+
+                    <div class="col-md-4">
+                        <label>Color</label>
+                        <div class="input-group">
+                            <input name="color" class="tagsinput form-control" type="text"
+                                   value="{{ $product->attributes->color ?? old('color')}}"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Size</label>
+                        <div class="input-group">
+                            <input name="size" class="tagsinput form-control" type="text"
+                                   value="{{ $product->attributes->size ?? old('size')}}"/>
+                        </div>
+                    </div>
+
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label id="product_details" class="control-label">Details</label>
-                            {{--                            <textarea class="form-control productsTextEditor" name="product_details"--}}
-                            <textarea class="form-control" name="product_details"
+                            <label id="details" class="control-label">Details</label>
+                            {{--<textarea class="form-control productsTextEditor" name="details"--}}
+                            <textarea class="form-control" name="details"
                                       placeholder="Enter product details"
-                                      id="product_details">{!! isset($product->details) ? @$product->details : old('product_details') !!}</textarea>
-                            @error('product_details')
+                                      id="details">
+                                {!! isset($product->details) ? @$product->details : old('details') !!}
+                            </textarea>
+                            @error('details')
                             <span class="help-block m-b-none text-danger">
-                                    {{ @$message }}
-                                </span>
+                                {{ @$message }}
+                            </span>
                             @enderror
                         </div>
                     </div>
@@ -168,53 +193,51 @@
                         <div class="form-group">
                             <label for="status">
                                 <input type="checkbox"
-                                       {{ isset($product) && @$product->status || old('status') ? 'checked' : '' }}
+                                       {{ isset($product) && $product->status || old('status') ? 'checked' : '' }}
                                        id="status"
                                        name="status"
-                                       class="i-checks">
-
-                                Active</label>
+                                       class="i-checks"
+                                    {{ !isset($product) ? 'checked' : '' }}>
+                                Active
+                            </label>
                             @error('status')
                             <span class="help-block m-b-none text-danger">
-                                            {{ @$message }}
-                                        </span>
+                                {{ @$message }}
+                            </span>
                             @enderror
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!--// only edit-->
+<!--only edit-->
 @if( isset($product) && @$product->images->count() > 0)
     <!-- Start => file upload section -->
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>Product <strong>File </strong> Upload</h5>
+                    <h5>Product Images</h5>
                 </div>
                 <div class="ibox-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                @foreach(@$product->images as $image)
-                                    <div class="col-2" id="removeProductImageSection">
-                                        <div class="input-group">
-                                            <img class="d-block" width="100%"
-                                                 src="{{ @$image->url }}"
-                                                 alt="{{ @$image->type }}">
-                                            <button onclick="removeProductImage(event, this, '{{ @$image->id }}')"
-                                                    class="btn btn-danger btn-block">Remove
-                                            </button>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
+                    <div class="d-flex flex-wrap">
+                        @foreach($product->images as $image)
+                            {{--  for test multiple images design--}}
+                            @for($i = 0; $i <10; $i++)
+                                <div id="removeProductImageSection" class="mr-2 mb-3">
+                                    <img class="d-block b-r-md" height="60px" width="60px"
+                                         src="{{ $image->url }}"
+                                         alt="{{ $image->type }}">
+                                    <button onclick="removeProductImage(event, this, '{{ $image->id }}')"
+                                            class="btn btn-xs btn-danger btn-block mt-1">
+                                        Remove
+                                    </button>
+                                </div>
+                            @endfor
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -266,14 +289,14 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label id="meta_description" class="control-label">Meta Descriptions</label>
-                            {{--                            <textarea class="form-control productsTextEditor" name="product_details"--}}
+                            {{--                            <textarea class="form-control productsTextEditor" name="details"--}}
                             <textarea class="form-control" name="meta_description"
                                       placeholder="Enter product meta descriptions"
                                       id="meta_description">{!! isset($product->seo) ? @$product->seo->meta_description : old('meta_description') !!}</textarea>
                             @error('meta_description')
                             <span class="help-block m-b-none text-danger">
-                                    {{ @$message }}
-                                </span>
+                                {{ @$message }}
+                            </span>
                             @enderror
                         </div>
                     </div>
@@ -282,3 +305,19 @@
         </div>
     </div>
 </div>
+
+@push('script')
+    <script src="{{ asset('backend/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script>
+
+    <script>
+        $('.tagsinput').tagsinput({
+            tagClass: 'label label-primary',
+        });
+
+        $('.bootstrap-tagsinput input').keypress(function (e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+            }
+        });
+    </script>
+@endpush

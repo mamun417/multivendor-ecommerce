@@ -22,8 +22,10 @@
         <div class="row m-t-lg">
             <div class="col-md-4 mb-lg-0 jumbotron">
                 <div class="profile-image">
-                    <img src="{{ @$admin->image()->first()->url }}" class="rounded-circle circle-border m-b-md"
-                         alt="profile">
+                    <img
+                        src="{{ isset(Auth::user()->image) ? Auth::user()->image->url : asset('backend/img/profile/man.svg') }}"
+                        class="rounded-circle circle-border m-b-md"
+                        alt="profile">
                 </div>
 
                 <div class="profile-info">
@@ -54,12 +56,14 @@
                     @endif
                     <ul class="nav nav-tabs" role="tablist">
                         <li>
-                            <a class="nav-link {{ $active_menu ? '' : 'active show' }} text-dark" data-toggle="tab" href="#profile-tab">
+                            <a class="nav-link {{ $active_menu ? '' : 'active show' }} text-dark" data-toggle="tab"
+                               href="#profile-tab">
                                 <h3>Change Info</h3>
                             </a>
                         </li>
                         <li>
-                            <a class="nav-link {{ $active_menu ? 'active show' : '' }} text-dark" data-toggle="tab" href="#password-tab">
+                            <a class="nav-link {{ $active_menu ? 'active show' : '' }} text-dark" data-toggle="tab"
+                               href="#password-tab">
                                 <h3>Change Password</h3>
                             </a>
                         </li>
@@ -74,7 +78,7 @@
 
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input id="name" value="{{ @$admin->name }}" type="text" name="name"
+                                        <input id="name" value="{{ auth()->user()->name }}" type="text" name="name"
                                                class="form-control">
                                         @error('name')
                                         <span class="help-block m-b-none text-danger">
@@ -85,7 +89,7 @@
 
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" name="email" value="{{ @$admin->email }}" id="email"
+                                        <input type="email" name="email" value="{{ auth()->user()->email }}" id="email"
                                                class="form-control">
 
                                         @error('email')

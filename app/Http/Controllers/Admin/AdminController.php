@@ -16,30 +16,35 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $admin = Auth::user();
-
-        return view('admin.pages.profile.profile', compact('admin'));
+        return view('admin.pages.profile.profile');
     }
 
     public function update(ProfileRequest $request, Admin $admin)
     {
         DB::beginTransaction();
         try {
-            if ($request->file('profile_image')) {
-                $image      = $request->file('profile_image');
-                $image_path = FileHandler::upload($image, 'admin_profile_images', ['width' => '84', 'height' => '84']);
-                FileHandler::delete(@$admin->image->base_path); //image delete
-                $admin->image()->update([ // image update
-                    'url'       => Storage::url($image_path),
-                    'base_path' => $image_path,
-                    'type'      => 'sm',
-                ]);
-            }
-
             $admin->update([
                 'name'  => $request->name,
                 'email' => $request->email,
             ]);
+
+            if ($request->file('profile_image')) {
+                $image      = $request->file('profile_image');
+                $image_path = FileHandler::upload($image, 'admin_profile_images', ['width' => '84', 'height' => '84']);
+
+                $data = [
+                    'url'       => Storage::url($image_path),
+                    'base_path' => $image_path,
+                    'type'      => $admin->type . '_logo',
+                ];
+
+                if ($admin->image) {
+                    FileHandler::delete(@$admin->image->base_path); //image delete
+                    $admin->image()->update($data);
+                } else {
+                    $admin->image()->create($data);
+                }
+            }
 
             DB::commit();
 

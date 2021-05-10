@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
@@ -45,7 +46,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->redirectTo = route('admin.dashboard');
+//        $this->redirectTo = route('admin.dashboard');
         $this->middleware('guest');
     }
 
@@ -74,7 +75,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param array $data
-     * @return \App\Models\User
+     * @return Admin
      */
     protected function create(array $data)
     {
@@ -90,12 +91,12 @@ class RegisterController extends Controller
             'type'          => 'vendor'
         ]);
 
-        if ($data['logo']) {
+        if (isset($data['logo'])) {
             $image_path = FileHandler::upload($data['logo'], 'admin_profile_images', ['width' => '', 'height' => '']);
             $user->image()->create([ // image update
                 'url'       => Storage::url($image_path),
                 'base_path' => $image_path,
-                'type'      => 'vendor_image',
+                'type'      => 'vendor_logo',
             ]);
         }
 
@@ -105,7 +106,7 @@ class RegisterController extends Controller
     /**
      * Show the application registration form.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function showRegistrationForm()
     {
@@ -134,5 +135,15 @@ class RegisterController extends Controller
             : redirect($this->redirectPath());
     }
 
-
+    /**
+     * The user has been registered.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        return redirect()->route('admin.dashboard')->with('success', 'Registration successfully complete as a vendor. Welcome to your dashboard');
+    }
 }

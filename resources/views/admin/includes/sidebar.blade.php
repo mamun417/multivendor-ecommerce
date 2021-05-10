@@ -18,7 +18,7 @@
                                 {{ auth()->user()->name }}
                             @endauth
                         </span>
-                        <span class="text-muted text-xs block">Administrator<b class="caret"></b></span>
+                        <span class="text-muted text-xs block">{{ ucfirst(auth()->user()->type) }}<b class="caret"></b></span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a class="dropdown-item" href="{{ route('admin.profile') }}">Profile</a></li>

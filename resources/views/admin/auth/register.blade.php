@@ -135,7 +135,7 @@
                         <label>Logo</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input multiple id="logo" type="file" name="logo"
+                                <input id="logo" type="file" name="logo"
                                        class="custom-file-input">
                                 <label class="custom-file-label" for="logo">Choose file</label>
                             </div>

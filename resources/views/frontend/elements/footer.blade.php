@@ -12,7 +12,7 @@
                             <div class="col-auto">
                                 <a href="../shop/single-product-fullwidth.html"
                                    class="d-block width-75 text-center">
-                                    <img class="img-fluid" src="../../assets/img/75X75/img1.jpg"
+                                    <img class="img-fluid" src="{{ asset('frontend/assets/img/75X75/img1.jpg') }}"
                                          alt="Image Description">
                                 </a>
                             </div>
@@ -32,13 +32,14 @@
                                 <a href="../shop/single-product-fullwidth.html"
                                    class="d-block width-75 text-center">
                                     <img class="img-fluid"
-                                         src="../../assets/img/75X75/img2.jpg"
+                                         src="{{ asset('frontend/assets/img/75X75/img2.jpg') }}"
                                          alt="Image Description">
                                 </a>
                             </div>
                             <div class="col pl-4 d-flex flex-column">
-                                <h5 class="product-item__title mb-0"><a href="../shop/single-product-fullwidth.html"
-                                                                        class="text-blue font-weight-bold">Powerbank
+                                <h5 class="product-item__title mb-0">
+                                    <a href="../shop/single-product-fullwidth.html"
+                                       class="text-blue font-weight-bold">Powerbank
                                         1130 mAh Blue</a></h5>
                                 <div class="prodcut-price mt-auto">
                                     <div class="font-size-15">$210.00</div>
@@ -48,14 +49,19 @@
                         <li class="product-item product-item__list row no-gutters mb-6 remove-divider">
                             <div class="col-auto">
                                 <a href="../shop/single-product-fullwidth.html"
-                                   class="d-block width-75 text-center"><img class="img-fluid"
-                                                                             src="../../assets/img/75X75/img3.jpg"
-                                                                             alt="Image Description"></a>
+                                   class="d-block width-75 text-center">
+                                    <img class="img-fluid"
+                                         src="{{ asset('frontend/assets/img/75X75/img3.jpg') }}"
+                                         alt="Image Description">
+                                </a>
                             </div>
                             <div class="col pl-4 d-flex flex-column">
-                                <h5 class="product-item__title mb-0"><a href="../shop/single-product-fullwidth.html"
-                                                                        class="text-blue font-weight-bold">Nerocool
-                                        EN52377 Dead Silence Gaming Cube Case</a></h5>
+                                <h5 class="product-item__title mb-0">
+                                    <a href="../shop/single-product-fullwidth.html"
+                                       class="text-blue font-weight-bold">Nerocool
+                                        EN52377 Dead Silence Gaming Cube Case
+                                    </a>
+                                </h5>
                                 <div class="prodcut-price mt-auto">
                                     <div class="font-size-15">$180.00</div>
                                 </div>
@@ -72,7 +78,8 @@
                     <li class="product-item product-item__list row no-gutters mb-6 remove-divider">
                         <div class="col-auto">
                             <a href="../shop/single-product-fullwidth.html" class="d-block width-75 text-center"><img
-                                    class="img-fluid" src="../../assets/img/75X75/img4.jpg" alt="Image Description"></a>
+                                    class="img-fluid" src="{{ asset('frontend/assets/img/75X75/img4.jpg') }}"
+                                    alt="Image Description"></a>
                         </div>
                         <div class="col pl-4 d-flex flex-column">
                             <h5 class="product-item__title mb-0"><a href="../shop/single-product-fullwidth.html"
@@ -87,7 +94,8 @@
                     <li class="product-item product-item__list row no-gutters mb-6 remove-divider">
                         <div class="col-auto">
                             <a href="../shop/single-product-fullwidth.html" class="d-block width-75 text-center"><img
-                                    class="img-fluid" src="../../assets/img/75X75/img5.jpg" alt="Image Description"></a>
+                                    class="img-fluid" src="{{ asset('frontend/assets/img/75X75/img5.jpg') }}"
+                                    alt="Image Description"></a>
                         </div>
                         <div class="col pl-4 d-flex flex-column">
                             <h5 class="product-item__title mb-0"><a href="../shop/single-product-fullwidth.html"
@@ -102,7 +110,8 @@
                     <li class="product-item product-item__list row no-gutters mb-6 remove-divider">
                         <div class="col-auto">
                             <a href="../shop/single-product-fullwidth.html" class="d-block width-75 text-center"><img
-                                    class="img-fluid" src="../../assets/img/75X75/img6.jpg" alt="Image Description"></a>
+                                    class="img-fluid" src="{{ asset('frontend/assets/img/75X75/img6.jpg') }}"
+                                    alt="Image Description"></a>
                         </div>
                         <div class="col pl-4 d-flex flex-column">
                             <h5 class="product-item__title mb-0"><a href="../shop/single-product-fullwidth.html"
@@ -124,19 +133,13 @@
                     <li class="product-item product-item__list row no-gutters mb-6 remove-divider">
                         <div class="col-auto">
                             <a href="../shop/single-product-fullwidth.html" class="d-block width-75 text-center"><img
-                                    class="img-fluid" src="../../assets/img/75X75/img7.jpg" alt="Image Description"></a>
+                                    class="img-fluid" src="{{ asset('frontend/assets/img/75X75/img7.jpg') }}"
+                                    alt="Image Description"></a>
                         </div>
                         <div class="col pl-4 d-flex flex-column">
                             <h5 class="product-item__title mb-0"><a href="../shop/single-product-fullwidth.html"
                                                                     class="text-blue font-weight-bold">Smartwatch 2.0
                                     LTE Wifi Waterproof</a></h5>
-                            <div class="text-warning mb-2">
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                            </div>
                             <div class="prodcut-price mt-auto">
                                 <div class="font-size-15">$725.00</div>
                             </div>
@@ -145,19 +148,13 @@
                     <li class="product-item product-item__list row no-gutters mb-6 remove-divider">
                         <div class="col-auto">
                             <a href="../shop/single-product-fullwidth.html" class="d-block width-75 text-center"><img
-                                    class="img-fluid" src="../../assets/img/75X75/img8.jpg" alt="Image Description"></a>
+                                    class="img-fluid" src="{{ asset('frontend/assets/img/75X75/img8.jpg') }}"
+                                    alt="Image Description"></a>
                         </div>
                         <div class="col pl-4 d-flex flex-column">
                             <h5 class="product-item__title mb-0"><a href="../shop/single-product-fullwidth.html"
                                                                     class="text-blue font-weight-bold">22Mps Camera
                                     6200U with 500GB SDcard</a></h5>
-                            <div class="text-warning mb-2">
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="far fa-star text-muted"></small>
-                            </div>
                             <div class="prodcut-price mt-auto">
                                 <div class="font-size-15">$2999.00</div>
                             </div>
@@ -166,19 +163,13 @@
                     <li class="product-item product-item__list row no-gutters mb-6 remove-divider">
                         <div class="col-auto">
                             <a href="../shop/single-product-fullwidth.html" class="d-block width-75 text-center"><img
-                                    class="img-fluid" src="../../assets/img/75X75/img9.jpg" alt="Image Description"></a>
+                                    class="img-fluid" src="{{ asset('frontend/assets/img/75X75/img9.jpg') }}"
+                                    alt="Image Description"></a>
                         </div>
                         <div class="col pl-4 d-flex flex-column">
                             <h5 class="product-item__title mb-0"><a href="../shop/single-product-fullwidth.html"
                                                                     class="text-blue font-weight-bold">Full Color
                                     LaserJet Pro M452dn</a></h5>
-                            <div class="text-warning mb-2">
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="far fa-star text-muted"></small>
-                            </div>
                             <div class="prodcut-price mt-auto">
                                 <div class="font-size-15">$439.00</div>
                             </div>
@@ -188,7 +179,7 @@
             </div>
             <div class="col-wd-3 d-none d-wd-block">
                 <a href="/shop" class="d-block"><img class="img-fluid"
-                                                     src="../../assets/img/330X360/img1.jpg"
+                                                     src="{{ asset('frontend/assets/img/330X360/img1.jpg') }}"
                                                      alt="Image Description"></a>
             </div>
         </div>
@@ -412,23 +403,23 @@
                 </div>
                 <div class="text-md-right">
                             <span class="d-inline-block bg-white border rounded p-1">
-                                <img class="max-width-5" src="{{ asset('frontend/assets/img/100X60/img1.jpg') }}"
+                                <img class="max-width-5" src="{{ asset('frontend/assets/img/100x60/img1.jpg') }}"
                                      alt="Image Description">
                             </span>
                     <span class="d-inline-block bg-white border rounded p-1">
-                                <img class="max-width-5" src="{{ asset('frontend/assets/img/100X60/img1.jpg') }}"
+                                <img class="max-width-5" src="{{ asset('frontend/assets/img/100x60/img2.jpg') }}"
                                      alt="Image Description">
                             </span>
                     <span class="d-inline-block bg-white border rounded p-1">
-                                <img class="max-width-5" src="{{ asset('frontend/assets/img/100X60/img1.jpg') }}"
+                                <img class="max-width-5" src="{{ asset('frontend/assets/img/100x60/img3.jpg') }}"
                                      alt="Image Description">
                             </span>
                     <span class="d-inline-block bg-white border rounded p-1">
-                                <img class="max-width-5" src="{{ asset('frontend/assets/img/100X60/img1.jpg') }}"
+                                <img class="max-width-5" src="{{ asset('frontend/assets/img/100x60/img4.jpg') }}"
                                      alt="Image Description">
                             </span>
                     <span class="d-inline-block bg-white border rounded p-1">
-                                <img class="max-width-5" src="{{ asset('frontend/assets/img/100X60/img1.jpg') }}"
+                                <img class="max-width-5" src="{{ asset('frontend/assets/img/100x60/img5.jpg') }}"
                                      alt="Image Description">
                             </span>
                 </div>

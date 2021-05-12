@@ -13,7 +13,9 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-3 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
                             <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page">Compare</li>
+                            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page">
+                                Compare
+                            </li>
                         </ol>
                     </nav>
                 </div>
@@ -32,10 +34,13 @@
                             <a href="#" class="product d-block">
                                 <div class="product-compare-image">
                                     <div class="d-flex mb-3">
-                                        <img class="img-fluid mx-auto" src="../../assets/img/212X200/img1.jpg" alt="Image Description">
+                                        <img class="img-fluid mx-auto"
+                                             src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
+                                             alt="Image Description">
                                     </div>
                                 </div>
-                                <h3 class="product-item__title text-blue font-weight-bold mb-3">Protection Plan for MacBook Air / 13 inch MacBook Pro</h3>
+                                <h3 class="product-item__title text-blue font-weight-bold mb-3">Protection Plan for
+                                    MacBook Air / 13 inch MacBook Pro</h3>
                             </a>
                             <div class="text-warning mb-2">
                                 <small class="fas fa-star"></small>
@@ -49,10 +54,13 @@
                             <a href="#" class="product">
                                 <div class="product-compare-image">
                                     <div class="d-flex mb-3">
-                                        <img class="img-fluid mx-auto" src="../../assets/img/212X200/img6.jpg" alt="Image Description">
+                                        <img class="img-fluid mx-auto"
+                                             src="{{ asset('frontend') }}/assets/img/212X200/img6.jpg"
+                                             alt="Image Description">
                                     </div>
                                 </div>
-                                <h3 class="product-item__title text-blue font-weight-bold mb-3">Purple NX Mini F1 aparat  SMART NX</h3>
+                                <h3 class="product-item__title text-blue font-weight-bold mb-3">Purple NX Mini F1 aparat
+                                    SMART NX</h3>
                             </a>
                             <div class="text-warning mb-2">
                                 <small class="fas fa-star"></small>
@@ -66,10 +74,13 @@
                             <a href="#" class="product">
                                 <div class="product-compare-image">
                                     <div class="d-flex mb-3">
-                                        <img class="img-fluid mx-auto" src="../../assets/img/212X200/img7.jpg" alt="Image Description">
+                                        <img class="img-fluid mx-auto"
+                                             src="{{ asset('frontend') }}/assets/img/212X200/img7.jpg"
+                                             alt="Image Description">
                                     </div>
                                 </div>
-                                <h3 class="product-item__title text-blue font-weight-bold mb-3">White Solo 2 Wireless</h3>
+                                <h3 class="product-item__title text-blue font-weight-bold mb-3">White Solo 2
+                                    Wireless</h3>
                             </a>
                             <div class="text-warning mb-2">
                                 <small class="fas fa-star"></small>
@@ -83,10 +94,13 @@
                             <a href="#" class="product">
                                 <div class="product-compare-image">
                                     <div class="d-flex mb-3">
-                                        <img class="img-fluid mx-auto" src="../../assets/img/212X200/img8.jpg" alt="Image Description">
+                                        <img class="img-fluid mx-auto"
+                                             src="{{ asset('frontend') }}/assets/img/212X200/img8.jpg"
+                                             alt="Image Description">
                                     </div>
                                 </div>
-                                <h3 class="product-item__title text-blue font-weight-bold mb-3">Tablet Red EliteBook Revolve 810 G2</h3>
+                                <h3 class="product-item__title text-blue font-weight-bold mb-3">Tablet Red EliteBook
+                                    Revolve 810 G2</h3>
                             </a>
                             <div class="text-warning mb-2">
                                 <small class="fas fa-star"></small>
@@ -117,9 +131,12 @@
                     <tr>
                         <th>Availability</th>
                         <td><span>In stock</span>
-                        </td><td><span>82 in stock</span>
-                        </td><td><span>73 in stock</span>
-                        </td><td><span>54 in stock</span>
+                        </td>
+                        <td><span>82 in stock</span>
+                        </td>
+                        <td><span>73 in stock</span>
+                        </td>
+                        <td><span>54 in stock</span>
                         </td>
                     </tr>
 
@@ -140,7 +157,8 @@
                                 <li><span class="">Cloud storage</span></li>
                                 <li><span class="">HD video recording</span></li>
                                 <li><span class="">Perfect for Selfies</span></li>
-                                <li><span class="">Enjoy advanced editing capabilities with the bundled Adobe Photoshop Lightroom 5 software.</span></li>
+                                <li><span class="">Enjoy advanced editing capabilities with the bundled Adobe Photoshop Lightroom 5 software.</span>
+                                </li>
                             </ul>
                         </td>
                         <td>
@@ -165,16 +183,24 @@
                     <tr>
                         <th>Add to cart</th>
                         <td>
-                            <div class=""><a href="#" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-3 px-xl-5">Add to cart</a></div>
+                            <div class=""><a href="#"
+                                             class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-3 px-xl-5">Add
+                                    to cart</a></div>
                         </td>
                         <td>
-                            <div class=""><a href="#" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-3 px-xl-5">Add to cart</a></div>
+                            <div class=""><a href="#"
+                                             class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-3 px-xl-5">Add
+                                    to cart</a></div>
                         </td>
                         <td>
-                            <div class=""><a href="#" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-3 px-xl-5">Add to cart</a></div>
+                            <div class=""><a href="#"
+                                             class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-3 px-xl-5">Add
+                                    to cart</a></div>
                         </td>
                         <td>
-                            <div class=""><a href="#" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-3 px-xl-5">Add to cart</a></div>
+                            <div class=""><a href="#"
+                                             class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-3 px-xl-5">Add
+                                    to cart</a></div>
                         </td>
                     </tr>
                     <tr>

@@ -84,4 +84,8 @@ class UserProfileController extends Controller
             return redirect()->back()->with('warning', 'Old password dose not match with your current password');
         }
     }
+
+    public function userProfile() {
+        return view('frontend.pages.profile.my-account');
+    }
 }

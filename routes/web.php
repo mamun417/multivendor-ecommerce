@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserProfileController;
@@ -69,9 +68,9 @@ Route::get('/404', function () {
 Route::get('/shop-grid', function () {
     return view('frontend.pages.shop-grid');
 });
-Route::get('/shop-grid-extended', function () {
+Route::get('/shop', function () {
     return view('frontend.pages.shop-grid-extended');
-});
+})->name('shop');
 
 Route::get('/shop-list-view', function () {
     return view('frontend.pages.shop-list-view');
@@ -93,7 +92,6 @@ Route::get('/shop-right-sidebar', function () {
     return view('frontend.pages.shop-right-sidebar');
 });
 
-
 Route::get('/cart', function () {
     return view('frontend.pages.cart');
 });
@@ -101,7 +99,7 @@ Route::get('/checkout', function () {
     return view('frontend.pages.checkout');
 });
 Route::get('/my-account', function () {
-    return view('frontend.pages.my-account');
+    return view('frontend.pages.profile.my-account');
 });
 
 Route::get('/track-your-order', function () {
@@ -112,11 +110,9 @@ Route::get('/about', function () {
     return view('frontend.pages.about');
 });
 
-Route::get('/contact-v2', function () {
+Route::get('/contact', function () {
     return view('frontend.pages.contact-v2');
 });
-
-
 
 Route::group(['middleware' => ['auth', 'cartExist']], function () {
     Route::get('cart/order', [CartController::class, 'gotToOrderPage'])->name('cart.order.page');
@@ -135,7 +131,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('user/profile', [UserProfileController::class, 'edit'])->name('user.profile');
     Route::put('user/profile/update', [UserProfileController::class, 'update'])->name('user.update.profile');
     Route::put('user/profile/update/password', [UserProfileController::class, 'changePassword'])->name('user.update.profile.password');
-
 });
 
 // For Admin

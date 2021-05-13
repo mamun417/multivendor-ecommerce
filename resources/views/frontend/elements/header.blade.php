@@ -10,38 +10,56 @@
                     </div>
                     <div class="topbar-right ml-auto">
                         <ul class="list-inline mb-0">
-                            <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
-                                <a href="../shop/track-your-order.html" class="u-header-topbar__nav-link"><i
-                                        class="ec ec-transport mr-1"></i> Track Your Order</a>
-                            </li>
-                            <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
-                                <!-- Account Sidebar Toggle Button -->
-                                <a id="sidebarNavToggler" href="javascript:;" role="button"
-                                   class="u-header-topbar__nav-link"
-                                   aria-controls="sidebarContent"
-                                   aria-haspopup="true"
-                                   aria-expanded="false"
-                                   data-unfold-event="click"
-                                   data-unfold-hide-on-scroll="false"
-                                   data-unfold-target="#sidebarContent"
-                                   data-unfold-type="css-animation"
-                                   data-unfold-animation-in="fadeInRight"
-                                   data-unfold-animation-out="fadeOutRight"
-                                   data-unfold-duration="500">
-                                    <i class="ec ec-user mr-1"></i> Register <span class="text-gray-50">or</span> Sign
-                                    in
-                                </a>
-                                <!-- End Account Sidebar Toggle Button -->
-                            </li>
+                            @auth
+                                <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                    <a href="../shop/track-your-order.html" class="u-header-topbar__nav-link">
+                                        <i class="ec ec-transport mr-1"></i>
+                                        Track Your Order
+                                    </a>
+                                </li>
 
-                            <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
-                                <!-- Account Sidebar Toggle Button -->
-                                <a href="{{ route('admin.login') }}" class="u-header-topbar__nav-link">
-                                    <i class="ec ec-user mr-1"></i>Vendor Sign in
-                                </a>
-                                <!-- End Account Sidebar Toggle Button -->
-                            </li>
+                                <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                    <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                       href="javascript:void(0)" class="u-header-topbar__nav-link">
+                                        <i class="ec ec-user mr-1"></i>
+                                        Logout
+                                    </a>
 
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            @else
+                                <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                    <!-- Account Sidebar Toggle Button -->
+                                    <a id="sidebarNavToggler" href="javascript:;" role="button"
+                                       class="u-header-topbar__nav-link"
+                                       aria-controls="sidebarContent"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"
+                                       data-unfold-event="click"
+                                       data-unfold-hide-on-scroll="false"
+                                       data-unfold-target="#sidebarContent"
+                                       data-unfold-type="css-animation"
+                                       data-unfold-animation-in="fadeInRight"
+                                       data-unfold-animation-out="fadeOutRight"
+                                       data-unfold-duration="500">
+                                        <i class="ec ec-user mr-1"></i> Register <span class="text-gray-50">or</span>
+                                        Sign
+                                        in
+                                    </a>
+                                    <!-- End Account Sidebar Toggle Button -->
+                                </li>
+
+                                <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                    <!-- Account Sidebar Toggle Button -->
+                                    <a href="{{ route('admin.login') }}" class="u-header-topbar__nav-link">
+                                        <i class="ec ec-user mr-1"></i>Vendor Sign in
+                                    </a>
+                                    <!-- End Account Sidebar Toggle Button -->
+                                </li>
+                            @endauth
                         </ul>
                     </div>
                 </div>

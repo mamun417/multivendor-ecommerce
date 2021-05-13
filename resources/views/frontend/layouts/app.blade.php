@@ -31,30 +31,39 @@
     <!-- CSS Electro Template -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/theme.css') }}">
 
+    <!-- Toastr -->
+    <link href="{{ asset('backend/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src="{{ asset('frontend/assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+
+    <!-- full page loader-->
+    <style>
+        #fullPageLoader {
+            background: url('{{ asset('frontend/assets/img/page-loader.gif') }}') no-repeat scroll center center #fff;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            z-index: 9999;
+            opacity: 0.5;
+            top: 0;
+        }
+    </style>
+
     @stack('styles')
 </head>
 
 <body>
+<div id="fullPageLoader" class="d-none"></div>
 
-<!-- ========== HEADER ========== -->
 @include('frontend.elements.header')
-<!-- ========== END HEADER ========== -->
 
-<!-- ========== MAIN CONTENT ========== -->
 @yield('content')
-<!-- ========== END MAIN CONTENT ========== -->
 
-<!-- ========== FOOTER ========== -->
 @include('frontend.elements.footer')
-<!-- ========== END FOOTER ========== -->
 
-<!-- ========== SECONDARY CONTENTS ========== -->
-<!-- Account Sidebar Navigation -->
 @include('frontend.elements.login-register-right-sidebar')
-<!-- End Account Sidebar Navigation -->
-<!-- ========== END SECONDARY CONTENTS ========== -->
 
-<!-- Go to Top -->
 <a class="js-go-to u-go-to" href="#"
    data-position='{"bottom": 15, "right": 15 }'
    data-type="fixed"
@@ -64,10 +73,8 @@
    data-hide-effect="slideOutDown">
     <span class="fas fa-arrow-up u-go-to__inner"></span>
 </a>
-<!-- End Go to Top -->
 
 <!-- JS Global Compulsory -->
-<script src="{{ asset('frontend/assets/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/vendor/popper.js/dist/umd/popper.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/vendor/bootstrap/bootstrap.min.js') }}"></script>
@@ -101,8 +108,25 @@
 <script src="{{ asset('frontend/assets/js/components/hs.go-to.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/components/hs.selectpicker.js') }}"></script>
 
-<!-- JS Plugins Init. -->
+<!-- Toastr -->
+<script src="{{ asset('backend/js/plugins/toastr/toastr.min.js') }}"></script>
+
 <script>
+    function showLoading() {
+        $('#fullPageLoader').removeClass('d-none');
+    }
+
+    function hideLoading() {
+        $('#fullPageLoader').addClass('d-none');
+    }
+
+    @foreach(['success', 'warning', 'error', 'info'] as $item)
+        @if(session($item))
+            toastr['{{ $item }}']('{{ session($item) }}');
+        @endif
+    @endforeach
+
+
     $(window).on('load', function () {
         // initialization of HSMegaMenu component
         $('.js-mega-menu').HSMegaMenu({

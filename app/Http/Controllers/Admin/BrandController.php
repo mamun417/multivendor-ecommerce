@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Helpers\FileHandler;
 use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 use Auth;
 use Exception;
 use Illuminate\Http\Request;
+use Storage;
 
 class BrandController extends Controller
 {
@@ -43,12 +45,23 @@ class BrandController extends Controller
     public function store(BrandRequest $request): \Illuminate\Http\RedirectResponse
     {
         try {
-            Auth::user()->brands()->create([
+            $brand = Auth::user()->brands()->create([
                 'name'        => $request->input('name'),
                 'web_url'     => $request->input('web_url'),
                 'description' => $request->input('description'),
                 'status'      => (bool)$request->input('status'),
             ]);
+
+            if (isset($brand)) {
+                $image      = $request->file('brand_image');
+                $image_path = FileHandler::upload($image, 'brands', ['width' => '', 'height' => '']);
+
+                $brand->image()->create([
+                    'url'       => Storage::url($image_path),
+                    'base_path' => $image_path,
+                    'type'      => 'brand_image',
+                ]);
+            }
 
             return redirect()->back()->with('success', 'Brand Created Successfully');
         } catch (Exception $exception) {
@@ -79,6 +92,19 @@ class BrandController extends Controller
                 'description' => $request->input('description'),
                 'status'      => (bool)$request->input('status'),
             ]);
+
+            if ($brand && $request->file('brand_image')) {
+                $image      = $request->file('brand_image');
+                $image_path = FileHandler::upload($image, 'brands', ['width' => '', 'height' => '']);
+
+                FileHandler::delete(@$brand->image->base_path);
+
+                $brand->image()->update([
+                    'url'       => Storage::url($image_path),
+                    'base_path' => $image_path,
+                    'type'      => 'brand_image',
+                ]);
+            }
 
             return redirect()->route('admin.brands.index')->with('success', 'Brand Updated Successfully');
         } catch (Exception $exception) {

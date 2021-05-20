@@ -2,9 +2,9 @@
     <link href="{{ asset('backend/css/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet">
 @endpush
 
-<div class="col-md-12">
+<div class="col-md-4">
     <div class="form-group">
-        <label for="name" class="control-label">Brand Name<span class="required-star"> *</span></label>
+        <label for="name" class="control-label">Name<span class="required-star"> *</span></label>
         <input id="name" type="text" value="{{ isset($brand) ? @$brand->name : old('name')}}"
                name="name" class="form-control" autofocus>
 
@@ -15,9 +15,9 @@
         @enderror
     </div>
 </div>
-<div class="col-md-12">
+<div class="col-md-4">
     <div class="form-group">
-        <label for="web_url" class="control-label">Brand Url</label>
+        <label for="web_url" class="control-label">Url</label>
         <input id="web_url" type="text" value="{{ isset($brand) ? @$brand->web_url : old('web_url')}}"
                name="web_url" class="form-control" autofocus>
 
@@ -27,6 +27,19 @@
         </span>
         @enderror
     </div>
+</div>
+<div class="col-md-4">
+    <label>Images <span class="required-star"> *</span></label>
+    <div class="input-group">
+        <div class="custom-file">
+            <input multiple id="inputGroupFile01" type="file" name="brand_image"
+                   class="custom-file-input">
+            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+    </div>
+    @error('brand_image') <span
+        class="help-block m-b-none text-danger">{{ @$message }}</span>
+    @enderror
 </div>
 <div class="col-md-12">
     <div class="form-group">

@@ -18,16 +18,10 @@
         </div>
     </div>
     <div class="wrapper wrapper-content animated fadeInRight">
-        <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
+        <form id="productForm" action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             @include('admin.pages.products.elements')
-
-            <a href="{{ route('admin.products.index') }}" class="btn btn-danger" type="submit">Cancel</a>
-            <button class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>
 @endsection
 
-@push('script')
-    @include('admin.pages.products.admin-product-script')
-@endpush

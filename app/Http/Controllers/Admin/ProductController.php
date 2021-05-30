@@ -13,13 +13,14 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Throwable;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = $request->perPage ?: 10;
-        $keyword = $request->keyword;
+        $perPage = $request->query('perPage') ?? 10;
+        $keyword = $request->query('keyword');
 
         $products = Auth::user()->products()->with('category', 'brand')->latest();
 
@@ -50,9 +51,9 @@ class ProductController extends Controller
     }
 
     /**
-     * @throws \Throwable
+     * @throws Throwable
      */
-    public function store(ProductRequest $request): RedirectResponse
+    public function store(ProductRequest $request): \Illuminate\Http\JsonResponse
     {
         DB::beginTransaction();
 
@@ -63,21 +64,35 @@ class ProductController extends Controller
             $product = Auth::user()->products()->create($form_data);
 
             // image upload
-            foreach ($request->file('product_img') as $image) {
-                if ($image) {
-                    $image_path = FileHandler::upload($image, 'products', ['width' => Product::PRODUCT_WIDTH, 'height' => Product::PRODUCT_HEIGHT]);
-                    $product->images()->create([ // save an image
-                        'url'       => Storage::url($image_path),
-                        'base_path' => $image_path,
-                        'type'      => 'lg',
+            foreach ($request->file('thumbnail') as $image) {
+                $size_identifier = rand();
+
+                $sizes = [
+                    ['212', '200'],
+                    ['720', '660'],
+                ];
+
+                foreach ($sizes as $size) {
+                    $image_path = FileHandler::upload(
+                        $image,
+                        'products',
+                        [
+                            'width'  => $size[0],
+                            'height' => $size[1]
+                        ]
+                    );
+
+                    $product->images()->create([
+                        'url'             => Storage::url($image_path),
+                        'base_path'       => $image_path,
+                        'size'            => "$size[0]x$size[1]",
+                        'size_identifier' => $size_identifier,
                     ]);
                 }
             }
 
-            // save attributes
             $this->saveAttributes($product, $request);
 
-            // seo field insert
             $product->seo()->create([
                 'meta_title'       => $request->input('meta_title'),
                 'meta_keywords'    => $request->input('meta_keywords'),
@@ -86,12 +101,19 @@ class ProductController extends Controller
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Product Created Successfully');
+            session()->flash('Product Created Successfully');
+
+            return response()->json([
+                'success' => true
+            ]);
         } catch (\Exception $exception) {
             report($exception);
             DB::rollBack();
 
-            return redirect()->back()->with('error', $exception->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ], 500);
         }
     }
 
@@ -108,7 +130,10 @@ class ProductController extends Controller
 
         if ($has_any_attr) {
             $product->attributes()->updateOrCreate(
-                ['color' => @$product->attributes->color, 'size' => @$product->attributes->size],
+                [
+                    'color' => @$product->attributes->color,
+                    'size'  => @$product->attributes->size
+                ],
                 $attrs
             );
         }
@@ -128,7 +153,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function update(ProductRequest $request, Product $product): RedirectResponse
     {
@@ -154,7 +179,6 @@ class ProductController extends Controller
                 }
             }
 
-            // save attributes
             $this->saveAttributes($product, $request);
 
             if ($request->input('meta_title')) {
@@ -182,6 +206,7 @@ class ProductController extends Controller
         foreach ($product->images as $key => $image) {
             FileHandler::delete($image->base_path);
         }
+
         $product->images()->delete();
         $product->seo()->delete();
 

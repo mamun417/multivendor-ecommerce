@@ -42,11 +42,11 @@ class ProductRequest extends FormRequest
         }
 
         if (request()->isMethod('post')) {
-            $rules['product_img'] = 'required|array|min:1|max:3';
+            $rules['thumbnail'] = 'required|array|min:1|max:3';
         }
 
         if (request()->isMethod('put') || request()->isMethod('patch')) {
-            $rules['product_img'] = 'nullable|min:1|max:3';
+            $rules['thumbnail'] = 'nullable|min:1|max:3';
         }
 
         return $rules;

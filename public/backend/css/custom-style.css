@@ -387,8 +387,47 @@ body.fixed-sidebar .navbar-static-side, body.canvas-menu .navbar-static-side {
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     top: 7px !important;
 }
-.bootstrap-tagsinput{
+
+.bootstrap-tagsinput {
     width: 100%;
     border-radius: 3px;
     line-height: 25px;
+}
+
+/******myDropZone********/
+.myDropZone {
+    padding: 10px;
+    height: 142px;
+    overflow: auto;
+}
+
+.myDropZone .dz-message {
+    margin: 3em 0;
+}
+
+.myDropZone .dz-preview .dz-image {
+    width: 80px;
+    height: 80px;
+}
+
+.myDropZone .dz-preview {
+    min-height: auto;
+    width: auto;
+    margin: 8px;
+}
+
+.myDropZone .dz-preview .dz-details .dz-size {
+    font-size: 10px;
+}
+
+.myDropZone .dz-preview .dz-details {
+    padding: 10px 5px;
+}
+
+.myDropZone .dz-preview .dz-error-message {
+    top: 106px;
+}
+
+.myDropZone .dz-preview .dz-success-mark svg, .myDropZone .dz-preview .dz-error-mark svg {
+    height: 40px;
 }

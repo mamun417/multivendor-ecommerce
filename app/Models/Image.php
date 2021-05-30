@@ -14,6 +14,7 @@ class Image extends Model
         'base_path',
         'type',
         'size',
+        'size_identifier',
         'imageable_id',
         'imageable_type',
     ];

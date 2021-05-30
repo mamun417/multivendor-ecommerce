@@ -23,13 +23,8 @@
             @method('PUT')
 
             @include('admin.pages.products.elements')
-
-            <a href="{{ route('admin.products.index') }}" class="btn btn-danger" type="submit">Cancel</a>
-            <button class="btn btn-primary" type="submit">Update</button>
         </form>
     </div>
 @endsection
 
-@push('script')
-   @include('admin.pages.products.admin-product-script')
-@endpush
+

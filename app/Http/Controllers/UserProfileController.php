@@ -24,7 +24,7 @@ class UserProfileController extends Controller
         $user_id = Auth::id();
         $user = User::findOrFail($user_id);
 
-        return view('pages.profile.profile', compact('user'));
+        return view('frontend.pages.profile.my-account', compact('user'));
     }
 
     public function update(UserInfoUpdateRequest $request)

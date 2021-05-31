@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,10 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/single-product-full-width', function () {
     return view('frontend.pages.single-product-full-width');
 });
+
+Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('product.details');
+
+
 
 Route::get('/shop', function () {
     return view('frontend.pages.shop');

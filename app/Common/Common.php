@@ -51,5 +51,5 @@ function discountRate($price, $discount_price)
 
 function getCurrencyIcon($currency = 'TK'): string
 {
-    return $currency == 'usd' ? '$' : 'TK ';
+    return $currency == 'usd' ? '$' : '৳';
 }

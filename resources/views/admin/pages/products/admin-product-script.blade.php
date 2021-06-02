@@ -23,38 +23,49 @@
     // End Tags input
 
 
-    // Start form submit
-    let dropZone,
-        maxFile = 6,
-        maxFilesize = 5;
+    /***************** Start form submit ********************/
+        // contain files of specific type of dropzone
+    let myDropZone = {
+            thumbnail: '',
+            images: ''
+        };
 
-    $(".myDropZone").dropzone(
-        {
-            url: '/',
-            autoProcessQueue: false,
-            maxFiles: maxFile,
-            maxFilesize: maxFilesize, // MB
-            acceptedFiles: 'image/*',
-            addRemoveLinks: 'dictCancelUploadConfirmation',
-            init: function () {
-                dropZone = this;
+    let maxFilesize = 5;
 
-                this.on("maxfilesexceeded", function (file) {
-                    this.removeFile(file);
-                    $('#imageError').html(`You can not upload more than ${maxFile} file.`);
-                });
+    const dropZones = [
+        {id: 'thumbnailDropZone', name: 'thumbnail', maxFiles: 1},
+        {id: 'imagesDropZone', name: 'images', maxFiles: 6}
+    ];
 
-                this.on("addedfile", function (file) {
-                    $(".dz-progress").remove();
-                });
+    $.each(dropZones, function (key, dropZone) {
+        $(`#${dropZone.id}`).dropzone(
+            {
+                url: '/',
+                autoProcessQueue: false,
+                maxFiles: dropZone.maxFiles,
+                maxFilesize: maxFilesize, // MB
+                acceptedFiles: 'image/*',
+                addRemoveLinks: 'dictCancelUploadConfirmation',
+                init: function () {
+                    myDropZone[dropZone.name] = this;
+
+                    this.on("maxfilesexceeded", function (file) {
+                        this.removeFile(file);
+                        $(`#${dropZone.id}Error`).html(`You can not upload more than ${dropZone.maxFiles} file.`);
+                    });
+
+                    this.on("addedfile", function (file) {
+                        $(".dz-progress").remove();
+                    });
+                }
             }
-        }
-    );
+        );
+    });
+
 
     function submitAddProductForm() {
         axios.post('{{ route('admin.products.store') }}', getFormInputs())
-            .then(res => {
-                console.log(res.data)
+            .then(() => {
                 location.href = '{{ route('admin.products.index') }}'
             })
             .catch(error => {
@@ -66,17 +77,18 @@
         let form = document.getElementById('productForm')
         let formData = new FormData(form);
 
-        for (const file of dropZone.files) {
-            formData.append('thumbnail[]', file)
-        }
+        // make multiple dropZone image input (thumbnail. images)
+        Object.keys(myDropZone).forEach(function (dropZoneType) {
+            for (const file of myDropZone[dropZoneType].files) {
+                formData.append(`${dropZoneType}[]`, file)
+            }
+        })
 
         return formData;
     }
 
     function errorHandle(error) {
         $('.error_msg').html('');
-
-        console.log(error.response.data)
 
         $.each(error.response.data.errors, function (input, error) {
             $(`.${input}_error`).html(error[0]);
@@ -88,7 +100,7 @@
         $(`.${this.name}_error`).html('')
     }))
 
-    // End  form submit
+    /***************** End form submit ********************/
 
 
     // remove product image only for edit

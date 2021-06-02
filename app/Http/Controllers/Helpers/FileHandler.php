@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Helpers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -34,17 +33,19 @@ class FileHandler
         return $image_path;
     }
 
-    public static function delete($path)
-    {
-        if (Storage::exists($path)) {
-            Storage::delete($path);
-        }
-    }
-
     private static function fileUpload($path, $image, $file_name): string
     {
         Storage::putFileAs($path, $image, $file_name);
 
         return "$path/$file_name";
+    }
+
+    public static function delete($path)
+    {
+        try {
+            Storage::delete($path);
+        } catch (\Exception $exception) {
+            info($exception->getMessage());
+        }
     }
 }

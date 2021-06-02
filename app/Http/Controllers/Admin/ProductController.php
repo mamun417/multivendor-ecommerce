@@ -13,6 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Session;
 use Throwable;
 
 class ProductController extends Controller
@@ -58,19 +59,37 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            $form_data           = $request->validated();
-            $form_data['status'] = (bool)$request->status;
+            $product = Auth::user()->products()->create($request->validated() +
+                ['status' => (bool)$request->status]
+            );
 
-            $product = Auth::user()->products()->create($form_data);
+            $this->saveImages($request, $product);
+            $this->saveAttributes($request, $product);
+            $this->seoCreate($request, $product);
 
-            // image upload
-            foreach ($request->file('thumbnail') as $image) {
+            DB::commit();
+
+            Session::flash('Product Created Successfully');
+
+            return response()->json(['success' => true]);
+        } catch (\Exception $exception) {
+            report($exception);
+            DB::rollBack();
+
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ], 500);
+        }
+    }
+
+    public function saveImages($request, $product)
+    {
+        foreach (['thumbnail', 'images'] as $image_input) {
+            foreach ($request->file($image_input) as $image) {
                 $size_identifier = rand();
 
-                $sizes = [
-                    ['212', '200'],
-                    ['720', '660'],
-                ];
+                $sizes = $image_input === 'images' ? Product::IMAGE_SIZES : Product::THUMBNAIL_SIZES;
 
                 foreach ($sizes as $size) {
                     $image_path = FileHandler::upload(
@@ -90,34 +109,10 @@ class ProductController extends Controller
                     ]);
                 }
             }
-
-            $this->saveAttributes($product, $request);
-
-            $product->seo()->create([
-                'meta_title'       => $request->input('meta_title'),
-                'meta_keywords'    => $request->input('meta_keywords'),
-                'meta_description' => $request->input('meta_description')
-            ]);
-
-            DB::commit();
-
-            session()->flash('Product Created Successfully');
-
-            return response()->json([
-                'success' => true
-            ]);
-        } catch (\Exception $exception) {
-            report($exception);
-            DB::rollBack();
-
-            return response()->json([
-                'success' => false,
-                'message' => $exception->getMessage()
-            ], 500);
         }
     }
 
-    public function saveAttributes($product, Request $request)
+    public function saveAttributes($request, $product)
     {
         $attrs = [
             'color' => $request->input('color'),
@@ -139,6 +134,15 @@ class ProductController extends Controller
         }
     }
 
+    public function seoCreate($request, $product)
+    {
+        $product->seo()->create([
+            'meta_title'       => $request->input('meta_title'),
+            'meta_keywords'    => $request->input('meta_keywords'),
+            'meta_description' => $request->input('meta_description')
+        ]);
+    }
+
     public function show(Product $product)
     {
         return view('admin.pages.products.details', compact('product'));
@@ -148,6 +152,11 @@ class ProductController extends Controller
     {
         $categories = Category::active()->latest()->get();
         $brands     = Auth::user()->brands()->active()->latest()->get();
+
+        $product['images'] = collect($product->images()->get())
+            ->filter(function ($image) {
+                return $image['size'] === '720x660';
+            });
 
         return view('admin.pages.products.edit', compact('categories', 'brands', 'product'));
     }
@@ -228,7 +237,6 @@ class ProductController extends Controller
             $image_id = $request->image_id;
             $image    = Image::findOrFail($image_id);
 
-            // delete root image
             FileHandler::delete($image->base_path);
 
             $image->delete();

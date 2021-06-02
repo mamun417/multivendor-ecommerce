@@ -169,7 +169,12 @@
                     <div class="col-sm-3">
                         <label>Thumbnail <span class="required-star"> *</span></label>
                         <div class="form-group">
-                            <div class="myDropZone"></div>
+                            <div class="myDropZone" id="thumbnailDropZone">
+                                <div class="dz-message" data-dz-message>
+                                    <span>Upload thumbnail </span>
+                                </div>
+                            </div>
+                            <span id="thumbnailDropZoneError" class="text-danger"></span>
                             <small class="text-danger error_msg thumbnail_error"></small>
                         </div>
                     </div>
@@ -177,12 +182,12 @@
                     <div class="col-sm-9">
                         <label>Images</label>
                         <div class="form-group">
-                            <div class="myDropZone">
+                            <div class="myDropZone" id="imagesDropZone">
                                 <div class="dz-message" data-dz-message>
                                     <span>Drop files here or click to upload</span>
                                 </div>
                             </div>
-                            <span id="imageError" class="text-danger"></span>
+                            <span id="imagesDropZoneError" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -243,6 +248,11 @@
         <div class="ibox ">
             <div class="ibox-title">
                 <h5>Product <strong>SEO Fields</strong></h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
             </div>
             <div class="ibox-content">
                 <div class="row">
@@ -299,8 +309,9 @@
 </div>
 
 <a href="{{ route('admin.products.index') }}" class="btn btn-danger" type="submit">Cancel</a>
-<button class="btn btn-primary" type="button"
-        onclick="submitAddProductForm()">{{ isset($product) ? 'Update': 'Submit' }}</button>
+<button class="btn btn-primary" type="button" onclick="submitAddProductForm()">
+    {{ isset($product) ? 'Update': 'Submit' }}
+</button>
 
 @push('script')
     @include('admin.pages.products.admin-product-script')

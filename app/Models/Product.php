@@ -12,7 +12,13 @@ class Product extends Model
 {
     use HasFactory;
 
-    const PRODUCT_WIDTH = 716;
+    const THUMBNAIL_SIZES = [
+        ['212', '200'],
+        ['100', '140'],
+        ['75', '75'],
+        ['720', '660'],
+    ];
+    const IMAGE_SIZES = [['720', '660']];
     const PRODUCT_HEIGHT = 930;
     protected $fillable = [
         'category_id',

@@ -51,11 +51,20 @@
 
                     this.on("maxfilesexceeded", function (file) {
                         this.removeFile(file);
-                        $(`#${dropZone.id}Error`).html(`You can not upload more than ${dropZone.maxFiles} file.`);
                     });
 
-                    this.on("addedfile", function (file) {
+                    this.on("error", function (file, errorMessage) {
+                        // remove file from thumbnail for any error
+                        if (dropZone.name === 'thumbnail') {
+                            this.removeFile(file);
+                        }
+
+                        $(`#${dropZone.id}Error`).html(errorMessage);
+                    });
+
+                    this.on("addedfile", function () {
                         $(".dz-progress").remove();
+                        $(`#${dropZone.id}Error`).html('');
                     });
                 }
             }
@@ -80,7 +89,11 @@
         // make multiple dropZone image input (thumbnail. images)
         Object.keys(myDropZone).forEach(function (dropZoneType) {
             for (const file of myDropZone[dropZoneType].files) {
-                formData.append(`${dropZoneType}[]`, file)
+                if (file.status === 'queued') {
+                    formData.append(`${dropZoneType}[]`, file)
+                } else {
+                    myDropZone[dropZoneType].removeFile(file);
+                }
             }
         })
 

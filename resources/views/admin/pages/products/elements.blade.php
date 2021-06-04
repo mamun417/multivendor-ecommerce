@@ -225,8 +225,10 @@
                 <div class="ibox-content">
                     <div class="d-flex flex-wrap">
                         @foreach($product->images as $image)
-                            <div id="removeProductImageSection" class="mr-2 mb-3">
+                            <div id="removeProductImageSection" class="mr-2 mb-3"
+                                 style="{{$image->type === 'thumbnail' ? 'padding-right: 30px;' : ''}}">
                                 <img class="d-block b-r-md" height="60px" width="60px"
+                                     style="{{$image->type === 'thumbnail' ? 'width:80px' : ''}}"
                                      src="{{ $image->url }}"
                                      alt="{{ $image->type }}">
                                 <button onclick="removeProductImage(event, this, '{{ $image->id }}')"

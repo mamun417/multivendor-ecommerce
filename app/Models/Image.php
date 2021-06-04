@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Eloquent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @mixin  Eloquent
+ */
 class Image extends Model
 {
     use HasFactory;
@@ -27,4 +31,8 @@ class Image extends Model
         return $this->morphTo();
     }
 
+    public function scopeWithOtherSizeImages($query, $image)
+    {
+        return $query->where('size_identifier', $image->size_identifier);
+    }
 }

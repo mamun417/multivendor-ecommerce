@@ -106,6 +106,7 @@ class ProductController extends Controller
                         'base_path'       => $image_path,
                         'size'            => "$size[0]x$size[1]",
                         'size_identifier' => $size_identifier,
+                        'type'            => $image_input
                     ]);
                 }
             }
@@ -153,10 +154,9 @@ class ProductController extends Controller
         $categories = Category::active()->latest()->get();
         $brands     = Auth::user()->brands()->active()->latest()->get();
 
-        $product['images'] = collect($product->images()->get())
-            ->filter(function ($image) {
-                return $image['size'] === '720x660';
-            });
+        $product->load(['images' => function ($q) {
+            $q->where('size', '720x660');
+        }]);
 
         return view('admin.pages.products.edit', compact('categories', 'brands', 'product'));
     }
@@ -177,7 +177,6 @@ class ProductController extends Controller
             $product->update($form_data);
 
             if ($request->file('product_img')) {
-                // need to upload product photo
                 foreach ($request->file('product_img') as $image) {
                     $image_path = FileHandler::upload($image, 'products', ['width' => Product::PRODUCT_WIDTH, 'height' => Product::PRODUCT_HEIGHT]);
                     $product->images()->create([ // save an image
@@ -234,12 +233,15 @@ class ProductController extends Controller
     public function removeProductImage(Request $request)
     {
         if ($request->ajax()) {
-            $image_id = $request->image_id;
+            $image_id = $request->input('image_id');
             $image    = Image::findOrFail($image_id);
 
-            FileHandler::delete($image->base_path);
+            $all_Images = Image::withOtherSizeImages($image)->get();
 
-            $image->delete();
+            foreach ($all_Images as $image) {
+                FileHandler::delete($image->base_path);
+                $image->delete();
+            }
 
             return response()->json([
                 'success' => true,

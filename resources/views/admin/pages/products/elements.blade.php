@@ -3,6 +3,7 @@
     <link href="{{ asset('backend/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/css/plugins/dropzone/basic.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/css/plugins/dropzone/dropzone.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/css/plugins/ladda/ladda-themeless.min.css') }}" rel="stylesheet">
 @endpush
 
 <div class="row">
@@ -311,7 +312,8 @@
 </div>
 
 <a href="{{ route('admin.products.index') }}" class="btn btn-danger" type="submit">Cancel</a>
-<button class="btn btn-primary" type="button" onclick="submitAddProductForm()">
+<button class="btn btn-primary ladda-button ladda-button-demo" type="button" onclick="submitAddProductForm()"
+        data-style="expand-right">
     {{ isset($product) ? 'Update': 'Submit' }}
 </button>
 

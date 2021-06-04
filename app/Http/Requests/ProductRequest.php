@@ -37,16 +37,16 @@ class ProductRequest extends FormRequest
             'details'     => 'nullable|string',
         ];
 
-        if (request('product_price')) {
-            $rules['discount_price'] = 'nullable|numeric|lt:product_price';
+        if (request('price')) {
+            $rules['discount_price'] = 'nullable|numeric|lt:price';
         }
 
         if (request()->isMethod('post')) {
-            $rules['thumbnail'] = 'required|array|min:1|max:3';
+            $rules['thumbnail'] = 'required|min:1|max:1';
         }
 
         if (request()->isMethod('put') || request()->isMethod('patch')) {
-            $rules['thumbnail'] = 'nullable|min:1|max:3';
+            $rules['thumbnail'] = 'nullable';
         }
 
         return $rules;

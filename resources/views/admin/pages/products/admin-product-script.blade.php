@@ -3,6 +3,11 @@
 <script src="{{ asset('backend/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script>
 <script src="{{ asset('backend/js/plugins/dropzone/dropzone.js') }}"></script>
 
+<!--ladda-->
+<script src="{{ asset('backend/js/plugins/ladda/spin.min.js') }}"></script>
+<script src="{{ asset('backend/js/plugins/ladda/ladda.min.js') }}"></script>
+<script src="{{ asset('backend/js/plugins/ladda/ladda.jquery.min.js') }}"></script>
+
 <script>
     $(document).ready(function () {
         $(".productCategorySelect2").select2();
@@ -59,7 +64,7 @@
                             this.removeFile(file);
                         }
 
-                        $(`#${dropZone.id}Error`).html(errorMessage);
+                        $(`#${dropZone.id}Error`).html(errorMessage + '<br/>');
                     });
 
                     this.on("addedfile", function () {
@@ -73,12 +78,17 @@
 
 
     function submitAddProductForm() {
+        $('.ladda-button-demo').ladda().ladda('start')
+
         axios.post('{{ route('admin.products.store') }}', getFormInputs())
             .then(() => {
                 location.href = '{{ route('admin.products.index') }}'
             })
             .catch(error => {
                 errorHandle(error)
+            })
+            .then(function () {
+                $('.ladda-button-demo').ladda().ladda('stop')
             })
     }
 

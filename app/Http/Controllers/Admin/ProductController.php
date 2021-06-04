@@ -13,7 +13,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Session;
 use Throwable;
 
 class ProductController extends Controller
@@ -69,7 +68,7 @@ class ProductController extends Controller
 
             DB::commit();
 
-            Session::flash('Product Created Successfully');
+            session()->flash('success', 'Product Created Successfully');
 
             return response()->json(['success' => true]);
         } catch (\Exception $exception) {
@@ -86,28 +85,30 @@ class ProductController extends Controller
     public function saveImages($request, $product)
     {
         foreach (['thumbnail', 'images'] as $image_input) {
-            foreach ($request->file($image_input) as $image) {
-                $size_identifier = rand();
+            if ($request->file($image_input)) {
+                foreach ($request->file($image_input) as $image) {
+                    $size_identifier = rand();
 
-                $sizes = $image_input === 'images' ? Product::IMAGE_SIZES : Product::THUMBNAIL_SIZES;
+                    $sizes = $image_input === 'images' ? Product::IMAGE_SIZES : Product::THUMBNAIL_SIZES;
 
-                foreach ($sizes as $size) {
-                    $image_path = FileHandler::upload(
-                        $image,
-                        'products',
-                        [
-                            'width'  => $size[0],
-                            'height' => $size[1]
-                        ]
-                    );
+                    foreach ($sizes as $size) {
+                        $image_path = FileHandler::upload(
+                            $image,
+                            'products',
+                            [
+                                'width'  => $size[0],
+                                'height' => $size[1]
+                            ]
+                        );
 
-                    $product->images()->create([
-                        'url'             => Storage::url($image_path),
-                        'base_path'       => $image_path,
-                        'size'            => "$size[0]x$size[1]",
-                        'size_identifier' => $size_identifier,
-                        'type'            => $image_input
-                    ]);
+                        $product->images()->create([
+                            'url'             => Storage::url($image_path),
+                            'base_path'       => $image_path,
+                            'size'            => "$size[0]x$size[1]",
+                            'size_identifier' => $size_identifier,
+                            'type'            => $image_input
+                        ]);
+                    }
                 }
             }
         }

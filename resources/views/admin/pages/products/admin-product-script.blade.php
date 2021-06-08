@@ -28,12 +28,12 @@
     // End Tags input
 
 
-    /***************** Start form submit ********************/
-        // contain files of specific type of dropzone
+    // Start form submit ---------------------------
+    // contain files of specific type of dropzone
     let myDropZone = {
-            thumbnail: '',
-            images: ''
-        };
+        thumbnail: '',
+        images: ''
+    };
 
     let maxFilesize = 5;
 
@@ -76,11 +76,13 @@
         );
     });
 
-
-    function submitAddProductForm() {
+    $("#productForm").submit(function (e) {
+        e.preventDefault();
         $('.ladda-button-demo').ladda().ladda('start')
 
-        axios.post('{{ route('admin.products.store') }}', getFormInputs())
+        let action = $(this).attr("action");
+
+        axios.post(action, getFormInputs())
             .then(() => {
                 location.href = '{{ route('admin.products.index') }}'
             })
@@ -90,13 +92,17 @@
             .then(function () {
                 $('.ladda-button-demo').ladda().ladda('stop')
             })
-    }
+    });
 
     function getFormInputs() {
         let form = document.getElementById('productForm')
         let formData = new FormData(form);
 
-        // make multiple dropZone image input (thumbnail. images)
+        @if(isset($product))
+        formData.append("_method", "put");
+        @endif
+
+        // make multiple dropZone image input (thumbnail, images)
         Object.keys(myDropZone).forEach(function (dropZoneType) {
             for (const file of myDropZone[dropZoneType].files) {
                 if (file.status === 'queued') {
@@ -123,8 +129,7 @@
         $(`.${this.name}_error`).html('')
     }))
 
-    /***************** End form submit ********************/
-
+    // End form submit ---------------------------
 
     // remove product image only for edit
     function removeProductImage(e, el, image_id) {

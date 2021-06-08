@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @mixin  Eloquent
+ * @method static withOtherSizeImages(Image|Image[]|\Illuminate\Database\Eloquent\Collection|Model $image)
  */
 class Image extends Model
 {
@@ -34,5 +35,10 @@ class Image extends Model
     public function scopeWithOtherSizeImages($query, $image)
     {
         return $query->where('size_identifier', $image->size_identifier);
+    }
+
+    public function scopeThumbnail($query)
+    {
+        return $query->where('type', 'thumbnail');
     }
 }

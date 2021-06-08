@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static findOrFail(int|string|null $user_id)
  * @method brands()
  * @method static where(string $string, int|string|null $id)
+ * @method products()
  */
 class User extends Authenticatable
 {

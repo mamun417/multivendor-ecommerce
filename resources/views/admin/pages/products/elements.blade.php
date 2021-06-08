@@ -312,7 +312,7 @@
 </div>
 
 <a href="{{ route('admin.products.index') }}" class="btn btn-danger" type="submit">Cancel</a>
-<button class="btn btn-primary ladda-button ladda-button-demo" type="button" onclick="submitAddProductForm()"
+<button class="btn btn-primary ladda-button ladda-button-demo" type="submit"
         data-style="expand-right">
     {{ isset($product) ? 'Update': 'Submit' }}
 </button>

@@ -5,6 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
+/**
+ * @property mixed status
+ */
 class ProductRequest extends FormRequest
 {
     /**
@@ -42,13 +45,21 @@ class ProductRequest extends FormRequest
         }
 
         if (request()->isMethod('post')) {
-            $rules['thumbnail'] = 'required|min:1|max:1';
+            $rules['thumbnail.*'] = 'required|mimes:jpg,jpeg,bmp,png,JPG,JPEG,BMP,PNG|max:5120';
         }
 
         if (request()->isMethod('put') || request()->isMethod('patch')) {
-            $rules['thumbnail'] = 'nullable';
+            $rules['thumbnail.*'] = 'nullable|mimes:jpg,jpeg,bmp,png,JPG,JPEG,BMP,PNG|max:5120';
         }
 
         return $rules;
+    }
+
+    public function messages(): array
+    {
+        return [
+            'thumbnail.*.mimes' => 'Only jpeg, png, jpg, JPG, JPEG, PNG and BMP images are allowed',
+            'thumbnail.*.max'   => 'Max file size 5 MB'
+        ];
     }
 }

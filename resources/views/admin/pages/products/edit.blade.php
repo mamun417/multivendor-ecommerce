@@ -18,7 +18,8 @@
         </div>
     </div>
     <div class="wrapper wrapper-content animated fadeInRight">
-        <form action="{{ route('admin.products.update', @$product->id) }}" method="post" enctype="multipart/form-data">
+        <form id="productForm" action="{{ route('admin.products.update', @$product->id) }}" method="post"
+              enctype="multipart/form-data">
             @csrf
             @method('PUT')
 

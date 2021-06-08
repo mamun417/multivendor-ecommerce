@@ -68,7 +68,7 @@ class ProductController extends Controller
 
             DB::commit();
 
-            session()->flash('success', 'Product Created Successfully');
+            session()->flash('success', 'Product created successfully');
 
             return response()->json(['success' => true]);
         } catch (\Exception $exception) {
@@ -126,23 +126,29 @@ class ProductController extends Controller
         });
 
         if ($has_any_attr) {
-            $product->attributes()->updateOrCreate(
-                [
-                    'color' => @$product->attributes->color,
-                    'size'  => @$product->attributes->size
-                ],
-                $attrs
-            );
+            $product->attributes()->updateOrCreate(['product_id' => $product->id], $attrs);
+        } else {
+            $product->attributes()->delete();
         }
     }
 
     public function seoCreate($request, $product)
     {
-        $product->seo()->create([
+        $attrs = [
             'meta_title'       => $request->input('meta_title'),
             'meta_keywords'    => $request->input('meta_keywords'),
             'meta_description' => $request->input('meta_description')
-        ]);
+        ];
+
+        $has_any_attr = collect($attrs)->some(function ($value, $key) {
+            return $value;
+        });
+
+        if ($has_any_attr) {
+            $product->seo()->updateOrCreate(['seoable_id' => $product->id], $attrs);
+        } else {
+            $product->seo()->delete();
+        }
     }
 
     public function show(Product $product)
@@ -165,47 +171,46 @@ class ProductController extends Controller
     /**
      * @throws Throwable
      */
-    public function update(ProductRequest $request, Product $product): RedirectResponse
+    public function update(ProductRequest $request, Product $product): \Illuminate\Http\JsonResponse
     {
+        $product = Auth::user()->products()->where('id', $product->id)->firstOrFail();
+
         DB::beginTransaction();
 
         try {
-            $product = Auth::user()->products()->where('id', $product->id)->firstOrFail();
+            $product->update($request->validated() +
+                ['status' => (bool)$request->status]
+            );
 
-            $form_data           = $request->validated();
-            $form_data['status'] = (bool)$request->status;
+            // delete old thumbnail
+            if ($request->file('thumbnail')) {
+                $image = $product->images()->thumbnail()->first();
 
-            $product->update($form_data);
+                $all_Images = Image::withOtherSizeImages($image)->get();
 
-            if ($request->file('product_img')) {
-                foreach ($request->file('product_img') as $image) {
-                    $image_path = FileHandler::upload($image, 'products', ['width' => Product::PRODUCT_WIDTH, 'height' => Product::PRODUCT_HEIGHT]);
-                    $product->images()->create([ // save an image
-                        'url'       => Storage::url($image_path),
-                        'base_path' => $image_path,
-                        'type'      => 'lg',
-                    ]);
+                foreach ($all_Images as $image) {
+                    FileHandler::delete($image->base_path);
+                    $image->delete();
                 }
             }
 
-            $this->saveAttributes($product, $request);
-
-            if ($request->input('meta_title')) {
-                $product->seo()->update([
-                    'meta_title'       => $request->input('meta_title'),
-                    'meta_keywords'    => $request->input('meta_keywords'),
-                    'meta_description' => $request->input('meta_description')
-                ]);
-            }
+            $this->saveImages($request, $product);
+            $this->saveAttributes($request, $product);
+            $this->seoCreate($request, $product);
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Product Updated Successfully');
+            session()->flash('success', 'Product update successfully');
+
+            return response()->json(['success' => true]);
         } catch (\Exception $exception) {
             report($exception);
             DB::rollBack();
 
-            return redirect()->back()->with('error', $exception->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ], 500);
         }
     }
 

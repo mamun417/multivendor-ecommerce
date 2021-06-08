@@ -3966,7 +3966,7 @@
                     class="d-flex justify-content-between align-items-center border-bottom border-color-1 flex-lg-nowrap flex-wrap border-md-down-top-0 border-sm-bottom-0 mb-4">
                     <h3 class="section-title section-title__full mb-0 pb-2 font-size-22">Recommendation For You</h3>
                     <a class="d-block text-gray-16 border-top border-color-1 border-md-top-0 w-100 w-md-auto pt-2 pt-md-0"
-                       href="../shop/product-categories-7-column-full-width.html">View All Recommendations <i
+                       href="{{ route('products.categories') }}">View All Recommendations <i
                             class="ec ec-arrow-right-categproes"></i></a>
                 </div>
                 <ul class="row list-unstyled products-group no-gutters">
@@ -3976,7 +3976,7 @@
                                 <div class="product-item__inner px-xl-4 p-3">
                                     <div class="product-item__body pb-xl-2">
                                         <div class="mb-2"><a
-                                                href="../shop/product-categories-7-column-full-width.html"
+                                                href="{{ route('product.category', $product->category->slug) }}"
                                                 class="font-size-12 text-gray-5">{{ $product->category->name }}</a></div>
                                         <h5 class="mb-1 product-item__title"><a
                                                 href="{{ route('product.details', $product->slug) }}"

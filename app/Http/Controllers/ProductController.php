@@ -17,15 +17,16 @@ class ProductController extends Controller
         return view('frontend.pages.products.show', compact('product'));
     }
 
-    public function byCategory(Category $category)
+    public function categoryProduct(Category $category)
     {
-        $sortBy = request('sortBy', 'name');
+        $products = $category->products()->active()->get();
+        return view('frontend.pages.products.category-wish-products', compact('products', 'category'));
+    }
 
-        $products = $category->products()->active();
-        $products = ProductHelper::search($products);
-        $products = $products->orderBy($sortBy)->paginate(21);
-
-        return view('pages.products.index', compact('products'));
+    public function categoriesWithProducts()
+    {
+        $categories = Category::active()->with('products')->get();
+        return view('frontend.pages.products.categories-with-products', compact('categories'));
     }
 
     public function byBrand(Brand $brand)
@@ -39,13 +40,5 @@ class ProductController extends Controller
         return view('pages.products.index', compact('products'));
     }
 
-    public function sizeWisePrice(Request $request)
-    {
-        $product = ProductPrice::where([
-            'product_id' => $request->product_id,
-            'size' => $request->size,
-        ])->first();
-        return $product;
-    }
 
 }

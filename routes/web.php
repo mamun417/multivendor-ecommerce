@@ -29,6 +29,8 @@ Route::get('/single-product-full-width', function () {
 });
 
 Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('product.details');
+Route::get('/products/category/{category:slug}', [ProductController::class, 'categoryProduct'])->name('product.category');
+Route::get('categories-with-products', [ProductController::class, 'categoriesWithProducts'])->name('products.categories');
 
 
 

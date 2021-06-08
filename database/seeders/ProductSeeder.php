@@ -25,7 +25,7 @@ class ProductSeeder extends Seeder
 
                 // Start => image upload section
                 for ($x = 0; $x <= 3; $x++) {
-                    $image_path = $faker->imageUrl(Product::PRODUCT_WIDTH, Product::PRODUCT_HEIGHT);
+                    $image_path = $faker->imageUrl(Product::IMAGE_SIZES);
                     $product->images()->create([ // save an image
                         'url' => $image_path,
                         'type' => 'lg',

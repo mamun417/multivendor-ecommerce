@@ -107,18 +107,20 @@
                                 {{--                                    </a>--}}
                                 {{--                                </div>--}}
                                 <div class="d-md-flex align-items-center">
-                                    {{--                                    <a href="#" class="max-width-150 ml-n2 mb-2 mb-md-0 d-block"><img class="img-fluid"--}}
-                                    {{--                                                                                                      src="{{ asset('frontend') }}/assets/img/200X60/img1.png"--}}
-                                    {{--                                                                                                      alt="Image Description"></a>--}}
-                                    <div class="ml-md-3 text-gray-9 font-size-14">Availability: <span
-                                            class="text-green font-weight-bold">26 in stock</span></div>
+                                    <div class="ml-md-3 text-gray-9 font-size-14">Availability:
+                                        @if($product->stock > 0)
+                                        <span class="text-green font-weight-bold">{{ $product->stock }} in stock</span>
+                                        @else
+                                        <span class="text-danger font-weight-bold">stock out</span>
+                                            @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex-horizontal-center flex-wrap mb-4">
                                 <a href="#" class="text-gray-6 font-size-13 mr-2"><i
                                         class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                <a href="#" class="text-gray-6 font-size-13 ml-2"><i
-                                        class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+{{--                                <a href="#" class="text-gray-6 font-size-13 ml-2"><i--}}
+{{--                                        class="ec ec-compare mr-1 font-size-15"></i> Compare</a>--}}
                             </div>
                             <div class="mb-2">
                                 <p>{{ $product->details }}</p>
@@ -134,20 +136,44 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="border-top border-bottom py-3 mb-4">
-                                <div class="d-flex align-items-center">
-                                    <h6 class="font-size-14 mb-0">Color</h6>
-                                    <!-- Select -->
-                                    <select class="js-select selectpicker dropdown-select ml-3"
-                                            data-style="btn-sm bg-white font-weight-normal py-2 border">
-                                        <option value="one" selected>White with Gold</option>
-                                        <option value="two">Red</option>
-                                        <option value="three">Green</option>
-                                        <option value="four">Blue</option>
-                                    </select>
-                                    <!-- End Select -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @if($product->attributes->color)
+                                        <div class="border-top border-bottom py-3 mb-4">
+                                            <div class="d-flex align-items-center">
+                                                <h6 class="font-size-14 mb-0">Color</h6>
+                                                <!-- Select -->
+                                                <select class="js-select selectpicker dropdown-select ml-3"
+                                                        data-style="btn-sm bg-white font-weight-normal py-2 border">
+                                                    @foreach(explode(',', $product->attributes->color) as $color)
+                                                        <option value="{{ $color }}">{{ $color }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <!-- End Select -->
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="col-md-6">
+                                    @if($product->attributes->size)
+                                        <div class="border-top border-bottom py-3 mb-4">
+                                            <div class="d-flex align-items-center">
+                                                <h6 class="font-size-14 mb-0">Size</h6>
+                                                <!-- Select -->
+                                                <select class="js-select selectpicker dropdown-select ml-3"
+                                                        data-style="btn-sm bg-white font-weight-normal py-2 border">
+                                                    @foreach(explode(',', $product->attributes->size) as $color)
+                                                        <option value="{{ $color }}">{{ $color }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <!-- End Select -->
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
+
+
                             <div class="d-md-flex align-items-end mb-3">
                                 <div class="max-width-150 mb-4 mb-md-0">
                                     <h6 class="font-size-14">Quantity</h6>

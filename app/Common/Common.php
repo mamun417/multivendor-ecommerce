@@ -53,3 +53,8 @@ function getCurrencyIcon($currency = 'TK'): string
 {
     return $currency == 'usd' ? '$' : '৳';
 }
+
+function getDefaultImage()
+{
+    return url(asset('backend/img/no-image.png'));
+}

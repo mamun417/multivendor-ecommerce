@@ -22,7 +22,7 @@ class ProductController extends Controller
         $perPage = $request->query('perPage') ?? 10;
         $keyword = $request->query('keyword');
 
-        $products = Auth::user()->products()->with('category', 'brand')->latest();
+        $products = Auth::user()->products()->with('category', 'brand', 'images')->latest();
 
         if ($keyword) {
             $keyword  = '%' . $keyword . '%';
@@ -162,7 +162,7 @@ class ProductController extends Controller
         $brands     = Auth::user()->brands()->active()->latest()->get();
 
         $product->load(['images' => function ($q) {
-            $q->where('size', '720x660');
+            $q->where('size', '720x660')->orderByRaw('FIELD(type,"images")');
         }]);
 
         return view('admin.pages.products.edit', compact('categories', 'brands', 'product'));
@@ -182,15 +182,15 @@ class ProductController extends Controller
                 ['status' => (bool)$request->status]
             );
 
-            // delete old thumbnail
+            // delete old thumbnails
             if ($request->file('thumbnail')) {
-                $image = $product->images()->thumbnail()->first();
+                $thumbnails = $product->images()->thumbnails()->get();
 
-                $all_Images = Image::withOtherSizeImages($image)->get();
-
-                foreach ($all_Images as $image) {
-                    FileHandler::delete($image->base_path);
-                    $image->delete();
+                if ($thumbnails) {
+                    foreach ($thumbnails as $thumbnail) {
+                        FileHandler::delete($thumbnail->base_path);
+                        $thumbnail->delete();
+                    }
                 }
             }
 

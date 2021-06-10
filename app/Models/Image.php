@@ -37,7 +37,7 @@ class Image extends Model
         return $query->where('size_identifier', $image->size_identifier);
     }
 
-    public function scopeThumbnail($query)
+    public function scopeThumbnails($query)
     {
         return $query->where('type', 'thumbnail');
     }

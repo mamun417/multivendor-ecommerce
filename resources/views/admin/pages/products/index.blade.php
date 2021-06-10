@@ -100,26 +100,26 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if(@$products->count() > 0)
-                                    @foreach(@$products as $key => $product)
+                                @if($products->count() > 0)
+                                    @foreach($products as $key => $product)
                                         <tr>
                                             <td>
                                                 <img class="message-avatar"
-                                                     src="{{ @$product->images()->first()->url ?? '' }}"
-                                                     alt="">
+                                                     src="{{ $product->images()->where('size', '75x75')->first()->url ?? getDefaultImage() }}"
+                                                     alt="image">
                                             </td>
-                                            <td>{{ @$product->name }}</td>
-                                            <td>{{ @$product->brand->name }}</td>
-                                            <td>{{ @$product->category->name }}</td>
-                                            <td>{{ @$product->price }} {{ getCurrencyIcon() }}</td>
-                                            <td>{{ @$product->code }}</td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->brand->name }}</td>
+                                            <td>{{ $product->category->name }}</td>
+                                            <td>{{ $product->price }} {{ getCurrencyIcon() }}</td>
+                                            <td>{{ $product->code }}</td>
 
                                             <td>
-                                                <a onclick="changeStatus(this)" id="{{ @$product->id }}"
+                                                <a onclick="changeStatus(this)" id="{{ $product->id }}"
                                                    data-route="{{ route('admin.products.status.change', '') }}"
                                                    href="javascript:void(0)"
                                                    title="Change publication status">
-                                                    @if(@$product->status)
+                                                    @if($product->status)
                                                         <span class="badge badge-primary">Active</span>
                                                     @else
                                                         <span class="badge badge-danger">Disable</span>
@@ -128,26 +128,26 @@
                                             </td>
 
                                             <td>
-{{--                                                <a href="{{ route('admin.products.show', @$product->id) }}"--}}
-{{--                                                   class="btn btn-info btn-sm cus_btn">--}}
-{{--                                                    <i class="fa fa-info-circle"></i>--}}
-{{--                                                </a>--}}
+                                                {{--                                                <a href="{{ route('admin.products.show', $product->id) }}"--}}
+                                                {{--                                                   class="btn btn-info btn-sm cus_btn">--}}
+                                                {{--                                                    <i class="fa fa-info-circle"></i>--}}
+                                                {{--                                                </a>--}}
 
-                                                <a href="{{ route('admin.products.edit', @$product->id)  }}"
+                                                <a href="{{ route('admin.products.edit', $product->id)  }}"
                                                    title="Edit"
                                                    class="btn btn-info btn-sm cus_btn">
                                                     <i class="fa fa-pencil-square-o"></i>
                                                 </a>
 
-                                                <button onclick="deleteRow({{ @$product->id }})"
+                                                <button onclick="deleteRow({{ $product->id }})"
                                                         href="JavaScript:void(0)"
                                                         title="Delete" class="btn btn-danger btn-sm cus_btn">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
 
-                                                <form id="row-delete-form{{ @$product->id }}" method="POST"
+                                                <form id="row-delete-form{{ $product->id }}" method="POST"
                                                       class="d-none"
-                                                      action="{{ route('admin.products.destroy', @$product->id) }}">
+                                                      action="{{ route('admin.products.destroy', $product->id) }}">
                                                     @method('DELETE')
                                                     @csrf()
                                                 </form>
@@ -161,7 +161,7 @@
                                 @endif
                                 </tbody>
                             </table>
-                            {{ @$products->appends(['keyword' => request('keyword'), 'perPage' => request('perPage')])->links() }}
+                            {{ $products->appends(['keyword' => request('keyword'), 'perPage' => request('perPage')])->links() }}
                         </div>
                     </div>
                 </div>

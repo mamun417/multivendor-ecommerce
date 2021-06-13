@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CouponRequest;
 use App\Models\Coupon;
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class CouponController extends Controller
 {
     public function index()
     {
-        $coupons = Coupon::latest()->paginate();
+        $coupons = auth()->user()->coupons()->latest()->paginate();
 
         return view('admin.pages.coupon.index', compact('coupons'));
     }
@@ -37,15 +38,25 @@ class CouponController extends Controller
         }
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function edit(Coupon $coupon)
     {
+        $this->authorize('coupon-belongs-to-user', $coupon);
+
         $apply_types = Coupon::APPLY_TYPE;
 
         return view('admin.pages.coupon.edit', compact('coupon', 'apply_types'));
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function update(CouponRequest $request, Coupon $coupon): \Illuminate\Http\RedirectResponse
     {
+        $this->authorize('coupon-belongs-to-user', $coupon);
+
         try {
             $form_data           = $request->validated();
             $form_data['status'] = (bool)$request->status;
@@ -58,15 +69,25 @@ class CouponController extends Controller
         }
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function destroy(Coupon $coupon): \Illuminate\Http\RedirectResponse
     {
+        $this->authorize('coupon-belongs-to-user', $coupon);
+
         $coupon->delete();
 
         return back()->with('success', 'Coupon has been deleted successful.');
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function changeStatus(Coupon $coupon): \Illuminate\Http\JsonResponse
     {
+        $this->authorize('coupon-belongs-to-user', $coupon);
+
         $coupon->update(['status' => !$coupon->status]);
 
         return response()->json(['status' => true]);

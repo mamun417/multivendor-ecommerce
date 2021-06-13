@@ -17,7 +17,7 @@ class Coupon extends Model
 
     const APPLY_TYPE = [
         0 => 'percent (%)',
-        1 => 'fix',
+        1 => 'fixed',
     ];
     protected $casts = [
         'started_at' => 'datetime',

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Admin;
+use App\Models\Coupon;
+use App\Models\Product;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +28,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('product-belongs-to-user', function (Admin $admin, Product $product) {
+            return $admin->id === $product->admin_id;
+        });
+
+        Gate::define('coupon-belongs-to-user', function (Admin $admin, Coupon $coupon) {
+            return $admin->id === $coupon->admin_id;
+        });
     }
 }

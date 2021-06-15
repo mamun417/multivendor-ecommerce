@@ -24,10 +24,7 @@ class Image extends Model
         'imageable_type',
     ];
 
-    /**
-     * Get the parent imageable model (user or post).
-     */
-    public function imageable()
+    public function imageable(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo();
     }

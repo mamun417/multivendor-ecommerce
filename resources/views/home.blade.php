@@ -4094,4 +4094,19 @@
 @endsection
 
 @push('scripts')
+<script>
+window.exonChat = function () {
+                    return {};
+                };
+                (function (d, s, id) {
+                    let js,
+                        fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.setAttribute('data-api-key', 'test');
+                    js.src = `http://149.28.141.154/assets/js/web-chat/web-chat.js`;
+                    fjs.parentNode.insertBefore(js, fjs);
+                })(document, 'script', 'exhonchat-chat-frame');
+</script>
 @endpush

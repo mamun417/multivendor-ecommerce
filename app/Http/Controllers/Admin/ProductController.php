@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use Auth;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -151,13 +152,23 @@ class ProductController extends Controller
         }
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function show(Product $product)
     {
+        $this->authorize('product-belongs-to-vendor', $product);
+
         return view('admin.pages.products.details', compact('product'));
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function edit(Product $product)
     {
+        $this->authorize('product-belongs-to-vendor', $product);
+
         $categories = Category::active()->latest()->get();
         $brands     = Auth::user()->brands()->active()->latest()->get();
 
@@ -173,6 +184,8 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product): \Illuminate\Http\JsonResponse
     {
+        $this->authorize('product-belongs-to-vendor', $product);
+
         $product = Auth::user()->products()->where('id', $product->id)->firstOrFail();
 
         DB::beginTransaction();
@@ -214,8 +227,13 @@ class ProductController extends Controller
         }
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function destroy(Product $product): RedirectResponse
     {
+        $this->authorize('product-belongs-to-vendor', $product);
+
         // delete all image
         foreach ($product->images as $key => $image) {
             FileHandler::delete($image->base_path);
@@ -229,18 +247,28 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product Deleted Successfully');
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function changeStatus(Product $product): \Illuminate\Http\JsonResponse
     {
+        $this->authorize('product-belongs-to-vendor', $product);
+
         $product->update(['status' => !$product->status]);
 
         return response()->json(['status' => true]);
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function removeProductImage(Request $request)
     {
         if ($request->ajax()) {
             $image_id = $request->input('image_id');
             $image    = Image::findOrFail($image_id);
+
+            $this->authorize('image-belongs-to-vendor-product', $image);
 
             $all_Images = Image::withOtherSizeImages($image)->get();
 

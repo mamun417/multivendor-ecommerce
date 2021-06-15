@@ -43,7 +43,7 @@ class CouponController extends Controller
      */
     public function edit(Coupon $coupon)
     {
-        $this->authorize('coupon-belongs-to-user', $coupon);
+        $this->authorize('coupon-belongs-to-vendor', $coupon);
 
         $apply_types = Coupon::APPLY_TYPE;
 
@@ -55,7 +55,7 @@ class CouponController extends Controller
      */
     public function update(CouponRequest $request, Coupon $coupon): \Illuminate\Http\RedirectResponse
     {
-        $this->authorize('coupon-belongs-to-user', $coupon);
+        $this->authorize('coupon-belongs-to-vendor', $coupon);
 
         try {
             $form_data           = $request->validated();
@@ -74,7 +74,7 @@ class CouponController extends Controller
      */
     public function destroy(Coupon $coupon): \Illuminate\Http\RedirectResponse
     {
-        $this->authorize('coupon-belongs-to-user', $coupon);
+        $this->authorize('coupon-belongs-to-vendor', $coupon);
 
         $coupon->delete();
 
@@ -86,7 +86,7 @@ class CouponController extends Controller
      */
     public function changeStatus(Coupon $coupon): \Illuminate\Http\JsonResponse
     {
-        $this->authorize('coupon-belongs-to-user', $coupon);
+        $this->authorize('coupon-belongs-to-vendor', $coupon);
 
         $coupon->update(['status' => !$coupon->status]);
 

@@ -27,7 +27,7 @@ class ProductFactory extends Factory
     {
         $price    = $this->faker->numberBetween(20, 500);
         $attr     = ['pics', 'kg', 'ml', 'gm'];
-        $admin_id = $this->faker->randomElement(Admin::pluck('id')->toArray());
+        $admin_id = $this->faker->randomElement(Admin::all()->except(1)->pluck('id')->toArray());
 
         return [
             'admin_id'       => $admin_id,

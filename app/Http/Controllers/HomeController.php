@@ -24,7 +24,6 @@ class HomeController extends Controller
         $bikes_and_car = Product::active()->with('category')->whereHas('category', function($query){
             $query->where('slug', 'bikes-&-car');
         })->get();
-
         $brands = Brand::all();
         return view('home', compact('products',
             'mobile_and_gadgets',

@@ -20,7 +20,7 @@ class CartController extends Controller
     public function index()
     {
         $cart_products = Cart::instance('cart')->content()->reverse();
-        return view('pages.cart.cart', compact('cart_products'));
+        return view('frontend.pages.cart.cart', compact('cart_products'));
     }
 
     public function store(CartRequest $request, $slug)

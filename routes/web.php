@@ -38,6 +38,8 @@ Route::get('/shop', function () {
     return view('frontend.pages.shop');
 });
 
+Route::get('/cart', [CartController::class, 'index'])->name('product.cart');
+
 Route::get('/product-categories-7-column-full-width', function () {
     return view('frontend.pages.product-categories-7-column-full-width');
 });
@@ -99,9 +101,9 @@ Route::get('/shop-right-sidebar', function () {
     return view('frontend.pages.shop-right-sidebar');
 });
 
-Route::get('/cart', function () {
-    return view('frontend.pages.cart');
-});
+//Route::get('/cart', function () {
+//    return view('frontend.pages.cart');
+//});
 Route::get('/checkout', function () {
     return view('frontend.pages.checkout');
 });

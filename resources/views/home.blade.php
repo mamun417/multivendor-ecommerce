@@ -878,15 +878,6 @@
             <div class="row">
                 <div class="col-xl-3 col-wd-auto d-none d-xl-block">
                     <div class="max-width-270 min-width-270 pt-xl-13 mt-xl-13">
-                        <!-- Image Banner -->
-                        <aside class="mb-8">
-                            <a href="{{ url('shop') }}" class="d-block">
-                                <img class="img-fluid"
-                                     src="{{ asset('frontend/assets/img/270X428/img1.jpg') }}"
-                                     alt="Image Description">
-                            </a>
-                        </aside>
-                        <!-- End Image Banner -->
                         <!-- Latest Products -->
                         <aside class="mb-4">
                             <!-- Wrapper Latest Products -->
@@ -1835,7 +1826,7 @@
                                                 <div class="mb-2">
                                                     <a  href="{{ route('product.details', $mobile_product->slug) }}"
                                                        class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ $mobile_product->images()->first()->url }}"
+                                                                                        src="{{ @$mobile_product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url }}"
                                                                                         alt="Image Description"></a>
                                                 </div>
                                                 <div class="flex-center-between mb-1">
@@ -1922,7 +1913,7 @@
                                                     <div class="mb-2">
                                                         <a  href="{{ route('product.details', $home_product->slug) }}"
                                                             class="d-block text-center"><img class="img-fluid"
-                                                                                             src="{{ $home_product->images()->first()->url }}"
+                                                                                             src="{{ @$home_product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url }}"
                                                                                              alt="Image Description"></a>
                                                     </div>
                                                     <div class="flex-center-between mb-1">
@@ -2009,7 +2000,7 @@
                                                     <div class="mb-2">
                                                         <a  href="{{ route('product.details', $fashion_product->slug) }}"
                                                             class="d-block text-center"><img class="img-fluid"
-                                                                                             src="{{ $fashion_product->images()->first()->url }}"
+                                                                                             src="{{ @$fashion_product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url }}"
                                                                                              alt="Image Description"></a>
                                                     </div>
                                                     <div class="flex-center-between mb-1">
@@ -2096,7 +2087,7 @@
                                                     <div class="mb-2">
                                                         <a  href="{{ route('product.details', $health_product->slug) }}"
                                                             class="d-block text-center"><img class="img-fluid"
-                                                                                             src="{{ $health_product->images()->first()->url }}"
+                                                                                             src="{{ @$health_product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url }}"
                                                                                              alt="Image Description"></a>
                                                     </div>
                                                     <div class="flex-center-between mb-1">
@@ -2183,7 +2174,7 @@
                                                     <div class="mb-2">
                                                         <a  href="{{ route('product.details', $bikes__product->slug) }}"
                                                             class="d-block text-center"><img class="img-fluid"
-                                                                                             src="{{ $bikes__product->images()->first()->url }}"
+                                                                                             src="{{ @$bikes__product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url }}"
                                                                                              alt="Image Description"></a>
                                                     </div>
                                                     <div class="flex-center-between mb-1">
@@ -2243,7 +2234,7 @@
                                         <div class="mb-2">
                                             <a href="{{ route('product.details', $product->slug) }}"
                                                class="d-block text-center"><img class="img-fluid"
-                                                                                src="{{ $product->images()->first()->url }}"
+                                                                                src="{{ @$product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url }}"
                                                                                 alt="Image Description"></a>
 
                                         </div>
@@ -2314,7 +2305,6 @@
                     @empty
                         <p class="text-center">No brands</p>
                     @endforelse
-
                 </div>
             </div>
         </div>

@@ -20,7 +20,9 @@ class ProductController extends Controller
         if (request('cart')) { // cart == rowId
             $cart_product = CartHelper::searchProduct('cart', request('cart'), 'rowId');
         }
-        return view('frontend.pages.products.show', compact('product', 'cart_product'));
+        $related_products = Product::where('category_id', $product->category_id)->get()->take(6);
+        $brands = Brand::all();
+        return view('frontend.pages.products.show', compact('product', 'cart_product', 'related_products', 'brands'));
     }
 
     public function categoryProduct(Category $category)

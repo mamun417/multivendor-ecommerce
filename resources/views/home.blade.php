@@ -870,77 +870,6 @@
                         </div>
                     </div>
                     <!-- End Slider-Category Section -->
-                    <!-- Banner -->
-                    <div class="col-md-auto">
-                        <div class="max-width-240-xl">
-                            <div class="d-md-flex d-xl-block">
-                                <div class="bg-white border-top border-xl-top-0">
-                                    <a href="../shop/shop.html"
-                                       class="text-gray-90 position-relative d-block overflow-hidden">
-                                        <div class="position-absolute transform-rotate-16-banner">
-                                            <img class="img-fluid" src="../../assets/img/140X140/img1.png"
-                                                 alt="Image Description">
-                                        </div>
-                                        <div class="px-4 py-6 min-height-172">
-                                            <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
-                                                CATCH BIG <strong>DEALS</strong> ON THE CAMERAS
-                                            </div>
-                                            <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
-                                                Shop now
-                                                <span class="link__icon ml-1">
-                                                        <span class="link__icon-inner"><i
-                                                                class="ec ec-arrow-right-categproes"></i></span>
-                                                    </span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="bg-white border-top">
-                                    <a href="../shop/shop.html"
-                                       class="text-gray-90 position-relative d-block overflow-hidden">
-                                        <div class="position-absolute transform-rotate-16-banner">
-                                            <img class="img-fluid" src="../../assets/img/140X140/img2.png"
-                                                 alt="Image Description">
-                                        </div>
-                                        <div class="px-4 py-6 min-height-172">
-                                            <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
-                                                CATCH BIG <strong>DEALS</strong> ON THE CAMERAS
-                                            </div>
-                                            <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
-                                                Shop now
-                                                <span class="link__icon ml-1">
-                                                        <span class="link__icon-inner"><i
-                                                                class="ec ec-arrow-right-categproes"></i></span>
-                                                    </span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="bg-white border-top">
-                                    <a href="../shop/shop.html"
-                                       class="text-gray-90 position-relative d-block overflow-hidden">
-                                        <div class="position-absolute transform-rotate-16-banner">
-                                            <img class="img-fluid" src="../../assets/img/140X140/img3.png"
-                                                 alt="Image Description">
-                                        </div>
-                                        <div class="px-4 py-6 min-height-172">
-                                            <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
-                                                CATCH BIG <strong>DEALS</strong> ON THE CAMERAS
-                                            </div>
-                                            <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
-                                                Shop now
-                                                <span class="link__icon ml-1">
-                                                        <span class="link__icon-inner"><i
-                                                                class="ec ec-arrow-right-categproes"></i></span>
-                                                    </span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Banner -->
                 </div>
             </div>
         </div>
@@ -1891,31 +1820,30 @@
                                     "slidesToShow": 2
                                   }
                                 }]'>
+                            @forelse($mobile_and_gadgets as $mobile_product)
                             <div class="js-slide products-group">
                                 <div class="product-item">
                                     <div class="product-item__outer h-100">
                                         <div class="product-item__inner px-wd-4 p-2 p-md-3">
                                             <div class="product-item__body pb-xl-2">
                                                 <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        href="{{ route('product.category', $mobile_product->category->slug) }}"
+                                                        class="font-size-12 text-gray-5">{{ $mobile_product->category->name }}</a></div>
                                                 <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
+                                                        href="{{ route('product.details', $mobile_product->slug) }}"
+                                                        class="text-blue font-weight-bold">{{ $mobile_product->name }}</a></h5>
                                                 <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
+                                                    <a  href="{{ route('product.details', $mobile_product->slug) }}"
                                                        class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
+                                                                                        src="{{ $mobile_product->images()->first()->url }}"
                                                                                         alt="Image Description"></a>
                                                 </div>
                                                 <div class="flex-center-between mb-1">
                                                     <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
+                                                        <div class="text-gray-100">{{ getCurrencyIcon() }} {{ $mobile_product->price }}</div>
                                                     </div>
                                                     <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
+                                                        <a href="{{ route('product.details', $mobile_product->slug) }}"
                                                            class="btn-add-cart btn-primary transition-3d-hover"><i
                                                                 class="ec ec-add-to-cart"></i></a>
                                                     </div>
@@ -1933,342 +1861,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img2.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img3.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img4.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img5.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img6.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img7.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                @empty
+                                    <p class="text-center">No products</p>
+                                @endforelse
                         </div>
                     </div>
                     <!-- End Mobile & Gadgets -->
@@ -2312,384 +1907,50 @@
                                     "slidesToShow": 2
                                   }
                                 }]'>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
+                            @forelse($home_appliances as $home_product)
+                                <div class="js-slide products-group">
+                                    <div class="product-item">
+                                        <div class="product-item__outer h-100">
+                                            <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                                                <div class="product-item__body pb-xl-2">
+                                                    <div class="mb-2"><a
+                                                            href="{{ route('product.category', $home_product->category->slug) }}"
+                                                            class="font-size-12 text-gray-5">{{ $home_product->category->name }}</a></div>
+                                                    <h5 class="mb-1 product-item__title"><a
+                                                            href="{{ route('product.details', $home_product->slug) }}"
+                                                            class="text-blue font-weight-bold">{{ $home_product->name }}</a></h5>
+                                                    <div class="mb-2">
+                                                        <a  href="{{ route('product.details', $home_product->slug) }}"
+                                                            class="d-block text-center"><img class="img-fluid"
+                                                                                             src="{{ $home_product->images()->first()->url }}"
+                                                                                             alt="Image Description"></a>
                                                     </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
+                                                    <div class="flex-center-between mb-1">
+                                                        <div class="prodcut-price">
+                                                            <div class="text-gray-100">{{ getCurrencyIcon() }} {{ $home_product->price }}</div>
+                                                        </div>
+                                                        <div class="d-none d-xl-block prodcut-add-cart">
+                                                            <a href="{{ route('product.details', $home_product->slug) }}"
+                                                               class="btn-add-cart btn-primary transition-3d-hover"><i
+                                                                    class="ec ec-add-to-cart"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                <div class="product-item__footer">
+                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                        <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
+                                                                class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                        <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
+                                                                class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img2.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img3.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img4.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img5.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img6.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img7.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @empty
+                                <p class="text-center">No products</p>
+                            @endforelse
                         </div>
                     </div>
                     <!-- End Home Appliances -->
@@ -2733,384 +1994,50 @@
                                     "slidesToShow": 2
                                   }
                                 }]'>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
+                            @forelse($fashion_accessories as $fashion_product)
+                                <div class="js-slide products-group">
+                                    <div class="product-item">
+                                        <div class="product-item__outer h-100">
+                                            <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                                                <div class="product-item__body pb-xl-2">
+                                                    <div class="mb-2"><a
+                                                            href="{{ route('product.category', $fashion_product->category->slug) }}"
+                                                            class="font-size-12 text-gray-5">{{ $fashion_product->category->name }}</a></div>
+                                                    <h5 class="mb-1 product-item__title"><a
+                                                            href="{{ route('product.details', $fashion_product->slug) }}"
+                                                            class="text-blue font-weight-bold">{{ $fashion_product->name }}</a></h5>
+                                                    <div class="mb-2">
+                                                        <a  href="{{ route('product.details', $fashion_product->slug) }}"
+                                                            class="d-block text-center"><img class="img-fluid"
+                                                                                             src="{{ $fashion_product->images()->first()->url }}"
+                                                                                             alt="Image Description"></a>
                                                     </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
+                                                    <div class="flex-center-between mb-1">
+                                                        <div class="prodcut-price">
+                                                            <div class="text-gray-100">{{ getCurrencyIcon() }} {{ $fashion_product->price }}</div>
+                                                        </div>
+                                                        <div class="d-none d-xl-block prodcut-add-cart">
+                                                            <a href="{{ route('product.details', $fashion_product->slug) }}"
+                                                               class="btn-add-cart btn-primary transition-3d-hover"><i
+                                                                    class="ec ec-add-to-cart"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                <div class="product-item__footer">
+                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                        <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
+                                                                class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                        <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
+                                                                class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img2.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img3.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img4.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img5.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img6.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img7.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                @empty
+                                    <p class="text-center">No products</p>
+                                @endforelse
                         </div>
                     </div>
                     <!-- End Fashion Accessories -->
@@ -3154,384 +2081,50 @@
                                     "slidesToShow": 2
                                   }
                                 }]'>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
+                            @forelse($health_and_beauty as $health_product)
+                                <div class="js-slide products-group">
+                                    <div class="product-item">
+                                        <div class="product-item__outer h-100">
+                                            <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                                                <div class="product-item__body pb-xl-2">
+                                                    <div class="mb-2"><a
+                                                            href="{{ route('product.category', $health_product->category->slug) }}"
+                                                            class="font-size-12 text-gray-5">{{ $health_product->category->name }}</a></div>
+                                                    <h5 class="mb-1 product-item__title"><a
+                                                            href="{{ route('product.details', $health_product->slug) }}"
+                                                            class="text-blue font-weight-bold">{{ $health_product->name }}</a></h5>
+                                                    <div class="mb-2">
+                                                        <a  href="{{ route('product.details', $health_product->slug) }}"
+                                                            class="d-block text-center"><img class="img-fluid"
+                                                                                             src="{{ $health_product->images()->first()->url }}"
+                                                                                             alt="Image Description"></a>
                                                     </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
+                                                    <div class="flex-center-between mb-1">
+                                                        <div class="prodcut-price">
+                                                            <div class="text-gray-100">{{ getCurrencyIcon() }} {{ $health_product->price }}</div>
+                                                        </div>
+                                                        <div class="d-none d-xl-block prodcut-add-cart">
+                                                            <a href="{{ route('product.details', $health_product->slug) }}"
+                                                               class="btn-add-cart btn-primary transition-3d-hover"><i
+                                                                    class="ec ec-add-to-cart"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                <div class="product-item__footer">
+                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                        <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
+                                                                class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                        <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
+                                                                class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img2.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img3.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img4.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img5.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img6.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img7.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                @empty
+                                    <p class="text-center">No products</p>
+                                @endforelse
                         </div>
                     </div>
                     <!-- End Health & Beauty -->
@@ -3575,384 +2168,50 @@
                                     "slidesToShow": 2
                                   }
                                 }]'>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
+                            @forelse($bikes_and_car as $bikes__product)
+                                <div class="js-slide products-group">
+                                    <div class="product-item">
+                                        <div class="product-item__outer h-100">
+                                            <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                                                <div class="product-item__body pb-xl-2">
+                                                    <div class="mb-2"><a
+                                                            href="{{ route('product.category', $bikes__product->category->slug) }}"
+                                                            class="font-size-12 text-gray-5">{{ $bikes__product->category->name }}</a></div>
+                                                    <h5 class="mb-1 product-item__title"><a
+                                                            href="{{ route('product.details', $bikes__product->slug) }}"
+                                                            class="text-blue font-weight-bold">{{ $bikes__product->name }}</a></h5>
+                                                    <div class="mb-2">
+                                                        <a  href="{{ route('product.details', $bikes__product->slug) }}"
+                                                            class="d-block text-center"><img class="img-fluid"
+                                                                                             src="{{ $bikes__product->images()->first()->url }}"
+                                                                                             alt="Image Description"></a>
                                                     </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
+                                                    <div class="flex-center-between mb-1">
+                                                        <div class="prodcut-price">
+                                                            <div class="text-gray-100">{{ getCurrencyIcon() }} {{ $bikes__product->price }}</div>
+                                                        </div>
+                                                        <div class="d-none d-xl-block prodcut-add-cart">
+                                                            <a href="{{ route('product.details', $bikes__product->slug) }}"
+                                                               class="btn-add-cart btn-primary transition-3d-hover"><i
+                                                                    class="ec ec-add-to-cart"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                <div class="product-item__footer">
+                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                        <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
+                                                                class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                        <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
+                                                                class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img2.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img3.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img4.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img5.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img6.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img7.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="js-slide products-group">
-                                <div class="product-item">
-                                    <div class="product-item__outer h-100">
-                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                            <div class="product-item__body pb-xl-2">
-                                                <div class="mb-2"><a
-                                                        href="{{ url('product-categories-7-column-full-width') }}"
-                                                        class="font-size-12 text-gray-5">Speakers</a></div>
-                                                <h5 class="mb-1 product-item__title"><a
-                                                        href="{{ url('single-product-full-width') }}"
-                                                        class="text-blue font-weight-bold">Wireless Audio System
-                                                        Multiroom
-                                                        360 degree Full base audio</a></h5>
-                                                <div class="mb-2">
-                                                    <a href="{{ url('single-product-full-width') }}"
-                                                       class="d-block text-center"><img class="img-fluid"
-                                                                                        src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                        alt="Image Description"></a>
-                                                </div>
-                                                <div class="flex-center-between mb-1">
-                                                    <div class="prodcut-price">
-                                                        <div class="text-gray-100">$685,00</div>
-                                                    </div>
-                                                    <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="{{ url('single-product-full-width') }}"
-                                                           class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                class="ec ec-add-to-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item__footer">
-                                                <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                    <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                    <a href="{{ url('wishlist') }}" class="text-gray-6 font-size-13"><i
-                                                            class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @empty
+                                <p class="text-center">No products</p>
+                            @endforelse
                         </div>
                     </div>
                     <!-- End Bikes & Car -->
@@ -4044,48 +2303,18 @@
                                 "slidesToShow": 1
                             }
                         }]'>
-                    <div class="js-slide">
-                        <a href="#" class="link-hover__brand">
-                            <img class="img-fluid m-auto max-height-50"
-                                 src="{{ asset('frontend') }}/assets/img/200X60/img1.png"
-                                 alt="Image Description">
-                        </a>
-                    </div>
-                    <div class="js-slide">
-                        <a href="#" class="link-hover__brand">
-                            <img class="img-fluid m-auto max-height-50"
-                                 src="{{ asset('frontend') }}/assets/img/200X60/img2.png"
-                                 alt="Image Description">
-                        </a>
-                    </div>
-                    <div class="js-slide">
-                        <a href="#" class="link-hover__brand">
-                            <img class="img-fluid m-auto max-height-50"
-                                 src="{{ asset('frontend') }}/assets/img/200X60/img3.png"
-                                 alt="Image Description">
-                        </a>
-                    </div>
-                    <div class="js-slide">
-                        <a href="#" class="link-hover__brand">
-                            <img class="img-fluid m-auto max-height-50"
-                                 src="{{ asset('frontend') }}/assets/img/200X60/img4.png"
-                                 alt="Image Description">
-                        </a>
-                    </div>
-                    <div class="js-slide">
-                        <a href="#" class="link-hover__brand">
-                            <img class="img-fluid m-auto max-height-50"
-                                 src="{{ asset('frontend') }}/assets/img/200X60/img5.png"
-                                 alt="Image Description">
-                        </a>
-                    </div>
-                    <div class="js-slide">
-                        <a href="#" class="link-hover__brand">
-                            <img class="img-fluid m-auto max-height-50"
-                                 src="{{ asset('frontend') }}/assets/img/200X60/img6.png"
-                                 alt="Image Description">
-                        </a>
-                    </div>
+                    @forelse($brands as $brand)
+                        <div class="js-slide">
+                            <a href="#" class="link-hover__brand">
+                                <img class="img-fluid m-auto max-height-50"
+                                     src="{{ @$brand->image->url }}"
+                                     alt="{{ $brand->name }}">
+                            </a>
+                        </div>
+                    @empty
+                        <p class="text-center">No brands</p>
+                    @endforelse
+
                 </div>
             </div>
         </div>

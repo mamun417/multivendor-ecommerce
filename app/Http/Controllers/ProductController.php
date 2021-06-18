@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Helpers\CartHelper;
 use App\Http\Controllers\Helpers\ProductHelper;
 use App\Models\Brand;
 use App\Models\Category;
@@ -14,7 +15,12 @@ class ProductController extends Controller
 {
     public function show(Product $product)
     {
-        return view('frontend.pages.products.show', compact('product'));
+        // check exist in cart
+        $cart_product = '';
+        if (request('cart')) { // cart == rowId
+            $cart_product = CartHelper::searchProduct('cart', request('cart'), 'rowId');
+        }
+        return view('frontend.pages.products.show', compact('product', 'cart_product'));
     }
 
     public function categoryProduct(Category $category)

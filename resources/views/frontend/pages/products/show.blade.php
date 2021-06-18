@@ -136,17 +136,22 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="row">
+                            <form action="{{ route('cart.store', @$product->slug) }}" method="post">
+                                @csrf
+                                <input type="hidden" name="exist_cart" value="{{ @$cart_product ? true : false }}">
+                                <input type="hidden" name="rowId"
+                                       value="{{ @$cart_product ? @$cart_product->rowId : '' }}">
+                                <div class="row">
                                 <div class="col-md-6">
                                     @if($product->attributes->color)
                                         <div class="border-top border-bottom py-3 mb-4">
                                             <div class="d-flex align-items-center">
                                                 <h6 class="font-size-14 mb-0">Color</h6>
                                                 <!-- Select -->
-                                                <select class="js-select selectpicker dropdown-select ml-3"
+                                                <select name="color" class="js-select selectpicker dropdown-select ml-3"
                                                         data-style="btn-sm bg-white font-weight-normal py-2 border">
                                                     @foreach(explode(',', $product->attributes->color) as $color)
-                                                        <option value="{{ $color }}">{{ $color }}</option>
+                                                        <option {{  @$cart_product->options['color'] === @$color ? 'selected' : '' }} value="{{ $color }}">{{ $color }}</option>
                                                     @endforeach
                                                 </select>
                                                 <!-- End Select -->
@@ -160,10 +165,10 @@
                                             <div class="d-flex align-items-center">
                                                 <h6 class="font-size-14 mb-0">Size</h6>
                                                 <!-- Select -->
-                                                <select class="js-select selectpicker dropdown-select ml-3"
+                                                <select name="size" class="js-select selectpicker dropdown-select ml-3"
                                                         data-style="btn-sm bg-white font-weight-normal py-2 border">
-                                                    @foreach(explode(',', $product->attributes->size) as $color)
-                                                        <option value="{{ $color }}">{{ $color }}</option>
+                                                    @foreach(explode(',', $product->attributes->size) as $size)
+                                                        <option {{  @$cart_product->options['size'] === @$size ? 'selected' : '' }} value="{{ $size }}">{{ $size }}</option>
                                                     @endforeach
                                                 </select>
                                                 <!-- End Select -->
@@ -172,8 +177,6 @@
                                     @endif
                                 </div>
                             </div>
-
-
                             <div class="d-md-flex align-items-end mb-3">
                                 <div class="max-width-150 mb-4 mb-md-0">
                                     <h6 class="font-size-14">Quantity</h6>
@@ -182,16 +185,18 @@
                                         <div class="js-quantity row align-items-center">
                                             <div class="col">
                                                 <input
+                                                    id="qty"
+                                                    name="qty"
                                                     class="js-result form-control h-auto border-0 rounded p-0 shadow-none"
-                                                    type="text" value="1">
+                                                    type="text" value="{{ @$cart_product->qty ?? 1 }}">
                                             </div>
                                             <div class="col-auto pr-1">
-                                                <a class="js-minus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0"
-                                                   href="javascript:;">
+                                                <a onclick="minusQty()" href="javascript:void(0)" class="js-minus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0"
+                                                   >
                                                     <small class="fas fa-minus btn-icon__inner"></small>
                                                 </a>
-                                                <a class="js-plus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0"
-                                                   href="javascript:;">
+                                                <a  href="javascript:void(0)" onclick="plusQty()" class="js-plus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0"
+                                                   >
                                                     <small class="fas fa-plus btn-icon__inner"></small>
                                                 </a>
                                             </div>
@@ -200,10 +205,11 @@
                                     <!-- End Quantity -->
                                 </div>
                                 <div class="ml-md-3">
-                                    <a href="#" class="btn px-5 btn-primary-dark transition-3d-hover"><i
-                                            class="ec ec-add-to-cart mr-2 font-size-20"></i> Add to Cart</a>
+                                    <button type="submit" class="btn px-5 btn-primary-dark transition-3d-hover"><i
+                                            class="ec ec-add-to-cart mr-2 font-size-20"></i> {{ @$cart_product ? 'Update Cart' : 'Add to Cart' }}</button>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -1017,4 +1023,16 @@
 @endsection
 
 @push('scripts')
+    <script>
+        function minusQty()
+        {
+            let oldQty = document.getElementById('qty')
+            parseInt(oldQty.value--)
+        }
+        function plusQty()
+        {
+            let oldQty = document.getElementById('qty')
+            parseInt(oldQty.value++)
+        }
+    </script>
 @endpush

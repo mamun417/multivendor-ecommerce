@@ -8,20 +8,20 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->get();
-        $mobile_and_gadgets = Product::with('category')->whereHas('category', function($query){
+        $products = Product::active()->latest()->get();
+        $mobile_and_gadgets = Product::active()->with('category')->whereHas('category', function($query){
             $query->where('slug', 'mobile-&-gadgets');
         })->get();
-        $fashion_accessories = Product::with('category')->whereHas('category', function($query){
+        $fashion_accessories = Product::active()->with('category')->whereHas('category', function($query){
             $query->where('slug', 'fashion-accessories');
         })->get();
-        $home_appliances = Product::with('category')->whereHas('category', function($query){
+        $home_appliances = Product::active()->with('category')->whereHas('category', function($query){
             $query->where('slug', 'home-appliances');
         })->get();
-        $health_and_beauty = Product::with('category')->whereHas('category', function($query){
+        $health_and_beauty = Product::active()->with('category')->whereHas('category', function($query){
             $query->where('slug', 'health-&-beauty');
         })->get();
-        $bikes_and_car = Product::with('category')->whereHas('category', function($query){
+        $bikes_and_car = Product::active()->with('category')->whereHas('category', function($query){
             $query->where('slug', 'bikes-&-car');
         })->get();
 

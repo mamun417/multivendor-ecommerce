@@ -40,11 +40,6 @@ class CartHelper extends Controller
         if (!$product) {
             return false;
         }
-
-        $product_stock = !$product->price && $size
-            ? $product->productPricesWithSize()->where('size', $size)->first()->stock
-            : $product->stock;
-
-        return $product_stock <= $qty ? $product_stock : (int) $qty;
+        return $product->stock <= $qty ? $product->stock : (int) $qty;
     }
 }

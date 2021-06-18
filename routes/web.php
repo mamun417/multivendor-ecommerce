@@ -32,7 +32,7 @@ Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name
 Route::get('/products/category/{category:slug}', [ProductController::class, 'categoryProduct'])->name('product.category');
 Route::get('categories-with-products', [ProductController::class, 'categoriesWithProducts'])->name('products.categories');
 
-
+Route::post('cart/{slug}', [CartController::class, 'store'])->name('cart.store');
 
 Route::get('/shop', function () {
     return view('frontend.pages.shop');

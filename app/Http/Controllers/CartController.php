@@ -25,7 +25,6 @@ class CartController extends Controller
 
     public function store(CartRequest $request, $slug)
     {
-
         $product = Product::where('slug', $slug)->firstOrFail();
 
         $valid_quantity = CartHelper::checkProductStock($product->id, $request->input('qty'), $request->size);
@@ -38,33 +37,13 @@ class CartController extends Controller
             Cart::instance('cart')->remove(request('rowId'));
         }
 
-        if (!$product->price && $request->size) {
-            $size = $product->productPricesWithSize()->where('size', $request->size)->first();
-            $product_price = $size->discount_price ?? $size->price;
+        if (!$product->price) {
+            $product_price = $product->discount_price;
         } else {
             $product_price = $product->discount_price ?? $product->price;
         }
 
         $product_price = (float)$product_price;
-
-
-        /************Start == product offer section*************/
-        $offer = Offer::active()->find($request->offer_id);
-        $solid_price = $product_price;
-        $offer_price = 0.00;
-        if (isset($offer) && ProductHelper::offerBelongsToProduct($offer, $product)) {
-            if (Auth::check()) { // must be need auth
-                if (!ProductHelper::offerExpired($offer)) { // true mains = expired
-                    if (ProductHelper::offerAppliedBelongsToProduct($offer, $product)) { // if true means offer applied
-                        $offer_price = 0.00;
-                    } else { // type 1 == percentage
-                        $product_price = $offer->type == 1 ? $solid_price - ($offer->amount / 100 * $solid_price) : $solid_price - $offer->amount;
-                        $offer_price = (float)($offer->amount / 100 * $solid_price);
-                    }
-                }
-            }
-        }
-        /************End == product offer section*************/
 
         $data = [
             'id' => $product->id,
@@ -77,30 +56,14 @@ class CartController extends Controller
                 'image' => $product->images()->first()->url,
                 'color' => $request->input('color') ?? '',
                 'size' => $request->input('size') ?? '',
-                'offer_amount' => @$offer_price,
-                'offer_id' => @$offer->id ? @$offer->id : null,
             ]
         ];
 
         $cart_product = Cart::instance('cart')->add($data);
 
+        Cart::setTax($cart_product->rowId, 0);
 
-        // get tax rate
-        if (isset($product->tax)) {
-            if ($product->tax->type == 1) { // 1 = percentages
-                $tax = $product->tax->tax;
-            } else {
-                $tax = ProductHelper::taxInPercentage($product_price, $product->tax->tax);
-            }
-        } else {
-            $tax = 0;
-        }
-
-
-        Cart::setTax($cart_product->rowId, $tax);
-
-
-        return redirect(route('products.details', $slug) . '?cart=' . $cart_product->rowId)
+        return redirect(route('product.details', $slug) . '?cart=' . $cart_product->rowId)
             ->with('success', 'Product add to cart successfully.');
     }
 

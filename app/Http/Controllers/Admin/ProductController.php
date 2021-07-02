@@ -59,9 +59,14 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            $product = Auth::user()->products()->create($request->validated() +
-                ['status' => (bool)$request->status]
-            );
+            $extra_params = [
+                'status'   => (bool)$request->status,
+                'featured' => (bool)$request->featured,
+                'onsale'   => (bool)$request->onsale,
+                'top_rated' => (bool)$request->top_rated,
+            ];
+
+            $product = Auth::user()->products()->create($request->validated() + $extra_params);
 
             $this->saveImages($request, $product);
             $this->saveAttributes($request, $product);
@@ -191,9 +196,14 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            $product->update($request->validated() +
-                ['status' => (bool)$request->status]
-            );
+            $extra_params = [
+                'status'   => (bool)$request->status,
+                'featured' => (bool)$request->featured,
+                'onsale'   => (bool)$request->onsale,
+                'top_rated' => (bool)$request->top_rated,
+            ];
+
+            $product->update($request->validated() + $extra_params);
 
             // delete old thumbnails
             if ($request->file('thumbnail')) {

@@ -19,7 +19,6 @@ class Product extends Model
         ['720', '660'],
     ];
     const IMAGE_SIZES = [['720', '660']];
-    const PRODUCT_HEIGHT = 930;
     protected $fillable = [
         'category_id',
         'brand_id',
@@ -31,7 +30,10 @@ class Product extends Model
         'code',
         'details',
         'weight',
-        'status'
+        'status',
+        'featured',
+        'onsale',
+        'top_rated',
     ];
 
     public static function boot()

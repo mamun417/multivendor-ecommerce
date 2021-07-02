@@ -1,6 +1,14 @@
 @extends('admin.layouts.app')
 @section('title', 'Coupons')
 
+@push('style')
+    <style>
+        .running_coupon {
+            background-color: #bce4dc !important;
+        }
+    </style>
+@endpush
+
 @section('content')
 
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -96,10 +104,13 @@
 
                                 <tbody>
                                 @foreach($coupons as $coupon)
+                                    {{--@php($coupon_running = (new \App\Http\Controllers\Admin\CouponController())->checkValidate($coupon->id))--}}
+                                    {{--<tr class="{{$coupon_running ? 'running_coupon' : ''}}"--}}
                                     <tr>
                                         <td class="text-left">{{ $coupon->code }}</td>
-                                        <td>{{ $coupon->amount }}</td>
+                                        <td>{{ $coupon->amount }} {{ $coupon->apply_type === 1 ? 'TK' : '%' }}</td>
                                         <td>
+
                                             {{ ucfirst(\App\Http\Controllers\Helpers\CouponHelper::getTypeDisplayName($coupon->apply_type)) }}
                                         </td>
 
@@ -119,10 +130,16 @@
 
                                         <td>
                                             {{ $coupon->started_at->diffForHumans() }}
+                                            @if (\Carbon\Carbon::instance($coupon->started_at)->isBefore(now()))
+                                                <span class="badge badge-primary">started</span>
+                                            @endif
                                         </td>
 
                                         <td>
                                             {{ $coupon->expired_at->diffForHumans() }}
+                                            @if (\Carbon\Carbon::instance($coupon->expired_at)->isBefore(now()))
+                                                <span class="badge badge-warning">expired</span>
+                                            @endif
                                         </td>
 
                                         <td>{{ $coupon->created_at->diffForHumans() }}</td>

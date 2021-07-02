@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CouponRequest;
 use App\Models\Coupon;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 
@@ -67,6 +68,21 @@ class CouponController extends Controller
         } catch (Exception $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }
+    }
+
+    public function checkValidate($coupon_id): bool
+    {
+        $coupon = Coupon::find($coupon_id);
+
+        if (!$coupon) {
+            return false;
+        }
+
+        $status     = $coupon->status;
+        $is_started = Carbon::instance($coupon->started_at)->isBefore(now());
+        $is_expired = Carbon::instance($coupon->expired_at)->isBefore(now());
+
+        return $status && $is_started && !$is_expired;
     }
 
     /**

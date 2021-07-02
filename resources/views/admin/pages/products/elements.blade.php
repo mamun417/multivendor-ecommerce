@@ -194,7 +194,7 @@
                 </div>
 
                 <!--checkbox area-->
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="status">
@@ -208,6 +208,54 @@
                             </label>
 
                             <small class="text-danger error_msg status_error"></small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="featured">
+                                <input type="checkbox"
+                                       {{ isset($product) && $product->featured || old('featured') ? 'checked' : '' }}
+                                       id="featured"
+                                       name="featured"
+                                       class="i-checks"
+                                    {{ !isset($product) ? 'checked' : '' }}>
+                                Featured
+                            </label>
+
+                            <small class="text-danger error_msg featured_error"></small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="onsale">
+                                <input type="checkbox"
+                                       {{ isset($product) && $product->onsale || old('onsale') ? 'checked' : '' }}
+                                       id="onsale"
+                                       name="onsale"
+                                       class="i-checks"
+                                    {{ !isset($product) ? 'checked' : '' }}>
+                                Onsale
+                            </label>
+
+                            <small class="text-danger error_msg onsale_error"></small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="top_rated">
+                                <input type="checkbox"
+                                       {{ isset($product) && $product->top_rated || old('top_rated') ? 'checked' : '' }}
+                                       id="top_rated"
+                                       name="top_rated"
+                                       class="i-checks"
+                                    {{ !isset($product) ? 'checked' : '' }}>
+                                Top Rated
+                            </label>
+
+                            <small class="text-danger error_msg top_rated_error"></small>
                         </div>
                     </div>
                 </div>

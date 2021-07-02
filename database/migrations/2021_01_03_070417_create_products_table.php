@@ -27,6 +27,9 @@ class CreateProductsTable extends Migration
             $table->longText('details')->nullable();
             $table->string('weight')->nullable();
             $table->boolean('status')->default(false);
+            $table->boolean('featured')->default(false);
+            $table->boolean('onsale')->default(false);
+            $table->boolean('top_rated')->default(false);
             $table->timestamps();
         });
     }

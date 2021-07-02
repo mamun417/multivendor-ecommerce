@@ -5,20 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helpers\CategoryHelper;
 use App\Http\Requests\CategoryRequest;
-use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\DocBlock\Tags\Uses;
+use Throwable;
 
 class CategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = $request->perPage ?: 10;
-        $keyword = $request->keyword;
+        $perPage = $request->query('perPage') ?: 10;
+        $keyword = $request->query('keyword');
 
-        //get all latest Categories
         $categories = Category::latest();
 
         if ($keyword) {
@@ -30,29 +28,28 @@ class CategoryController extends Controller
 
         $categories = $categories->paginate($perPage);
 
-        //Show All Categories
         return view('admin.pages.categories.index', compact('categories'));
     }
 
     public function create()
     {
         $main_categories = CategoryHelper::getMainCategories();
+
         return view('admin.pages.categories.create', compact('main_categories'));
     }
 
     /**
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function store(CategoryRequest $request): \Illuminate\Http\RedirectResponse
     {
-        $request_data = $request->validated();
+        $request_data           = $request->validated();
         $request_data['status'] = !!$request->status;
 
         try {
             Category::create($request_data);
 
             return redirect()->back()->with('success', 'Category Created Successfully');
-
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }
@@ -67,9 +64,12 @@ class CategoryController extends Controller
         return view('admin.pages.categories.edit', compact('main_categories', 'category'));
     }
 
-    public function update(CategoryRequest $request, Category $category)
+    /**
+     * @throws Throwable
+     */
+    public function update(CategoryRequest $request, Category $category): \Illuminate\Http\RedirectResponse
     {
-        $request_data = $request->validated();
+        $request_data           = $request->validated();
         $request_data['status'] = !!$request->status;
 
         DB::beginTransaction();
@@ -80,7 +80,6 @@ class CategoryController extends Controller
             DB::commit();
 
             return redirect()->back()->with('success', 'Category Updated Successfully');
-
         } catch (\Exception $exception) {
             report($exception);
             DB::rollBack();
@@ -89,7 +88,10 @@ class CategoryController extends Controller
         }
     }
 
-    public function destroy(Category $category)
+    /**
+     * @throws Throwable
+     */
+    public function destroy(Category $category): \Illuminate\Http\RedirectResponse
     {
         DB::beginTransaction();
 
@@ -98,7 +100,6 @@ class CategoryController extends Controller
             DB::commit();
 
             return redirect()->route('admin.categories.index')->with('success', 'Category Delete Successfully');
-
         } catch (\Exception $exception) {
             report($exception);
             DB::rollBack();
@@ -107,9 +108,10 @@ class CategoryController extends Controller
         }
     }
 
-    public function changeStatus(Category $category)
+    public function changeStatus(Category $category): \Illuminate\Http\JsonResponse
     {
         $category->update(['status' => !$category->status]);
+
         return response()->json(['status' => true]);
     }
 }

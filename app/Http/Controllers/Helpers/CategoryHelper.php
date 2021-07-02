@@ -13,7 +13,7 @@ class CategoryHelper extends Controller
      * @param bool $disable
      * @return mixed
      */
-    public static function getMainCategories($disable = true)
+    public static function getMainCategories(bool $disable = true)
     {
         $paren_categories = Category::latest()->with('children')->mainCategory();
 

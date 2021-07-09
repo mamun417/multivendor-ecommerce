@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserProfileController;
@@ -33,6 +34,11 @@ Route::get('/products/category/{category:slug}', [ProductController::class, 'cat
 Route::get('categories-with-products', [ProductController::class, 'categoriesWithProducts'])->name('products.categories');
 
 Route::post('cart/{slug}', [CartController::class, 'store'])->name('cart.store');
+Route::post('cart-update/{rowId}', [CartController::class, 'updateQty'])->name('cart.update.qty');
+Route::get('cart/remove/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('cart-coupon', [CartController::class, 'applyCoupon'])->name('cart.apply.coupon');
+
+Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 Route::get('/shop', function () {
     return view('frontend.pages.shop');
@@ -104,9 +110,9 @@ Route::get('/shop-right-sidebar', function () {
 //Route::get('/cart', function () {
 //    return view('frontend.pages.cart');
 //});
-Route::get('/checkout', function () {
-    return view('frontend.pages.checkout');
-});
+//Route::get('/checkout', function () {
+//    return view('frontend.pages.checkout');
+//});
 Route::get('/my-account', function () {
     return view('frontend.pages.profile.my-account');
 });

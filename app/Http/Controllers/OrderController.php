@@ -15,7 +15,6 @@ class OrderController extends Controller
 {
     public function orderSubmit(Request $request)
     {
-
         $cart = Cart::instance('cart');
 
         // check product status active and stock (size wise)

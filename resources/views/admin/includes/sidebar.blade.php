@@ -64,10 +64,26 @@
                 </a>
             </li>
 
-            <li class="{{ getActiveClassByController('SiteSettingController') }}">
-                <a href="{{ route('admin.setting.edit') }}"><i class="fa fa-photo"></i>
-                    <span class="nav-label">SiteSetting</span>
+            @php($settings_active_class = getActiveClassByController('SiteSettingController') || getActiveClassByController('HomepageCategoryController') ||  getActiveClassByController('TaxController'))
+
+            <li class="{{ $settings_active_class ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-gears"></i>
+                    <span class="nav-label">Settings</span>
+                    <span class="fa arrow"></span>
                 </a>
+                <ul class="nav nav-second-level collapse">
+                    <li class="{{ getActiveClassByController('SiteSettingController') }}">
+                        <a href="{{ route('admin.setting.edit') }}"><i class="fa fa-globe"></i>
+                            <span class="nav-label">Site setting</span>
+                        </a>
+                    </li>
+                    <li class="{{ getActiveClassByController('HomepageCategoryController') }}">
+                        <a href="{{ route('admin.setting.home-page-category.index') }}"><i class="fa fa-list-ul"></i>
+                            <span class="nav-label">Homepage category</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             @endsuperadmin
 

@@ -46,4 +46,9 @@ class Coupon extends Model
             $coupon->slug = slug($coupon->code);
         });
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
 }

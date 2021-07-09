@@ -20,6 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->string('slug')->nullable();
             $table->text('description')->nullable();
             $table->boolean('status')->default(false);
+            $table->bigInteger('serial_no')->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();

@@ -25,7 +25,7 @@ class SiteSettingController extends Controller
     {
         $setting = SiteSetting::with('image')->where('id', 1)->first();
 
-        return view('admin.pages.setting.edit', compact('setting'));
+        return view('admin.pages.setting.site-setting', compact('setting'));
     }
 
     /**
@@ -64,7 +64,7 @@ class SiteSettingController extends Controller
 
             DB::commit();
 
-            return redirect()->route('admin.brands.index')->with('success', 'Brand Updated Successfully');
+            return redirect()->route('admin.pages.setting.site-setting.edit')->with('success', 'Site setting updated successfully');
         } catch (Exception $exception) {
             report($exception);
             DB::rollBack();

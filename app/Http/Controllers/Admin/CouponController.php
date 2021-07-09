@@ -72,17 +72,16 @@ class CouponController extends Controller
 
     public function checkValidate($coupon_id): bool
     {
-        $coupon = Coupon::find($coupon_id);
+        $coupon = Coupon::where('id', $coupon_id)->active()->first();
 
         if (!$coupon) {
             return false;
         }
 
-        $status     = $coupon->status;
         $is_started = Carbon::instance($coupon->started_at)->isBefore(now());
         $is_expired = Carbon::instance($coupon->expired_at)->isBefore(now());
 
-        return $status && $is_started && !$is_expired;
+        return $is_started && !$is_expired;
     }
 
     /**

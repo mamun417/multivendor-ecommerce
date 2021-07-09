@@ -18,6 +18,7 @@ class CreateSiteSettingsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
+            $table->string('homepage_show_cat_count')->default(5);
             $table->timestamps();
         });
     }

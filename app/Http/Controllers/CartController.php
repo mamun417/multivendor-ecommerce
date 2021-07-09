@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Helpers\CartHelper;
+use App\Http\Controllers\Helpers\CouponHelper;
 use App\Http\Controllers\Helpers\ProductHelper;
 use App\Http\Controllers\Helpers\ShippingMethodHelper;
 use App\Http\Requests\CartRequest;
 use App\Http\Requests\ShippingRequest;
+use App\Models\Coupon;
 use App\Models\Offer;
 use App\Models\Product;
 use App\Models\ShippingAddress;
@@ -20,6 +22,7 @@ class CartController extends Controller
     public function index()
     {
         $cart_products = Cart::instance('cart')->content()->reverse();
+
         return view('frontend.pages.cart.cart', compact('cart_products'));
     }
 
@@ -27,7 +30,7 @@ class CartController extends Controller
     {
         $product = Product::where('slug', $slug)->firstOrFail();
 
-        $valid_quantity = CartHelper::checkProductStock($product->id, $request->input('qty'), $request->size);
+        $valid_quantity = CartHelper::checkProductStock($product->id, $request->input('qty'));
 
         if (!$valid_quantity) {
             return redirect()->back()->with('error', 'Quantity is not available.');
@@ -46,16 +49,16 @@ class CartController extends Controller
         $product_price = (float)$product_price;
 
         $data = [
-            'id' => $product->id,
-            'name' => $product->name,
-            'qty' => $valid_quantity,
-            'price' => (float)$product_price,
-            'weight' => 0,
+            'id'      => $product->id,
+            'name'    => $product->name,
+            'qty'     => $valid_quantity,
+            'price'   => (float)$product_price,
+            'weight'  => 0,
             'options' => [
-                'slug' => $product->slug,
+                'slug'  => $product->slug,
                 'image' => $product->images()->first()->url,
                 'color' => $request->input('color') ?? '',
-                'size' => $request->input('size') ?? '',
+                'size'  => $request->input('size') ?? '',
             ]
         ];
 
@@ -89,13 +92,19 @@ class CartController extends Controller
         $exits = CartHelper::checkCartExitProduct('cart', $rowId, 'rowId');
 
         if (!$exits) {
+            if ($request->ajax()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Product not found in your cart.'
+                ]);
+            }
+
             return back()->with('error', 'Product not found in your cart.');
         }
 
         $cart_product = Cart::instance('cart')->content()->get($rowId);
 
-        $valid_quantity = CartHelper::checkProductStock($cart_product->id, $request->input('qty'),
-            $cart_product->options['size']);
+        $valid_quantity = CartHelper::checkProductStock($cart_product->id, $request->input('qty'));
 
         // stock 0
         if (!$valid_quantity) {
@@ -104,15 +113,22 @@ class CartController extends Controller
             Cart::instance('cart')->update($rowId, $valid_quantity);
         }
 
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Cart updated successfully.'
+            ]);
+        }
+
         return back()->with('success', 'Cart updated successfully.');
     }
 
     public function empty()
     {
         Cart::instance('cart')->destroy();
+
         return back()->with('success', 'Cart empty successful.');
     }
-
 
     public function checkout()
     {
@@ -123,12 +139,12 @@ class CartController extends Controller
     {
         Auth::user()->shippingAddress()->updateOrCreate(['user_id' => auth()->id()], [
             'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'city' => $request->city,
-            'state' => $request->state,
-            'address' => $request->address,
+            'last_name'  => $request->last_name,
+            'email'      => $request->email,
+            'phone'      => $request->phone,
+            'city'       => $request->city,
+            'state'      => $request->state,
+            'address'    => $request->address,
         ]);
 
         return redirect()->route('cart.order.page');
@@ -145,5 +161,26 @@ class CartController extends Controller
         } else {
             return redirect()->back()->with('error', 'please fill-up your shipping address');
         }
+    }
+
+    public function applyCoupon(Request $request)
+    {
+        $coupon_code = $request->input('coupon');
+
+        $exist = Coupon::where('code', $coupon_code)->first();
+
+        if (isset($exist) && CouponHelper::validity($exist->id)) {
+            \Session::put('coupon', $coupon_code);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Coupon successfully applied!'
+            ]);
+        }
+        \Session::forget('coupon');
+        return response()->json([
+            'success' => false,
+            'message' => 'Coupon is not valid!'
+        ]);
     }
 }

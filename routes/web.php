@@ -33,6 +33,9 @@ Route::get('/products/category/{category:slug}', [ProductController::class, 'cat
 Route::get('categories-with-products', [ProductController::class, 'categoriesWithProducts'])->name('products.categories');
 
 Route::post('cart/{slug}', [CartController::class, 'store'])->name('cart.store');
+Route::post('cart-update/{rowId}', [CartController::class, 'updateQty'])->name('cart.update.qty');
+Route::get('cart/remove/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('cart-coupon', [CartController::class, 'applyCoupon'])->name('cart.apply.coupon');
 
 Route::get('/shop', function () {
     return view('frontend.pages.shop');

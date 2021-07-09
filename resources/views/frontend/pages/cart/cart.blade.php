@@ -129,6 +129,10 @@
                                         </div>
                                         <div class="d-md-flex">
                                             <a href="{{ route('home') }}"
+                                               class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5 w-100 w-md-auto">
+                                                Continue to Shopping
+                                            </a>
+                                            <a href="{{ route('checkout') }}"
                                                class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5 w-100 w-md-auto d-none d-md-inline-block">Proceed
                                                 to checkout</a>
                                         </div>
@@ -174,10 +178,10 @@
                             </tr>
                             </tbody>
                         </table>
-                        <button type="button"
-                                class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5 w-100 w-md-auto d-md-none">
+                        <a href="{{ route('checkout') }}"
+                           class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5 w-100 w-md-auto d-md-none">
                             Proceed to checkout
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

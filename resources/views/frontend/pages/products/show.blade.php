@@ -115,7 +115,7 @@
                                        value="{{ @$cart_product ? @$cart_product->rowId : '' }}">
                                 <div class="row">
                                 <div class="col-md-6">
-                                    @if($product->attributes->color)
+                                    @if(isset($product->attributes) && $product->attributes->color)
                                         <div class="border-top border-bottom py-3 mb-4">
                                             <div class="d-flex align-items-center">
                                                 <h6 class="font-size-14 mb-0">Color</h6>
@@ -132,7 +132,7 @@
                                     @endif
                                 </div>
                                 <div class="col-md-6">
-                                    @if($product->attributes->size)
+                                    @if(isset($product->attributes) && $product->attributes->size)
                                         <div class="border-top border-bottom py-3 mb-4">
                                             <div class="d-flex align-items-center">
                                                 <h6 class="font-size-14 mb-0">Size</h6>

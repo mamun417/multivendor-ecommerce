@@ -60,8 +60,12 @@ Route::group(['middleware' => ['auth:admin', 'isSuperAdmin'], 'as' => 'admin.', 
     Route::put('setting/update', [SiteSettingController::class, 'update'])->name('setting.update');
 
     // homepage category setting
-    Route::get('setting/home-page-category', [HomepageCategoryController::class, 'index'])->name('setting.home-page-category.index');
-    Route::put('setting/home-page-category/update', [HomepageCategoryController::class, 'update'])->name('setting.home-page-category.update');
+    Route::post('setting/home-page-category/homepage-show-cat-count', [HomepageCategoryController::class, 'updateHomepageShowCatCount'])
+        ->name('setting.homepage-show-cat-count.update');
+    Route::get('setting/home-page-category', [HomepageCategoryController::class, 'index'])
+        ->name('setting.home-page-category.index');
+    Route::put('setting/home-page-category/update', [HomepageCategoryController::class, 'update'])
+        ->name('setting.home-page-category.update');
 
 // categories
     Route::resource('categories', CategoryController::class);

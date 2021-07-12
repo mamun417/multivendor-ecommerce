@@ -9,6 +9,7 @@ use App\Models\SiteSetting;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -32,7 +33,7 @@ class SiteSettingController extends Controller
      * Update the specified resource in storage.
      *
      * @param SiteSettingRequest $request
-     * @param SiteSetting        $siteSetting
+     * @param SiteSetting $siteSetting
      * @return RedirectResponse
      * @throws Throwable
      */

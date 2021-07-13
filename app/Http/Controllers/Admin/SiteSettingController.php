@@ -9,6 +9,7 @@ use App\Models\SiteSetting;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -25,14 +26,14 @@ class SiteSettingController extends Controller
     {
         $setting = SiteSetting::with('image')->where('id', 1)->first();
 
-        return view('admin.pages.setting.edit', compact('setting'));
+        return view('admin.pages.setting.site-setting', compact('setting'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param SiteSettingRequest $request
-     * @param SiteSetting        $siteSetting
+     * @param SiteSetting $siteSetting
      * @return RedirectResponse
      * @throws Throwable
      */
@@ -64,7 +65,7 @@ class SiteSettingController extends Controller
 
             DB::commit();
 
-            return redirect()->route('admin.brands.index')->with('success', 'Brand Updated Successfully');
+            return redirect()->route('admin.pages.setting.site-setting.edit')->with('success', 'Site setting updated successfully');
         } catch (Exception $exception) {
             report($exception);
             DB::rollBack();

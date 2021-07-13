@@ -33,7 +33,7 @@ class CartHelper extends Controller
     }
 
 
-    public static function checkProductStock($product_id, $qty, $size = null)
+    public static function checkProductStock($product_id, $qty)
     {
         $product = Product::active()->find($product_id);
 

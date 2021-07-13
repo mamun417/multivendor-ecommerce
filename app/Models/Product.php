@@ -79,6 +79,11 @@ class Product extends Model
         return $query->where('status', 1);
     }
 
+    public function scopeInActive($query)
+    {
+        return $query->where('status', 0);
+    }
+
     public function attributes(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(ProductAttr::class);

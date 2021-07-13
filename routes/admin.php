@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HomepageCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SlidersController;
@@ -57,6 +58,14 @@ Route::group(['middleware' => ['auth:admin', 'isSuperAdmin'], 'as' => 'admin.', 
 //Site Setting
     Route::get('setting', [SiteSettingController::class, 'edit'])->name('setting.edit');
     Route::put('setting/update', [SiteSettingController::class, 'update'])->name('setting.update');
+
+    // homepage category setting
+    Route::post('setting/home-page-category/homepage-show-cat-count', [HomepageCategoryController::class, 'updateHomepageShowCatCount'])
+        ->name('setting.homepage-show-cat-count.update');
+    Route::get('setting/home-page-category', [HomepageCategoryController::class, 'index'])
+        ->name('setting.home-page-category.index');
+    Route::put('setting/home-page-category/update', [HomepageCategoryController::class, 'update'])
+        ->name('setting.home-page-category.update');
 
 // categories
     Route::resource('categories', CategoryController::class);

@@ -19,6 +19,7 @@ class SiteSetting extends Model
         'phone',
         'email',
         'address',
+        'homepage_show_cat_count',
     ];
 
     public function image(): MorphOne

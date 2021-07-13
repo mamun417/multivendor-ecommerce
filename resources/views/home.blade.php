@@ -878,478 +878,6 @@
             <div class="row">
                 <div class="col-xl-3 col-wd-auto d-none d-xl-block">
                     <div class="max-width-270 min-width-270 pt-xl-13 mt-xl-13">
-                        <!-- Latest Products -->
-                        <aside class="mb-4">
-                            <!-- Wrapper Latest Products -->
-                            <div class="mb-2 position-relative">
-                                <dv class="d-flex justify-content-between border-bottom border-color-1 flex-md-nowrap flex-wrap border-sm-bottom-0">
-                                    <h3 class="section-title section-title__sm mb-0 pb-3 font-size-18">Latest
-                                        Products</h3>
-                                </dv>
-                                <div
-                                    class="js-slick-carousel u-slick u-slick--gutters-2 overflow-hidden u-slick-overflow-visble pt-3 position-static"
-                                    data-slides-show="1"
-                                    data-slides-scroll="1"
-                                    data-arrows-classes="position-absolute top-0 font-size-17 u-slick__arrow-normal top-10"
-                                    data-arrow-left-classes="fa fa-angle-left right-1"
-                                    data-arrow-right-classes="fa fa-angle-right right-0">
-                                    <div class="js-slide">
-                                        <ul class="list-unstyled products-group mb-0 overflow-visible">
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend/assets/img/150X140/img1.jpg') }}"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Tablet Air 3 WiFi 64GB
-                                                                        Gold</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $629,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend/assets/img/150X140/img2.jpg') }}"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Tablet White EliteBook
-                                                                        Revolve
-                                                                        810 G2</a></h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $1 299,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend/assets/img/150X140/img3.jpg') }}"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Pendrive USB 3.0 Flash 64
-                                                                        GB</a></h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $110,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend/assets/img/150X140/img7.jpg') }}"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">White Solo 2 Wireless</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $110,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend/assets/img/150X140/img4.jpg') }}"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Smartwatch 2.0 LTE Wifi</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $110,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="js-slide">
-                                        <ul class="list-unstyled products-group mb-0 overflow-visible">
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend/assets/img/150X140/img7.jpg') }}"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">White Solo 2 Wireless</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $110,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend/assets/img/150X140/img4.jpg') }}"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Smartwatch 2.0 LTE Wifi</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $110,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend') }}/assets/img/150X140/img5.jpg"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Gear Virtual Reality</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $799,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend/assets/img/150X140/img6.jpg') }}"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">External SSD USB 3.1 750
-                                                                        GB</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $799,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div class="product-item__inner py-md-3 mx-3 row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend') }}/assets/img/150X140/img8.jpg"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Purple NX Mini F1 aparat
-                                                                        SMART
-                                                                        NX</a></h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $559.00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="js-slide">
-                                        <ul class="list-unstyled products-group mb-0 overflow-visible">
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend') }}/assets/img/150X140/img1.jpg"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Tablet Air 3 WiFi 64GB
-                                                                        Gold</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $629,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend') }}/assets/img/150X140/img2.jpg"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Tablet White EliteBook
-                                                                        Revolve
-                                                                        810 G2</a></h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $1 299,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend') }}/assets/img/150X140/img3.jpg"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Pendrive USB 3.0 Flash 64
-                                                                        GB</a></h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $110,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend') }}/assets/img/150X140/img7.jpg"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">White Solo 2 Wireless</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $110,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-item__list pb-2 mb-2 pb-md-0 mb-md-0">
-                                                <div class="product-item__outer h-100">
-                                                    <div
-                                                        class="product-item__inner py-md-3 mx-3 border-bottom row no-gutters">
-                                                        <div class="col-auto product-media-left">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="max-width-70 d-block"><img class="img-fluid"
-                                                                                                 src="{{ asset('frontend') }}/assets/img/150X140/img4.jpg"
-                                                                                                 alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="col product-item__body pl-2 pl-lg-3">
-                                                            <div class="mb-4">
-                                                                <h5 class="product-item__title"><a
-                                                                        href="{{ url('single-product-full-width') }}"
-                                                                        class="text-gray-90">Smartwatch 2.0 LTE Wifi</a>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="flex-center-between">
-                                                                <div class="prodcut-price">
-                                                                    <div
-                                                                        class="text-gray-100 font-size-15 font-weight-bold">
-                                                                        $110,00
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Wrapper Latest Products -->
-                        </aside>
-                        <!-- End Latest Products -->
                         <!-- Feature List -->
                         <aside class="mb-8">
                             <div class="d-flex justify-content-center rounded border mb-4">
@@ -1417,7 +945,11 @@
                             </div>
                         </aside>
                         <!-- End Feature List -->
-                        <!-- Feature Product -->
+
+                    @php
+                        $featured_products = \App\Models\Product::active()->where('featured', 1)->take(20)->inRandomOrder()->get();
+                    @endphp
+                    <!-- Feature Product -->
                         <aside class="mb-8">
                             <!-- Featured Products -->
                             <div class="position-relative">
@@ -1431,271 +963,41 @@
                                     data-arrows-classes="position-absolute top-0 font-size-17 u-slick__arrow-normal top-10"
                                     data-arrow-left-classes="fa fa-angle-left right-1"
                                     data-arrow-right-classes="fa fa-angle-right right-0">
-                                    <div class="js-slide products-group">
-                                        <div class="product-item remove-divider text-center">
-                                            <div class="product-item__outer h-100">
-                                                <div
-                                                    class="product-item__inner remove-prodcut-hover px-wd-4 p-2 p-md-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="d-block text-center"><img class="img-fluid"
-                                                                                                src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                                                alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="mb-2"><a
-                                                                href="{{ url('product-categories-7-column-full-width') }}"
-                                                                class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-4 product-item__title"><a
-                                                                href="{{ url('single-product-full-width') }}"
-                                                                class="text-blue font-weight-bold">Wireless Audio System
-                                                                Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
+
+                                    @forelse($featured_products as $fp)
+                                        <div class="js-slide products-group">
+                                            <div class="product-item remove-divider text-center">
+                                                <div class="product-item__outer h-100">
+                                                    <div
+                                                        class="product-item__inner remove-prodcut-hover px-wd-4 p-2 p-md-3">
+                                                        <div class="product-item__body pb-xl-2">
+                                                            <div class="mb-2">
+                                                                <a href="{{ route('product.details', $fp->id) }}"
+                                                                   class="d-block text-center"><img class="img-fluid"
+                                                                                                    src="{{ $fp->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url ?? getDefaultImage() }}"
+                                                                                                    alt="Image Description"></a>
+                                                            </div>
+                                                            <div class="mb-2"><a
+                                                                    href="{{ route('product.category', $fp->category->slug) }}"
+                                                                    class="font-size-12 text-gray-5">{{ $fp->category->name }}</a>
+                                                            </div>
+                                                            <h5 class="mb-4 product-item__title"><a
+                                                                    href="{{ route('product.details', $fp->slug) }}"
+                                                                    class="text-blue font-weight-bold">{{ $fp->name }}</a>
+                                                            </h5>
+                                                            <div class="mb-1">
+                                                                <div class="prodcut-price">
+                                                                    <div
+                                                                        class="text-gray-100">{{ getCurrencyIcon() }} {{ $fp->price }}</div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="js-slide products-group">
-                                        <div class="product-item remove-divider text-center">
-                                            <div class="product-item__outer h-100">
-                                                <div
-                                                    class="product-item__inner remove-prodcut-hover px-wd-4 p-2 p-md-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="d-block text-center"><img class="img-fluid"
-                                                                                                src="{{ asset('frontend') }}/assets/img/212X200/img2.jpg"
-                                                                                                alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="mb-2"><a
-                                                                href="{{ url('product-categories-7-column-full-width') }}"
-                                                                class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-4 product-item__title"><a
-                                                                href="{{ url('single-product-full-width') }}"
-                                                                class="text-blue font-weight-bold">Wireless Audio System
-                                                                Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="js-slide products-group">
-                                        <div class="product-item remove-divider text-center">
-                                            <div class="product-item__outer h-100">
-                                                <div
-                                                    class="product-item__inner remove-prodcut-hover px-wd-4 p-2 p-md-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="d-block text-center"><img class="img-fluid"
-                                                                                                src="{{ asset('frontend') }}/assets/img/212X200/img3.jpg"
-                                                                                                alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="mb-2"><a
-                                                                href="{{ url('product-categories-7-column-full-width') }}"
-                                                                class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-4 product-item__title"><a
-                                                                href="{{ url('single-product-full-width') }}"
-                                                                class="text-blue font-weight-bold">Wireless Audio System
-                                                                Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="js-slide products-group">
-                                        <div class="product-item remove-divider text-center">
-                                            <div class="product-item__outer h-100">
-                                                <div
-                                                    class="product-item__inner remove-prodcut-hover px-wd-4 p-2 p-md-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="d-block text-center"><img class="img-fluid"
-                                                                                                src="{{ asset('frontend') }}/assets/img/212X200/img4.jpg"
-                                                                                                alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="mb-2"><a
-                                                                href="{{ url('product-categories-7-column-full-width') }}"
-                                                                class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-4 product-item__title"><a
-                                                                href="{{ url('single-product-full-width') }}"
-                                                                class="text-blue font-weight-bold">Wireless Audio System
-                                                                Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="js-slide products-group">
-                                        <div class="product-item remove-divider text-center">
-                                            <div class="product-item__outer h-100">
-                                                <div
-                                                    class="product-item__inner remove-prodcut-hover px-wd-4 p-2 p-md-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="d-block text-center"><img class="img-fluid"
-                                                                                                src="{{ asset('frontend') }}/assets/img/212X200/img5.jpg"
-                                                                                                alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="mb-2"><a
-                                                                href="{{ url('product-categories-7-column-full-width') }}"
-                                                                class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-4 product-item__title"><a
-                                                                href="{{ url('single-product-full-width') }}"
-                                                                class="text-blue font-weight-bold">Wireless Audio System
-                                                                Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="js-slide products-group">
-                                        <div class="product-item remove-divider text-center">
-                                            <div class="product-item__outer h-100">
-                                                <div
-                                                    class="product-item__inner remove-prodcut-hover px-wd-4 p-2 p-md-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="d-block text-center"><img class="img-fluid"
-                                                                                                src="{{ asset('frontend') }}/assets/img/212X200/img6.jpg"
-                                                                                                alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="mb-2"><a
-                                                                href="{{ url('product-categories-7-column-full-width') }}"
-                                                                class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-4 product-item__title"><a
-                                                                href="{{ url('single-product-full-width') }}"
-                                                                class="text-blue font-weight-bold">Wireless Audio System
-                                                                Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="js-slide products-group">
-                                        <div class="product-item remove-divider text-center">
-                                            <div class="product-item__outer h-100">
-                                                <div
-                                                    class="product-item__inner remove-prodcut-hover px-wd-4 p-2 p-md-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="d-block text-center"><img class="img-fluid"
-                                                                                                src="{{ asset('frontend') }}/assets/img/212X200/img7.jpg"
-                                                                                                alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="mb-2"><a
-                                                                href="{{ url('product-categories-7-column-full-width') }}"
-                                                                class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-4 product-item__title"><a
-                                                                href="{{ url('single-product-full-width') }}"
-                                                                class="text-blue font-weight-bold">Wireless Audio System
-                                                                Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="js-slide products-group">
-                                        <div class="product-item remove-divider text-center">
-                                            <div class="product-item__outer h-100">
-                                                <div
-                                                    class="product-item__inner remove-prodcut-hover px-wd-4 p-2 p-md-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="d-block text-center">
-                                                                <img class="img-fluid"
-                                                                     src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                     alt="Image Description">
-                                                            </a>
-                                                        </div>
-                                                        <div class="mb-2"><a
-                                                                href="{{ url('product-categories-7-column-full-width') }}"
-                                                                class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-4 product-item__title"><a
-                                                                href="{{ url('single-product-full-width') }}"
-                                                                class="text-blue font-weight-bold">Wireless Audio System
-                                                                Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="js-slide products-group">
-                                        <div class="product-item remove-divider text-center">
-                                            <div class="product-item__outer h-100">
-                                                <div
-                                                    class="product-item__inner remove-prodcut-hover px-wd-4 p-2 p-md-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2">
-                                                            <a href="{{ url('single-product-full-width') }}"
-                                                               class="d-block text-center">
-                                                                <img class="img-fluid"
-                                                                     src="{{ asset('frontend') }}/assets/img/212X200/img1.jpg"
-                                                                     alt="Image Description">
-                                                            </a>
-                                                        </div>
-                                                        <div class="mb-2"><a
-                                                                href="{{ url('product-categories-7-column-full-width') }}"
-                                                                class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-4 product-item__title"><a
-                                                                href="{{ url('single-product-full-width') }}"
-                                                                class="text-blue font-weight-bold">Wireless Audio System
-                                                                Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @empty
+                                    @endforelse
                                 </div>
                             </div>
                             <!-- End Featured Products -->
@@ -1776,20 +1078,20 @@
                     </div>
                     <!-- End Banner -->
 
-                    <!-- Mobile & Gadgets -->
-                    <div class="position-relative">
-                        <div class="border-bottom border-color-1 mb-2">
-                            <h3 class="section-title mb-0 pb-2 font-size-22">Mobile & Gadgets</h3>
-                        </div>
-                        <div
-                            class="js-slick-carousel u-slick position-static overflow-hidden u-slick-overflow-visble pb-7 pt-2 px-1"
-                            data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-3 mt-md-0"
-                            data-slides-show="5"
-                            data-slides-scroll="1"
-                            data-arrows-classes="position-absolute top-0 font-size-17 u-slick__arrow-normal top-10"
-                            data-arrow-left-classes="fa fa-angle-left right-1"
-                            data-arrow-right-classes="fa fa-angle-right right-0"
-                            data-responsive='[{
+                    @foreach($home_page_categories as $category)
+                        <div class="position-relative">
+                            <div class="border-bottom border-color-1 mb-2">
+                                <h3 class="section-title mb-0 pb-2 font-size-22">{{ ucfirst($category->name) }}</h3>
+                            </div>
+                            <div
+                                class="js-slick-carousel u-slick position-static overflow-hidden u-slick-overflow-visble pb-7 pt-2 px-1"
+                                data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-3 mt-md-0"
+                                data-slides-show="5"
+                                data-slides-scroll="1"
+                                data-arrows-classes="position-absolute top-0 font-size-17 u-slick__arrow-normal top-10"
+                                data-arrow-left-classes="fa fa-angle-left right-1"
+                                data-arrow-right-classes="fa fa-angle-right right-0"
+                                data-responsive='[{
                                   "breakpoint": 1400,
                                   "settings": {
                                     "slidesToShow": 4
@@ -1815,440 +1117,66 @@
                                     "slidesToShow": 2
                                   }
                                 }]'>
-                            @forelse($mobile_and_gadgets as $mobile_product)
-                                <div class="js-slide products-group">
-                                    <div class="product-item">
-                                        <div class="product-item__outer h-100">
-                                            <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                                <div class="product-item__body pb-xl-2">
-                                                    <div class="mb-2"><a
-                                                            href="{{ route('product.category', $mobile_product->category->slug) }}"
-                                                            class="font-size-12 text-gray-5">{{ $mobile_product->category->name }}</a>
-                                                    </div>
-                                                    <h5 class="mb-1 product-item__title"><a
-                                                            href="{{ route('product.details', $mobile_product->slug) }}"
-                                                            class="text-blue font-weight-bold">{{ $mobile_product->name }}</a>
-                                                    </h5>
-                                                    <div class="mb-2">
-                                                        <a href="{{ route('product.details', $mobile_product->slug) }}"
-                                                           class="d-block text-center">
-                                                            <img class="img-fluid"
-                                                                 src="{{ @$mobile_product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url ?? getDefaultImage()}}"
-                                                                 alt="Image Description">
-                                                        </a>
-                                                    </div>
-                                                    <div class="flex-center-between mb-1">
-                                                        <div class="prodcut-price">
-                                                            <div
-                                                                class="text-gray-100">{{ getCurrencyIcon() }} {{ $mobile_product->price }}</div>
+
+                                @forelse($category->products as $mobile_product)
+                                    <div class="js-slide products-group">
+                                        <div class="product-item">
+                                            <div class="product-item__outer h-100">
+                                                <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a
+                                                                href="{{ route('product.category', $mobile_product->category->slug) }}"
+                                                                class="font-size-12 text-gray-5">{{ $mobile_product->category->name }}</a>
                                                         </div>
-                                                        <div class="d-none d-xl-block prodcut-add-cart">
+                                                        <h5 class="mb-1 product-item__title"><a
+                                                                href="{{ route('product.details', $mobile_product->slug) }}"
+                                                                class="text-blue font-weight-bold">{{ $mobile_product->name }}</a>
+                                                        </h5>
+                                                        <div class="mb-2">
                                                             <a href="{{ route('product.details', $mobile_product->slug) }}"
-                                                               class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                    class="ec ec-add-to-cart"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item__footer">
-                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                        <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                                class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                        <a href="{{ url('wishlist') }}"
-                                                           class="text-gray-6 font-size-13"><i
-                                                                class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @empty
-                                <p class="text-center">No products</p>
-                            @endforelse
-                        </div>
-                    </div>
-                    <!-- End Mobile & Gadgets -->
-
-                    <!-- Home Appliances -->
-                    <div class="position-relative">
-                        <div class="border-bottom border-color-1 mb-2">
-                            <h3 class="section-title mb-0 pb-2 font-size-22">Home Appliances</h3>
-                        </div>
-                        <div
-                            class="js-slick-carousel u-slick position-static overflow-hidden u-slick-overflow-visble pb-7 pt-2 px-1"
-                            data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-3 mt-md-0"
-                            data-slides-show="5"
-                            data-slides-scroll="1"
-                            data-arrows-classes="position-absolute top-0 font-size-17 u-slick__arrow-normal top-10"
-                            data-arrow-left-classes="fa fa-angle-left right-1"
-                            data-arrow-right-classes="fa fa-angle-right right-0"
-                            data-responsive='[{
-                                  "breakpoint": 1400,
-                                  "settings": {
-                                    "slidesToShow": 4
-                                  }
-                                }, {
-                                    "breakpoint": 1200,
-                                    "settings": {
-                                      "slidesToShow": 3
-                                    }
-                                }, {
-                                  "breakpoint": 992,
-                                  "settings": {
-                                    "slidesToShow": 3
-                                  }
-                                }, {
-                                  "breakpoint": 768,
-                                  "settings": {
-                                    "slidesToShow": 2
-                                  }
-                                }, {
-                                  "breakpoint": 554,
-                                  "settings": {
-                                    "slidesToShow": 2
-                                  }
-                                }]'>
-                            @forelse($home_appliances as $home_product)
-                                <div class="js-slide products-group">
-                                    <div class="product-item">
-                                        <div class="product-item__outer h-100">
-                                            <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                                <div class="product-item__body pb-xl-2">
-                                                    <div class="mb-2"><a
-                                                            href="{{ route('product.category', $home_product->category->slug) }}"
-                                                            class="font-size-12 text-gray-5">{{ $home_product->category->name }}</a>
-                                                    </div>
-                                                    <h5 class="mb-1 product-item__title"><a
-                                                            href="{{ route('product.details', $home_product->slug) }}"
-                                                            class="text-blue font-weight-bold">{{ $home_product->name }}</a>
-                                                    </h5>
-                                                    <div class="mb-2">
-                                                        <a href="{{ route('product.details', $home_product->slug) }}"
-                                                           class="d-block text-center">
-                                                            <img class="img-fluid"
-                                                                 src="{{ @$home_product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url ?? getDefaultImage()}}"
-                                                                 alt="Image Description">
-                                                        </a>
-                                                    </div>
-                                                    <div class="flex-center-between mb-1">
-                                                        <div class="prodcut-price">
-                                                            <div
-                                                                class="text-gray-100">{{ getCurrencyIcon() }} {{ $home_product->price }}</div>
-                                                        </div>
-                                                        <div class="d-none d-xl-block prodcut-add-cart">
-                                                            <a href="{{ route('product.details', $home_product->slug) }}"
-                                                               class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                    class="ec ec-add-to-cart"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item__footer">
-                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                        <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                                class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                        <a href="{{ url('wishlist') }}"
-                                                           class="text-gray-6 font-size-13"><i
-                                                                class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @empty
-                                <p class="text-center">No products</p>
-                            @endforelse
-                        </div>
-                    </div>
-                    <!-- End Home Appliances -->
-
-                    <!-- Fashion Accessories -->
-                    <div class="position-relative">
-                        <div class="border-bottom border-color-1 mb-2">
-                            <h3 class="section-title mb-0 pb-2 font-size-22">Fashion Accessories</h3>
-                        </div>
-                        <div
-                            class="js-slick-carousel u-slick position-static overflow-hidden u-slick-overflow-visble pb-7 pt-2 px-1"
-                            data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-3 mt-md-0"
-                            data-slides-show="5"
-                            data-slides-scroll="1"
-                            data-arrows-classes="position-absolute top-0 font-size-17 u-slick__arrow-normal top-10"
-                            data-arrow-left-classes="fa fa-angle-left right-1"
-                            data-arrow-right-classes="fa fa-angle-right right-0"
-                            data-responsive='[{
-                                  "breakpoint": 1400,
-                                  "settings": {
-                                    "slidesToShow": 4
-                                  }
-                                }, {
-                                    "breakpoint": 1200,
-                                    "settings": {
-                                      "slidesToShow": 3
-                                    }
-                                }, {
-                                  "breakpoint": 992,
-                                  "settings": {
-                                    "slidesToShow": 3
-                                  }
-                                }, {
-                                  "breakpoint": 768,
-                                  "settings": {
-                                    "slidesToShow": 2
-                                  }
-                                }, {
-                                  "breakpoint": 554,
-                                  "settings": {
-                                    "slidesToShow": 2
-                                  }
-                                }]'>
-                            @forelse($fashion_accessories as $fashion_product)
-                                <div class="js-slide products-group">
-                                    <div class="product-item">
-                                        <div class="product-item__outer h-100">
-                                            <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                                <div class="product-item__body pb-xl-2">
-                                                    <div class="mb-2"><a
-                                                            href="{{ route('product.category', $fashion_product->category->slug) }}"
-                                                            class="font-size-12 text-gray-5">{{ $fashion_product->category->name }}</a>
-                                                    </div>
-                                                    <h5 class="mb-1 product-item__title"><a
-                                                            href="{{ route('product.details', $fashion_product->slug) }}"
-                                                            class="text-blue font-weight-bold">{{ $fashion_product->name }}</a>
-                                                    </h5>
-                                                    <div class="mb-2">
-                                                        <a href="{{ route('product.details', $fashion_product->slug) }}"
-                                                           class="d-block text-center">
-                                                            <img class="img-fluid"
-                                                                 src="{{ @$fashion_product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url ?? getDefaultImage() }}"
-                                                                 alt="Image Description">
-                                                        </a>
-                                                    </div>
-                                                    <div class="flex-center-between mb-1">
-                                                        <div class="prodcut-price">
-                                                            <div
-                                                                class="text-gray-100">{{ getCurrencyIcon() }} {{ $fashion_product->price }}</div>
-                                                        </div>
-                                                        <div class="d-none d-xl-block prodcut-add-cart">
-                                                            <a href="{{ route('product.details', $fashion_product->slug) }}"
-                                                               class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                    class="ec ec-add-to-cart"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item__footer">
-                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                        <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                                class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                        <a href="{{ url('wishlist') }}"
-                                                           class="text-gray-6 font-size-13"><i
-                                                                class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @empty
-                                <p class="text-center">No products</p>
-                            @endforelse
-                        </div>
-                    </div>
-                    <!-- End Fashion Accessories -->
-
-                    <!-- Health & Beauty -->
-                    <div class="position-relative">
-                        <div class="border-bottom border-color-1 mb-2">
-                            <h3 class="section-title mb-0 pb-2 font-size-22">Health & Beauty</h3>
-                        </div>
-                        <div
-                            class="js-slick-carousel u-slick position-static overflow-hidden u-slick-overflow-visble pb-7 pt-2 px-1"
-                            data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-3 mt-md-0"
-                            data-slides-show="5"
-                            data-slides-scroll="1"
-                            data-arrows-classes="position-absolute top-0 font-size-17 u-slick__arrow-normal top-10"
-                            data-arrow-left-classes="fa fa-angle-left right-1"
-                            data-arrow-right-classes="fa fa-angle-right right-0"
-                            data-responsive='[{
-                                  "breakpoint": 1400,
-                                  "settings": {
-                                    "slidesToShow": 4
-                                  }
-                                }, {
-                                    "breakpoint": 1200,
-                                    "settings": {
-                                      "slidesToShow": 3
-                                    }
-                                }, {
-                                  "breakpoint": 992,
-                                  "settings": {
-                                    "slidesToShow": 3
-                                  }
-                                }, {
-                                  "breakpoint": 768,
-                                  "settings": {
-                                    "slidesToShow": 2
-                                  }
-                                }, {
-                                  "breakpoint": 554,
-                                  "settings": {
-                                    "slidesToShow": 2
-                                  }
-                                }]'>
-                            @forelse($health_and_beauty as $health_product)
-                                <div class="js-slide products-group">
-                                    <div class="product-item">
-                                        <div class="product-item__outer h-100">
-                                            <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                                <div class="product-item__body pb-xl-2">
-                                                    <div class="mb-2"><a
-                                                            href="{{ route('product.category', $health_product->category->slug) }}"
-                                                            class="font-size-12 text-gray-5">{{ $health_product->category->name }}</a>
-                                                    </div>
-                                                    <h5 class="mb-1 product-item__title"><a
-                                                            href="{{ route('product.details', $health_product->slug) }}"
-                                                            class="text-blue font-weight-bold">{{ $health_product->name }}</a>
-                                                    </h5>
-                                                    <div class="mb-2">
-                                                        <a href="{{ route('product.details', $health_product->slug) }}"
-                                                           class="d-block text-center">
-                                                            <img class="img-fluid"
-                                                                 src="{{ $health_product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url ?? getDefaultImage() }}"
-                                                                 alt="Image Description">
-                                                        </a>
-                                                    </div>
-                                                    <div class="flex-center-between mb-1">
-                                                        <div class="prodcut-price">
-                                                            <div
-                                                                class="text-gray-100">{{ getCurrencyIcon() }} {{ $health_product->price }}</div>
-                                                        </div>
-                                                        <div class="d-none d-xl-block prodcut-add-cart">
-                                                            <a href="{{ route('product.details', $health_product->slug) }}"
-                                                               class="btn-add-cart btn-primary transition-3d-hover"><i
-                                                                    class="ec ec-add-to-cart"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-item__footer">
-                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                        <a href="{{ url('compare') }}" class="text-gray-6 font-size-13"><i
-                                                                class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                        <a href="{{ url('wishlist') }}"
-                                                           class="text-gray-6 font-size-13"><i
-                                                                class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @empty
-                                <p class="text-center">No products</p>
-                            @endforelse
-                        </div>
-                    </div>
-                    <!-- End Health & Beauty -->
-
-                    <!-- Bikes & Car -->
-                    <div class="position-relative">
-                        <div class="border-bottom border-color-1 mb-2">
-                            <h3 class="section-title mb-0 pb-2 font-size-22">Bikes & Car</h3>
-                        </div>
-                        <div
-                            class="js-slick-carousel u-slick position-static overflow-hidden u-slick-overflow-visble pb-7 pt-2 px-1"
-                            data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-3 mt-md-0"
-                            data-slides-show="5"
-                            data-slides-scroll="1"
-                            data-arrows-classes="position-absolute top-0 font-size-17 u-slick__arrow-normal top-10"
-                            data-arrow-left-classes="fa fa-angle-left right-1"
-                            data-arrow-right-classes="fa fa-angle-right right-0"
-                            data-responsive='[{
-                                  "breakpoint": 1400,
-                                  "settings": {
-                                    "slidesToShow": 4
-                                  }
-                                }, {
-                                    "breakpoint": 1200,
-                                    "settings": {
-                                      "slidesToShow": 3
-                                    }
-                                }, {
-                                  "breakpoint": 992,
-                                  "settings": {
-                                    "slidesToShow": 3
-                                  }
-                                }, {
-                                  "breakpoint": 768,
-                                  "settings": {
-                                    "slidesToShow": 2
-                                  }
-                                }, {
-                                  "breakpoint": 554,
-                                  "settings": {
-                                    "slidesToShow": 2
-                                  }
-                                }]'>
-                            @forelse($bikes_and_car as $bikes__product)
-                                <div class="js-slide products-group">
-                                    <div class="product-item">
-                                        <div class="product-item__outer h-100">
-                                            <div class="product-item__inner px-wd-4 p-2 p-md-3">
-                                                <div class="product-item__body pb-xl-2">
-                                                    <div class="mb-2"><a
-                                                            href="{{ route('product.category', $bikes__product->category->slug) }}"
-                                                            class="font-size-12 text-gray-5">{{ $bikes__product->category->name }}</a>
-                                                    </div>
-                                                    <h5 class="mb-1 product-item__title"><a
-                                                            href="{{ route('product.details', $bikes__product->slug) }}"
-                                                            class="text-blue font-weight-bold">{{ $bikes__product->name }}</a>
-                                                    </h5>
-                                                    <div class="mb-2">
-                                                        <a href="{{ route('product.details', $bikes__product->slug) }}"
-                                                           class="d-block text-center">
-                                                            <img class="img-fluid"
-                                                                 src="{{ $bikes__product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url ?? getDefaultImage()}}"
-                                                                 alt="Image Description">
-                                                        </a>
-                                                    </div>
-                                                    <div class="flex-center-between mb-1">
-                                                        <div class="prodcut-price">
-                                                            <div class="text-gray-100">
-                                                                {{ getCurrencyIcon() }} {{ $bikes__product->price }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-none d-xl-block prodcut-add-cart">
-                                                            <a href="{{ route('product.details', $bikes__product->slug) }}"
-                                                               class="btn-add-cart btn-primary transition-3d-hover">
-                                                                <i class="ec ec-add-to-cart"></i>
+                                                               class="d-block text-center">
+                                                                <img class="img-fluid"
+                                                                     src="{{ @$mobile_product->images()->where(['type' => 'thumbnail', 'size' => '212x200'])->first()->url ?? getDefaultImage()}}"
+                                                                     alt="Image Description">
                                                             </a>
                                                         </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div
+                                                                    class="text-gray-100">{{ getCurrencyIcon() }} {{ $mobile_product->price }}</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="{{ route('product.details', $mobile_product->slug) }}"
+                                                                   class="btn-add-cart btn-primary transition-3d-hover"><i
+                                                                        class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-item__footer">
-                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                        <a href="{{ url('compare') }}" class="text-gray-6 font-size-13">
-                                                            <i class="ec ec-compare mr-1 font-size-15"></i>
-                                                            Compare
-                                                        </a>
-                                                        <a href="{{ url('wishlist') }}"
-                                                           class="text-gray-6 font-size-13">
-                                                            <i class="ec ec-favorites mr-1 font-size-15"></i>
-                                                            Wishlist
-                                                        </a>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="{{ url('compare') }}"
+                                                               class="text-gray-6 font-size-13"><i
+                                                                    class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="{{ url('wishlist') }}"
+                                                               class="text-gray-6 font-size-13"><i
+                                                                    class="ec ec-favorites mr-1 font-size-15"></i>
+                                                                Wishlist</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @empty
-                                <p class="text-center">No products</p>
-                            @endforelse
+                                @empty
+                                    <p class="text-center">No products</p>
+                                @endforelse
+                            </div>
                         </div>
-                    </div>
-                    <!-- End Bikes & Car -->
+                    @endforeach
                 </div>
             </div>
         </div>
+
         <!-- Recommendation For You -->
         <div class="container mb-8">
             <div class="mb-6">
@@ -2355,20 +1283,3 @@
     </main>
 @endsection
 
-@push('scripts')
-    <script>
-        window.exonChat = function () {
-            return {};
-        };
-        (function (d, s, id) {
-            let js,
-                fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.setAttribute('data-api-key', 'test');
-            js.src = `http://149.28.141.154/assets/js/web-chat/web-chat.js`;
-            fjs.parentNode.insertBefore(js, fjs);
-        })(document, 'script', 'exhonchat-chat-frame');
-    </script>
-@endpush

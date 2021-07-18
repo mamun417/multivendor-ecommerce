@@ -18,8 +18,7 @@
                 </li>
             </ol>
             <a class="btn btn-sm btn-primary pull-right m-t-n-md boardCreateModalShow"
-               href="{{ route('admin.sliders.index') }}"><i
-                    class="fa fa-list"></i> <strong>ALL SLIDER</strong></a>
+                href="{{ route('admin.sliders.index') }}"><i class="fa fa-list"></i> <strong>ALL SLIDER</strong></a>
         </div>
     </div>
 
@@ -40,7 +39,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <a href="{{ route('admin.sliders.index') }}" class="btn btn-danger"
-                                           type="submit">Cancel</a>
+                                            type="submit">Cancel</a>
                                         <button class="btn btn-primary" type="submit">Save</button>
                                     </div>
                                 </div>

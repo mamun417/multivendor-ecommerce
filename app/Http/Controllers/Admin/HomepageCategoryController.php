@@ -28,11 +28,15 @@ class HomepageCategoryController extends Controller
     public function update(Request $request)
     {
         try {
-            $serial = $request->input('serial');
+            $serial = array_map(function ($serial) {
+                return $serial['id'];
+            }, $request->input('serial'));
 
-            foreach ($serial as $key => $objValue) {
-                Category::find($objValue['id'])->update(['serial_no' => ++$key]);
-            }
+            Category::chunkById(200, function ($categories) use ($serial) {
+                $categories->each(function ($category) use ($serial) {
+                    $category->update(['serial_no' => array_search($category->id, $serial)]);
+                });
+            }, $column = 'id');
 
             return true;
         } catch (\Exception $exception) {

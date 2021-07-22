@@ -120,9 +120,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="confirm_password">Confirm Password</label>
-                                <input type="password" class="form-control" name="confirm_password"
-                                       value="{{ old('confirm_password') }}" required>
+                                <label for="password_confirmation">Confirm Password</label>
+                                <input type="password" class="form-control" name="password_confirmation"
+                                       value="{{ old('password_confirmation') }}" required>
+                                @error('password_confirmation')
+                                <small class="text-danger">{{ @$message }}</small>
+                                @enderror
                             </div>
 
                             <div class="row mb-3">
